@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="helloOpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\glad\src\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="helloGLSL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="helloTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="helloGLM.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="hello3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="model_loading.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="depth_testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="blending_discard.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="framebuffers.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cubemaps_environment_mapping.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry_shader_houses.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="instancing_quads.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="anti_aliasing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gamma_correction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="shadow_mapping_depth.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\multiple_lights.fs" />
+    <None Include="shaders\multiple_lights.vs" />
+    <None Include="shaders\depth_testing.vs" />
+    <None Include="shaders\depth_testing.fs" />
+    <None Include="shaders\stencil_single_color.fs" />
+    <None Include="shaders\stencil_testing.vs" />
+    <None Include="shaders\blending.vs" />
+    <None Include="shaders\blending.fs" />
+    <None Include="shaders\framebuffers.vs" />
+    <None Include="shaders\framebuffers.fs" />
+    <None Include="shaders\framebuffers_screen.vs" />
+    <None Include="shaders\framebuffers_screen.fs" />
+    <None Include="shaders\skybox.vs" />
+    <None Include="shaders\skybox.fs" />
+    <None Include="shaders\skybox_cube.fs" />
+    <None Include="shaders\skybox_cube.vs" />
+    <None Include="shaders\geometry_shader.vs" />
+    <None Include="shaders\geometry_shader.fs" />
+    <None Include="shaders\geometry_shader.gs" />
+    <None Include="shaders\geometry_model.gs" />
+    <None Include="shaders\geometry_model.fs" />
+    <None Include="shaders\geometry_model.vs" />
+    <None Include="shaders\instancing.vs" />
+    <None Include="shaders\instancing.fs" />
+    <None Include="shaders\anti_aliasing.vs" />
+    <None Include="shaders\anti_aliasing.fs" />
+    <None Include="shaders\gamma_correction.vs" />
+    <None Include="shaders\gamma_correction.fs" />
+    <None Include="shaders\shadow_mapping_depth.vs" />
+    <None Include="shaders\shadow_mapping_depth.fs" />
+    <None Include="shaders\debug_quad.vs" />
+    <None Include="shaders\debug_quad.fs" />
+    <None Include="shaders\shadow_mapping.vs" />
+    <None Include="shaders\shadow_mapping.fs" />
+  </ItemGroup>
+</Project>
