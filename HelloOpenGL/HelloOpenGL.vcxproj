@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4996F148-A901-46C7-9905-ABD8BEFEA4DB}</ProjectGuid>
     <RootNamespace>HelloOpenGL</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,10 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\glad\src\glad.c" />
     <ClCompile Include="blending_discard.cpp" />
     <ClCompile Include="cubemaps_environment_mapping.cpp" />
     <ClCompile Include="gamma_correction.cpp" />
+    <ClCompile Include="glad.c" />
     <ClCompile Include="hello3D.cpp" />
     <ClCompile Include="helloGLM.cpp" />
     <ClCompile Include="helloGLSL.cpp" />
