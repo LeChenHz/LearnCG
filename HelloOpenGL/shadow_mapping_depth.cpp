@@ -39,7 +39,7 @@ unsigned int planeVAO;
 
 int main()
 {
-	cout << "test" << endl;
+	cout << "test hhh" << endl;
 
 	// glfw: initialize and configure
 	// ------------------------------
