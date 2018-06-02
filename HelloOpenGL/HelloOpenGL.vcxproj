@@ -74,8 +74,8 @@
     <LibraryPath>F:\Projects\openGL\OpenGL_stuff\lib;F:\Program Files (x86)\opencv3.0.0beta\opencv\build\x86\vc10\staticlib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Projects\openGL\OpenGL_stuff\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Projects\openGL\OpenGL_stuff\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Projects\openGL\HelloOpenGL\OpenGL_Lib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Projects\openGL\HelloOpenGL\OpenGL_Lib\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
