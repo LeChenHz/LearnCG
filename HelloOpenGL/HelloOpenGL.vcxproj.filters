@@ -72,6 +72,9 @@
     <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="point_shadows.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -128,5 +131,10 @@
     <None Include="shaders\debug_quad.fs" />
     <None Include="shaders\shadow_mapping.vs" />
     <None Include="shaders\shadow_mapping.fs" />
+    <None Include="shaders\point_shadows.vs" />
+    <None Include="shaders\point_shadows.fs" />
+    <None Include="shaders\point_shadows_depth.vs" />
+    <None Include="shaders\point_shadows_depth.fs" />
+    <None Include="shaders\point_shadows_depth.gs" />
   </ItemGroup>
 </Project>

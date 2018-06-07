@@ -70,7 +70,6 @@
 //	// configure global opengl state
 //	// …Ó∂»≤‚ ‘
 //	glEnable(GL_DEPTH_TEST);
-//	glDepthFunc(GL_LESS);
 //
 //	// render loop
 //	while (!glfwWindowShouldClose(window))
