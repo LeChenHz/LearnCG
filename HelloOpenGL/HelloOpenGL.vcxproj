@@ -147,6 +147,7 @@
     <ClCompile Include="geometry_shader_houses.cpp" />
     <ClCompile Include="instancing_quads.cpp" />
     <ClCompile Include="anti_aliasing.cpp" />
+    <ClCompile Include="normal_mapping.cpp" />
     <ClCompile Include="point_shadows.cpp" />
     <ClCompile Include="shadow_mapping_depth.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -184,6 +185,8 @@
     <None Include="shaders\instancing.vs" />
     <None Include="shaders\multiple_lights.fs" />
     <None Include="shaders\multiple_lights.vs" />
+    <None Include="shaders\normal_mapping.fs" />
+    <None Include="shaders\normal_mapping.vs" />
     <None Include="shaders\point_shadows.fs" />
     <None Include="shaders\point_shadows.vs" />
     <None Include="shaders\point_shadows_depth.fs" />

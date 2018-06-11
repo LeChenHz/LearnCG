@@ -65,11 +65,10 @@
 //		return -1;
 //	}
 //
-//	Shader shader("shaders\\depth_testing.vs", "shaders\\depth_testing.fs");
-//
-//	// configure global opengl state
 //	// …Ó∂»≤‚ ‘
 //	glEnable(GL_DEPTH_TEST);
+//
+//	Shader shader("shaders\\depth_testing.vs", "shaders\\depth_testing.fs");
 //
 //	// render loop
 //	while (!glfwWindowShouldClose(window))
