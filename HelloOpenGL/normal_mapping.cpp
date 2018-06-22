@@ -20,6 +20,8 @@ void processInput(GLFWwindow *window);
 unsigned int loadTexture(const char *path);
 void renderQuad();
 
+float heightScale = 0.1;
+
 // settings
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
@@ -70,13 +72,15 @@ int main()
 	Shader shader("shaders\\normal_mapping.vs", "shaders\\normal_mapping.fs");
 
 	// load textures
-	unsigned int diffuseMap = loadTexture(string("sources\\brickwall.jpg").c_str());
-	unsigned int normalMap = loadTexture(string("sources\\brickwall_normal.jpg").c_str());
+	unsigned int diffuseMap = loadTexture(string("sources\\toy_box_diffuse.png").c_str());
+	unsigned int normalMap = loadTexture(string("sources\\toy_box_normal.png").c_str());
+	unsigned int heightMap = loadTexture(string("sources\\toy_box_disp.png").c_str());
 
 	// shader configuration
 	shader.use();
 	shader.setInt("diffuseMap", 0);
 	shader.setInt("normalMap", 1);
+	shader.setInt("depthMap", 2);
 
 	glm::vec3 lightPos(0.5f, 1.0f, 0.3f);
 
@@ -95,7 +99,6 @@ int main()
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
 		// configure view/projection matrices
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
@@ -105,15 +108,18 @@ int main()
 
 		// 绘制 normal-mapped quad
 		glm::mat4 model;
-		cout << (float)glfwGetTime() << endl;
 		model = glm::rotate(model, glm::radians((float)glfwGetTime() * -10.0f), glm::normalize(glm::vec3(1.0, 1.0, 1.0))); // rotate the quad to show normal mapping from multiple directions
 		shader.setMat4("model", model);
 		shader.setVec3("viewPos", camera.Position);
 		shader.setVec3("lightPos", lightPos);
+		shader.setFloat("heightScale", heightScale);
+		
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, normalMap);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, heightMap);
 		renderQuad();
 
 		//绘制光源
@@ -147,6 +153,24 @@ void processInput(GLFWwindow *window)
 		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
+
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+	{
+		if (heightScale > 0.0f)
+			heightScale -= 0.0005f;
+		else
+			heightScale = 0.0f;
+		cout << heightScale << endl;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+	{
+		if (heightScale < 1.0f)
+			heightScale += 0.0005f;
+		else
+			heightScale = 1.0f;
+		cout << heightScale << endl;
+	}
+
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
