@@ -15,67 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="helloOpenGL.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="helloGLSL.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="stb_image.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="helloTexture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="helloGLM.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="hello3D.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="base.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="model_loading.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="depth_testing.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="blending_discard.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="framebuffers.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="cubemaps_environment_mapping.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="geometry_shader_houses.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="instancing_quads.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="anti_aliasing.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="gamma_correction.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="shadow_mapping_depth.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="point_shadows.cpp">
+    <ClCompile Include="bloom.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="normal_mapping.cpp">
+    <ClCompile Include="deferred_shading.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="blending_discard.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -100,46 +61,21 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\multiple_lights.fs" />
-    <None Include="shaders\multiple_lights.vs" />
-    <None Include="shaders\depth_testing.vs" />
-    <None Include="shaders\depth_testing.fs" />
-    <None Include="shaders\stencil_single_color.fs" />
-    <None Include="shaders\stencil_testing.vs" />
-    <None Include="shaders\blending.vs" />
-    <None Include="shaders\blending.fs" />
-    <None Include="shaders\framebuffers.vs" />
-    <None Include="shaders\framebuffers.fs" />
-    <None Include="shaders\framebuffers_screen.vs" />
-    <None Include="shaders\framebuffers_screen.fs" />
-    <None Include="shaders\skybox.vs" />
-    <None Include="shaders\skybox.fs" />
-    <None Include="shaders\skybox_cube.fs" />
-    <None Include="shaders\skybox_cube.vs" />
-    <None Include="shaders\geometry_shader.vs" />
-    <None Include="shaders\geometry_shader.fs" />
-    <None Include="shaders\geometry_shader.gs" />
-    <None Include="shaders\geometry_model.gs" />
-    <None Include="shaders\geometry_model.fs" />
-    <None Include="shaders\geometry_model.vs" />
-    <None Include="shaders\instancing.vs" />
-    <None Include="shaders\instancing.fs" />
-    <None Include="shaders\anti_aliasing.vs" />
-    <None Include="shaders\anti_aliasing.fs" />
-    <None Include="shaders\gamma_correction.vs" />
-    <None Include="shaders\gamma_correction.fs" />
-    <None Include="shaders\shadow_mapping_depth.vs" />
-    <None Include="shaders\shadow_mapping_depth.fs" />
-    <None Include="shaders\debug_quad.vs" />
-    <None Include="shaders\debug_quad.fs" />
-    <None Include="shaders\shadow_mapping.vs" />
-    <None Include="shaders\shadow_mapping.fs" />
-    <None Include="shaders\point_shadows.vs" />
-    <None Include="shaders\point_shadows.fs" />
-    <None Include="shaders\point_shadows_depth.vs" />
-    <None Include="shaders\point_shadows_depth.fs" />
-    <None Include="shaders\point_shadows_depth.gs" />
-    <None Include="shaders\normal_mapping.fs" />
-    <None Include="shaders\normal_mapping.vs" />
+    <None Include="shaders\bloom\bloom.fs" />
+    <None Include="shaders\bloom\bloom.vs" />
+    <None Include="shaders\bloom\light_box.fs" />
+    <None Include="shaders\bloom\light_box.vs" />
+    <None Include="shaders\bloom\bloom_final.vs" />
+    <None Include="shaders\bloom\bloom_final.fs" />
+    <None Include="shaders\bloom\blur.fs" />
+    <None Include="shaders\bloom\blur.vs" />
+    <None Include="shaders\deferred_shading\g_buffer.vs" />
+    <None Include="shaders\deferred_shading\g_buffer.fs" />
+    <None Include="shaders\deferred_shading\deferred_shading.vs" />
+    <None Include="shaders\deferred_shading\deferred_shading.fs" />
+    <None Include="shaders\deferred_shading\deferred_light_box.vs" />
+    <None Include="shaders\deferred_shading\deferred_light_box.fs" />
+    <None Include="shaders\blending_discard\blending.vs" />
+    <None Include="shaders\blending_discard\blending.fs" />
   </ItemGroup>
 </Project>
