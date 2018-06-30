@@ -165,6 +165,8 @@
     <None Include="shaders\deferred_shading\deferred_shading.vs" />
     <None Include="shaders\deferred_shading\g_buffer.fs" />
     <None Include="shaders\deferred_shading\g_buffer.vs" />
+    <None Include="shaders\particle_system\particle_system.fs" />
+    <None Include="shaders\particle_system\particle_system.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
