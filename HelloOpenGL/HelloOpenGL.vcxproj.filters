@@ -39,6 +39,9 @@
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="billboard.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -57,6 +60,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="opengl_debug.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -79,5 +88,12 @@
     <None Include="shaders\blending_discard\blending.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
     <None Include="shaders\particle_system\particle_system.fs" />
+    <None Include="shaders\billboard\billboard.vs" />
+    <None Include="shaders\billboard\billboard.fs" />
+    <None Include="shaders\billboard\cube.vs" />
+    <None Include="shaders\billboard\cube.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\ogl-master\tutorial18_billboards_and_particles\ExampleBillboard.DDS" />
   </ItemGroup>
 </Project>

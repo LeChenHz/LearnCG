@@ -97,6 +97,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -138,6 +139,7 @@
     <ClCompile Include="base.cpp" />
     <ClCompile Include="anti_aliasing.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="billboard.cpp" />
     <ClCompile Include="stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,9 +148,15 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="opengl_debug.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\billboard\billboard.fs" />
+    <None Include="shaders\billboard\billboard.vs" />
+    <None Include="shaders\billboard\cube.fs" />
+    <None Include="shaders\billboard\cube.vs" />
     <None Include="shaders\blending_discard\blending.fs" />
     <None Include="shaders\blending_discard\blending.vs" />
     <None Include="shaders\bloom\bloom.fs" />
@@ -167,6 +175,9 @@
     <None Include="shaders\deferred_shading\g_buffer.vs" />
     <None Include="shaders\particle_system\particle_system.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\ogl-master\tutorial18_billboards_and_particles\ExampleBillboard.DDS" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
