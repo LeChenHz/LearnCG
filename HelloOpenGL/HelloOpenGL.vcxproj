@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;assimpd.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,23 +134,14 @@
   <ItemGroup>
     <ClCompile Include="blending_discard.cpp" />
     <ClCompile Include="bloom.cpp" />
+    <ClCompile Include="common\glad.c" />
+    <ClCompile Include="common\stb_image.cpp" />
     <ClCompile Include="deferred_shading.cpp" />
-    <ClCompile Include="glad.c" />
     <ClCompile Include="base.cpp" />
-    <ClCompile Include="anti_aliasing.cpp" />
+    <ClCompile Include="normal_mapping.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="billboard.cpp" />
-    <ClCompile Include="stb_image.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="opengl_debug.h" />
-    <ClInclude Include="texture.h" />
-    <ClInclude Include="stb_image.h" />
+    <ClCompile Include="text_rendering.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\billboard\billboard.fs" />
@@ -175,9 +166,20 @@
     <None Include="shaders\deferred_shading\g_buffer.vs" />
     <None Include="shaders\particle_system\particle_system.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
+    <None Include="shaders\text\text.fs" />
+    <None Include="shaders\text\text.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\ogl-master\tutorial18_billboards_and_particles\ExampleBillboard.DDS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common\camera.h" />
+    <ClInclude Include="common\Mesh.h" />
+    <ClInclude Include="common\Model.h" />
+    <ClInclude Include="common\opengl_debug.h" />
+    <ClInclude Include="common\Shader.h" />
+    <ClInclude Include="common\stb_image.h" />
+    <ClInclude Include="common\texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,18 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{35226355-330b-465b-a8f4-d5103277aa55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stb_image.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="base.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="anti_aliasing.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="bloom.cpp">
@@ -42,32 +36,18 @@
     <ClCompile Include="billboard.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb_image.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="opengl_debug.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    <ClCompile Include="normal_mapping.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\glad.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\stb_image.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="text_rendering.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\bloom\bloom.fs" />
@@ -92,8 +72,33 @@
     <None Include="shaders\billboard\billboard.fs" />
     <None Include="shaders\billboard\cube.vs" />
     <None Include="shaders\billboard\cube.fs" />
+    <None Include="shaders\text\text.fs" />
+    <None Include="shaders\text\text.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\ogl-master\tutorial18_billboards_and_particles\ExampleBillboard.DDS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common\camera.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Mesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Model.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\opengl_debug.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Shader.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\stb_image.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\texture.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
