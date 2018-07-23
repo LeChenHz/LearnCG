@@ -33,6 +33,6 @@ public:
 	GameState  State;
 private:
 	SpriteRenderer * spriteRenderer;
-	Shader *shader;
+	const string sprite = "face";
 };
 

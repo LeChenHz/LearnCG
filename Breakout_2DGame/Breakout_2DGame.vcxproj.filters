@@ -62,10 +62,10 @@
     <ClCompile Include="src\SpriteRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\common\Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\common\glad.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\Shader.cpp">
       <Filter>源文件\common</Filter>
     </ClCompile>
   </ItemGroup>

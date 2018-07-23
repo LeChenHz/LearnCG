@@ -44,7 +44,6 @@ int main()
 		return -1;
 	}
 
-
 	breakout.Init();
 
 	GLfloat deltaTime = 0.0f;
@@ -58,11 +57,10 @@ int main()
 		// 检查有没有触发什么事件
 		glfwPollEvents();
 
-
 		breakout.ProcessInput(deltaTime);
 		breakout.Update(deltaTime);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		breakout.Render();
@@ -70,6 +68,8 @@ int main()
 		// 交换缓冲区
 		glfwSwapBuffers(window);
 	}
+
+	ResourceManager::GetInstance()->Clear();
 
 	glfwTerminate();
 	return 0;

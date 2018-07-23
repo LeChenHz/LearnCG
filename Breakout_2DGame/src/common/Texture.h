@@ -13,7 +13,7 @@ class Texture2D
 public:
 	Texture2D();
 	void Generate(GLuint width, GLuint height, GLenum format, unsigned char *data);
-	void Bind() const;
+	void Bind();
 public:
 	GLuint ID;
 	GLuint Width, Height;
