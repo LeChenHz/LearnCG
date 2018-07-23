@@ -13,7 +13,7 @@ class Text2D
 public:
 	Text2D()
 	{
-		const char * path = "sources\\text.png";
+		const char * path = "res\\text.png";
 
 		Text2DTextureID = loadTexture(path);
 
@@ -21,7 +21,7 @@ public:
 		glGenBuffers(1, &Text2DVertexBufferID);
 		glGenBuffers(1, &Text2DUVBufferID);
 
-		shader = new Shader("shaders\\text_uv\\text_uv.vs", "shaders\\text_uv\\text_uv.fs");
+		shader = new Shader("shaders\\text_uv\\text_uv.vs.glsl", "shaders\\text_uv\\text_uv.fs.glsl");
 	}
 
 	~Text2D()

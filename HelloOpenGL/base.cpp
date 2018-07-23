@@ -7,40 +7,43 @@
 //
 //#include "common/Shader.h"
 //#include "common/camera.h"
-//#include "common/Model.h"
 //#include "common/texture.h"
 //
 //#include <iostream>
 //#include <string>
 //using namespace std;
 //
+//// 窗口大小调整的回调函数(当窗口大小改变时，视口也要改变)
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+//// 鼠标控制回调
 //void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+//// 滚轮控制回调
 //void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+//// 键盘控制回调
 //void processInput(GLFWwindow *window);
 //
-//// settings
+//// 屏幕宽，高
 //const unsigned int SCR_WIDTH = 1280;
 //const unsigned int SCR_HEIGHT = 720;
 //
-//// camera
-//Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-//float lastX = (float)SCR_WIDTH / 2.0;
-//float lastY = (float)SCR_HEIGHT / 2.0;
+//Camera camera(glm::vec3(0.0f, 0.0f, 3.0f)); //摄像机位置
+//
+//float lastX = (float)SCR_WIDTH / 2.0, lastY = (float)SCR_HEIGHT / 2.0; // 设置鼠标初始位置为屏幕中心
 //bool firstMouse = true;
 //
-//// timing
-//float deltaTime = 0.0f;
-//float lastTime = 0.0f;
+//float deltaTime = 0.0f; // 当前帧与上一帧的时间差
+//float lastFrame = 0.0f; // 上一帧的时间
 //
 //int main()
 //{
+//	// ---------------------初始化--------------------------
+//	// glfw初始化，采用的GL版本为3.3核心版本
 //	glfwInit();
 //	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 //	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 //	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 //
-//
+//	// 创建GL窗口
 //	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
 //	if (window == NULL)
 //	{
@@ -48,37 +51,41 @@
 //		glfwTerminate();
 //		return -1;
 //	}
+//
+//	// 指定上下文为当前窗口
 //	glfwMakeContextCurrent(window);
 //	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 //	glfwSetCursorPosCallback(window, mouse_callback);
 //	glfwSetScrollCallback(window, scroll_callback);
+//	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 隐藏光标，鼠标停留在窗口内
 //
-//	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-//
+//	// 初始化glad
 //	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 //	{
 //		std::cout << "Failed to initialize GLAD" << std::endl;
 //		return -1;
 //	}
 //
-//	// 深度测试
+//	// 开启深度测试
 //	glEnable(GL_DEPTH_TEST);
+//	glDepthFunc(GL_LESS);
 //
+//	// 着色器
 //	Shader shader("shaders\\.vs", "shaders\\.fs");
 //
-//	lastTime = glfwGetTime();
+//	lastFrame = glfwGetTime();
 //	while (!glfwWindowShouldClose(window))
 //	{
-//		// per-frame time logic
-//		float currentTime = glfwGetTime();
-//		deltaTime = currentTime - lastTime;
-//		lastTime = currentTime;
-//
+//		// 在每一帧中计算出新的deltaTime
+//		float currentFrame = glfwGetTime();
+//		deltaTime = currentFrame - lastFrame;
+//		lastFrame = currentFrame;
+//		// 输入控制
 //		processInput(window);
 //
-//		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+//		// 清除颜色和深度缓冲
+//		glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
 //		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//
 //
 //
 //		glfwSwapBuffers(window);
@@ -119,7 +126,7 @@
 //	}
 //
 //	float xoffset = xpos - lastX;
-//	float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+//	float yoffset = lastY - ypos;
 //
 //	lastX = xpos;
 //	lastY = ypos;
@@ -131,3 +138,4 @@
 //{
 //	camera.ProcessMouseScroll(yoffset);
 //}
+//
