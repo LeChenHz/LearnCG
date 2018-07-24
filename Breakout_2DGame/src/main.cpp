@@ -14,7 +14,8 @@ const GLuint SCREEN_HEIGHT = 720;
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-Game breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+Game* breakout;
 
 int main()
 {
@@ -36,6 +37,7 @@ int main()
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	// 初始化按键
 	glfwSetKeyCallback(window, key_callback);
+	
 	// 初始化glad
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -44,10 +46,23 @@ int main()
 		return -1;
 	}
 
-	breakout.Init();
+	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	breakout = new Game(SCREEN_WIDTH, SCREEN_HEIGHT);
+	breakout->Init();
+	
 	GLfloat deltaTime = 0.0f;
 	GLfloat lastTime = 0.0f;
+	
+	//breakout->Keys[1] = 1;
+	//if (breakout->Keys[1] == 1)
+	//	cout << "1" << endl;
+	//else 
+	//	cout << "0" << endl;
+
 	while (!glfwWindowShouldClose(window))
 	{
 		GLfloat currentTime = glfwGetTime();
@@ -57,18 +72,19 @@ int main()
 		// 检查有没有触发什么事件
 		glfwPollEvents();
 
-		breakout.ProcessInput(deltaTime);
-		breakout.Update(deltaTime);
+		breakout->ProcessInput(deltaTime);
+		breakout->Update(deltaTime);
 
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		breakout.Render();
-
+		breakout->Render();
+		
 		// 交换缓冲区
 		glfwSwapBuffers(window);
 	}
 
+	delete breakout;
 	ResourceManager::GetInstance()->Clear();
 
 	glfwTerminate();
@@ -79,15 +95,19 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	//TODO
-	//if (key >= 0 && key < 1024)
-	//{
-	//	if (action == GLFW_PRESS)
-	//		Breakout.Keys[key] = GL_TRUE;
-	//	else if (action == GLFW_RELEASE)
-	//		Breakout.Keys[key] = GL_FALSE;
-	//}
+	if (key > 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+		{
+			breakout->KeyDown(key);
+		}
+		if (action == GLFW_RELEASE)
+		{
+			breakout->KeyUp(key);
+		}
+	}
 }
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
