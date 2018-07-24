@@ -10,6 +10,7 @@
 #include "ResInfo.h"
 #include "GameLevel.h"
 #include "BallObject.h"
+#include "ParticleGenerator.h"
 
 #include <tuple>
 
@@ -66,6 +67,7 @@ private:
 
 	GameObject *player;
 	BallObject *ball;
+	ParticleGenerator *particles;
 
 	// 初始化挡板的大小 和 速率
 	const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);

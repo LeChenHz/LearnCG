@@ -12,25 +12,32 @@ Game::~Game()
 	delete spriteRenderer;
 	delete player;
 	delete ball;
+	delete particles;
 }
 
 void Game::Init()
 {
-	//加载着色器
+	// 加载着色器
 	Shader shader = ResourceManager::GetInstance()->LoadShader("shaders/sprite_vs.glsl", "shaders/sprite_fs.glsl", nullptr, spriteShaderStr);
-	//加载纹理
-	ResourceManager::GetInstance()->LoadTexture("res/awesomeface.png", faceTexureStr);
-	ResourceManager::GetInstance()->LoadTexture("res/block.png", blockTexureStr);
-	ResourceManager::GetInstance()->LoadTexture("res/block_solid.png", block_solidTexureStr);
-	ResourceManager::GetInstance()->LoadTexture("res/background.jpg", backgroundTexureStr);
-	ResourceManager::GetInstance()->LoadTexture("res/paddle.png", paddleTexureStr);
+	Shader particleShder = ResourceManager::GetInstance()->LoadShader("shaders/particle_vs.glsl", "shaders/particle_fs.glsl", nullptr, particleTextureStr);
+	// 加载纹理
+	ResourceManager::GetInstance()->LoadTexture("res/awesomeface.png", faceTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/block.png", blockTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/block_solid.png", block_solidTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/background.jpg", backgroundTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/paddle.png", paddleTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/particle.png", particleTextureStr);
 	// 左 右 下 上 近 远 
 	// (下 > 上，结果：绘制出来的画面 上下颠倒)
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->Width), static_cast<GLfloat>(this->Height), 0.0f, -1.0f, 1.0f);
-	shader.use();
-	shader.setInt("image", 0);
-	shader.setMat4("projection", projection);
+	ResourceManager::GetInstance()->GetShader(spriteShaderStr).use();
+	ResourceManager::GetInstance()->GetShader(spriteShaderStr).setInt("image", 0);
+	ResourceManager::GetInstance()->GetShader(spriteShaderStr).setMat4("projection", projection);
+	particleShder.use();
+	particleShder.setInt("sprite", 0);
+	particleShder.setMat4("projection", projection);
 	spriteRenderer = new SpriteRenderer(shader);
+	particles = new ParticleGenerator(ResourceManager::GetInstance()->GetShader(particleShaderStr), ResourceManager::GetInstance()->GetTexture(particleTextureStr), 500);
 
 	// 加载关卡
 	GameLevel one; 
@@ -48,10 +55,10 @@ void Game::Init()
 	this->Level = 0;
 
 	glm::vec2 playerPos = glm::vec2(this->Width / 2 - PLAYER_SIZE.x / 2,this->Height - PLAYER_SIZE.y);
-	player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetInstance()->GetTexture(paddleTexureStr));
+	player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetInstance()->GetTexture(paddleTextureStr));
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
-	ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetInstance()->GetTexture(faceTexureStr));
+	ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetInstance()->GetTexture(faceTextureStr));
 }
 
 void Game::ProcessInput(GLfloat dt)
@@ -78,9 +85,10 @@ void Game::ProcessInput(GLfloat dt)
 void Game::Update(GLfloat dt)
 {
 	ball->Move(dt, this->Width);
+	// TODO
 	this->DoCollisions();
-
-	if (ball->Position.y >= this->Height) // 球是否接触底部边界？
+	particles->Update(dt, *ball, 2, glm::vec2(ball->radius / 2));
+	if (ball->Position.y >= this->Height) // 判断球是否接触底部边界
 	{
 		this->ResetLevel();
 		this->ResetPlayer();
@@ -91,17 +99,18 @@ void Game::Render()
 {
 	if (this->State == GAME_ACTIVE)
 	{
-		Texture2D back = ResourceManager::GetInstance()->GetTexture(backgroundTexureStr);
+		Texture2D back = ResourceManager::GetInstance()->GetTexture(backgroundTextureStr);
 		// 绘制背景
-		spriteRenderer->DrawSprite(back,
-			glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f
-		);
+		spriteRenderer->DrawSprite(back, glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
 		// 绘制关卡
 		this->Levels[this->Level].Draw(*spriteRenderer);
+		// 绘制滑板
+		player->Draw(*spriteRenderer);
+		// 绘制粒子
+		particles->Draw();
+		// 绘制球
 		ball->Draw(*spriteRenderer);
 	}
-	// 绘制滑板
-	player->Draw(*spriteRenderer);
 }
 
 void Game::KeyDown(int index)

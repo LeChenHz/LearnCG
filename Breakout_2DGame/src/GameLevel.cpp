@@ -60,7 +60,7 @@ void GameLevel::init(std::vector<vector<GLuint>> tileData, GLuint levelWidth, GL
 			{
 				glm::vec2 pos(unit_width * x, unit_height * y);
 				glm::vec2 size(unit_width, unit_height);
-				GameObject obj(pos, size, ResourceManager::GetInstance()->GetTexture(block_solidTexureStr), glm::vec3(0.8f, 0.8f, 0.7f));
+				GameObject obj(pos, size, ResourceManager::GetInstance()->GetTexture(block_solidTextureStr), glm::vec3(0.8f, 0.8f, 0.7f));
 				obj.IsSolid = GL_TRUE;
 				this->Bricks.push_back(obj);
 			}
@@ -78,7 +78,7 @@ void GameLevel::init(std::vector<vector<GLuint>> tileData, GLuint levelWidth, GL
 
 				glm::vec2 pos(unit_width * x, unit_height * y);
 				glm::vec2 size(unit_width, unit_height);
-				this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetInstance()->GetTexture(blockTexureStr), color));
+				this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetInstance()->GetTexture(blockTextureStr), color));
 			}
 		}
 	}

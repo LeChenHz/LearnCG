@@ -54,6 +54,9 @@
     <ClInclude Include="src\BallObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParticleGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">
@@ -89,9 +92,14 @@
     <ClCompile Include="src\BallObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\sprite_vs.glsl" />
     <None Include="shaders\sprite_fs.glsl" />
+    <None Include="shaders\particle_fs.glsl" />
+    <None Include="shaders\particle_vs.glsl" />
   </ItemGroup>
 </Project>
