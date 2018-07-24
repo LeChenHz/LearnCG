@@ -51,6 +51,8 @@ public:
 	// Ô²Åö×²
 	Collision CheckCollision(BallObject &one, GameObject &two);
 	Direction VectorDirection(glm::vec2 target);
+	void ResetLevel();
+	void ResetPlayer();
 public:
 	// ´°¿Ú×óÉÏ½ÇÎª0 0
 	GLuint Width, Height;

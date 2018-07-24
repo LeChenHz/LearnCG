@@ -79,6 +79,12 @@ void Game::Update(GLfloat dt)
 {
 	ball->Move(dt, this->Width);
 	this->DoCollisions();
+
+	if (ball->Position.y >= this->Height) // 球是否接触底部边界？
+	{
+		this->ResetLevel();
+		this->ResetPlayer();
+	}
 }
 
 void Game::Render()
@@ -218,5 +224,24 @@ Direction Game::VectorDirection(glm::vec2 target)
 		}
 	}
 	return (Direction)best_match;
+}
+
+void Game::ResetLevel()
+{
+	if (this->Level == 0)
+		this->Levels[0].Load("levels/one.lvl", this->Width, this->Height * 0.5f);
+	else if (this->Level == 1)
+		this->Levels[1].Load("levels/two.lvl", this->Width, this->Height * 0.5f);
+	else if (this->Level == 2)
+		this->Levels[2].Load("levels/three.lvl", this->Width, this->Height * 0.5f);
+	else if (this->Level == 3)
+		this->Levels[3].Load("levels/four.lvl", this->Width, this->Height * 0.5f);
+}
+
+void Game::ResetPlayer()
+{
+	player->Size = PLAYER_SIZE;
+	player->Position = glm::vec2(this->Width / 2 - PLAYER_SIZE.x / 2, this->Height - PLAYER_SIZE.y);
+	ball->Reset(player->Position + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -(BALL_RADIUS * 2)), INITIAL_BALL_VELOCITY);
 }
 
