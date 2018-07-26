@@ -12,8 +12,11 @@
 #include "BallObject.h"
 #include "ParticleGenerator.h"
 #include "PostProcessor.h"
+#include "PowerUp.h"
 
 #include <tuple>
+#include <vector>
+#include <algorithm>
 
 // 方向
 enum Direction {
@@ -55,6 +58,10 @@ public:
 	Direction VectorDirection(glm::vec2 target);
 	void ResetLevel();
 	void ResetPlayer();
+	void SpawnPowerUps(GameObject &block);//在给定砖块生成一个道具
+	void UpdatePowerUps(GLfloat dt);//管理所有当前被激活的道具
+	void ActivatePowerUp(PowerUp &powerUp);
+	GLboolean IsOtherPowerUpActive(std::vector<PowerUp> &powerUps, std::string type);
 public:
 	// 窗口左上角为0 0
 	GLuint Width, Height;
@@ -70,6 +77,7 @@ private:
 	BallObject *ball;
 	ParticleGenerator *particles;
 	PostProcessor *effects;
+	std::vector<PowerUp>  PowerUps;
 
 	// 初始化挡板的大小 和 速率
 	const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);

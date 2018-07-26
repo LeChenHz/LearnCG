@@ -60,6 +60,9 @@
     <ClInclude Include="src\PostProcessor.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\PowerUp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PowerUp.h" />
     <ClInclude Include="src\PostProcessor.h" />
     <ClInclude Include="src\ParticleGenerator.h" />
     <ClInclude Include="src\BallObject.h" />
