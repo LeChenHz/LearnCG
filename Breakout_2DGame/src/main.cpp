@@ -14,7 +14,6 @@ const GLuint SCREEN_HEIGHT = 720;
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-
 Game* breakout;
 
 int main()
@@ -57,12 +56,6 @@ int main()
 	GLfloat deltaTime = 0.0f;
 	GLfloat lastTime = 0.0f;
 	
-	//breakout->Keys[1] = 1;
-	//if (breakout->Keys[1] == 1)
-	//	cout << "1" << endl;
-	//else 
-	//	cout << "0" << endl;
-
 	while (!glfwWindowShouldClose(window))
 	{
 		GLfloat currentTime = glfwGetTime();

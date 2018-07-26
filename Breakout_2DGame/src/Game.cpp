@@ -13,6 +13,7 @@ Game::~Game()
 	delete player;
 	delete ball;
 	delete particles;
+	delete effects;
 }
 
 void Game::Init()
@@ -20,6 +21,8 @@ void Game::Init()
 	// 加载着色器
 	Shader shader = ResourceManager::GetInstance()->LoadShader("shaders/sprite_vs.glsl", "shaders/sprite_fs.glsl", nullptr, spriteShaderStr);
 	Shader particleShder = ResourceManager::GetInstance()->LoadShader("shaders/particle_vs.glsl", "shaders/particle_fs.glsl", nullptr, particleTextureStr);
+	Shader postProcessShader = ResourceManager::GetInstance()->LoadShader("shaders/postprocess_vs.glsl", "shaders/postprocess_fs.glsl", nullptr, postProcessShaderStr);
+
 	// 加载纹理
 	ResourceManager::GetInstance()->LoadTexture("res/awesomeface.png", faceTextureStr);
 	ResourceManager::GetInstance()->LoadTexture("res/block.png", blockTextureStr);
@@ -27,6 +30,8 @@ void Game::Init()
 	ResourceManager::GetInstance()->LoadTexture("res/background.jpg", backgroundTextureStr);
 	ResourceManager::GetInstance()->LoadTexture("res/paddle.png", paddleTextureStr);
 	ResourceManager::GetInstance()->LoadTexture("res/particle.png", particleTextureStr);
+	ResourceManager::GetInstance()->LoadTexture("res/circle.png", circleTextureStr);
+
 	// 左 右 下 上 近 远 
 	// (下 > 上，结果：绘制出来的画面 上下颠倒)
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(this->Width), static_cast<GLfloat>(this->Height), 0.0f, -1.0f, 1.0f);
@@ -38,6 +43,7 @@ void Game::Init()
 	particleShder.setMat4("projection", projection);
 	spriteRenderer = new SpriteRenderer(shader);
 	particles = new ParticleGenerator(ResourceManager::GetInstance()->GetShader(particleShaderStr), ResourceManager::GetInstance()->GetTexture(particleTextureStr), 500);
+	effects = new PostProcessor(postProcessShader, this->Width, this->Height);
 
 	// 加载关卡
 	GameLevel one; 
@@ -58,7 +64,9 @@ void Game::Init()
 	player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetInstance()->GetTexture(paddleTextureStr));
 
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
-	ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetInstance()->GetTexture(faceTextureStr));
+	ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetInstance()->GetTexture(circleTextureStr));
+
+	
 }
 
 void Game::ProcessInput(GLfloat dt)
@@ -93,23 +101,34 @@ void Game::Update(GLfloat dt)
 		this->ResetLevel();
 		this->ResetPlayer();
 	}
+	if (ShakeTime > 0.0f)
+	{
+		ShakeTime -= dt;
+		if (ShakeTime <= 0.0f)
+			effects->Shake = false;
+	}
 }
 
 void Game::Render()
 {
 	if (this->State == GAME_ACTIVE)
 	{
-		Texture2D back = ResourceManager::GetInstance()->GetTexture(backgroundTextureStr);
-		// 绘制背景
-		spriteRenderer->DrawSprite(back, glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
-		// 绘制关卡
-		this->Levels[this->Level].Draw(*spriteRenderer);
-		// 绘制滑板
-		player->Draw(*spriteRenderer);
-		// 绘制粒子
-		particles->Draw();
-		// 绘制球
-		ball->Draw(*spriteRenderer);
+		effects->BeginRender();
+
+			Texture2D back = ResourceManager::GetInstance()->GetTexture(backgroundTextureStr);
+			// 绘制背景
+			spriteRenderer->DrawSprite(back, glm::vec2(0, 0), glm::vec2(this->Width, this->Height), 0.0f);
+			// 绘制关卡
+			this->Levels[this->Level].Draw(*spriteRenderer);
+			// 绘制滑板
+			player->Draw(*spriteRenderer);
+			// 绘制粒子
+			particles->Draw();
+			// 绘制球
+			ball->Draw(*spriteRenderer);
+
+		effects->EndRender();
+		effects->Render(glfwGetTime());
 	}
 }
 
@@ -141,6 +160,12 @@ void Game::DoCollisions()
 				// 如果砖块不是实心就销毁砖块
 				if (!box.IsSolid)
 					box.Destroyed = GL_TRUE;
+				else
+				{
+					// 如果是实心的砖块则激活shake特效
+					ShakeTime = 0.05f;
+					effects->Shake = true;
+				}
 				// 碰撞处理
 				Direction dir = std::get<1>(collision);
 				glm::vec2 diff_vector = std::get<2>(collision);

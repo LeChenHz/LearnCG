@@ -11,6 +11,7 @@
 #include "GameLevel.h"
 #include "BallObject.h"
 #include "ParticleGenerator.h"
+#include "PostProcessor.h"
 
 #include <tuple>
 
@@ -68,6 +69,7 @@ private:
 	GameObject *player;
 	BallObject *ball;
 	ParticleGenerator *particles;
+	PostProcessor *effects;
 
 	// 初始化挡板的大小 和 速率
 	const glm::vec2 PLAYER_SIZE = glm::vec2(100.0f, 20.0f);
@@ -76,5 +78,8 @@ private:
 	// 初始化球的速度 和 半径
 	const glm::vec2 INITIAL_BALL_VELOCITY = glm::vec2(100.0f, -350.0f);
 	const GLfloat BALL_RADIUS = 12.5f;
+
+	GLfloat ShakeTime = 0.0f;
+
 };
 

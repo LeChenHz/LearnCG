@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PostProcessor.h" />
     <ClInclude Include="src\ParticleGenerator.h" />
     <ClInclude Include="src\BallObject.h" />
     <ClInclude Include="src\GameLevel.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="src\Game.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\PostProcessor.cpp" />
     <ClCompile Include="src\ParticleGenerator.cpp" />
     <ClCompile Include="src\BallObject.cpp" />
     <ClCompile Include="src\GameLevel.cpp" />
@@ -49,6 +51,8 @@
   <ItemGroup>
     <None Include="shaders\particle_fs.glsl" />
     <None Include="shaders\particle_vs.glsl" />
+    <None Include="shaders\postprocess_fs.glsl" />
+    <None Include="shaders\postprocess_vs.glsl" />
     <None Include="shaders\sprite_fs.glsl" />
     <None Include="shaders\sprite_vs.glsl" />
   </ItemGroup>
