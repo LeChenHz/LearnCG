@@ -54,6 +54,9 @@
     <ClCompile Include="common\texture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="stencil_testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\billboard\billboard.fs">
@@ -134,6 +137,9 @@
     <None Include="shaders\text_uv\text_uv.vs.glsl">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="shaders\stencil\stencil_single_color.fs" />
+    <None Include="shaders\stencil\stencil_testing.fs" />
+    <None Include="shaders\stencil\stencil_testing.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\camera.h">

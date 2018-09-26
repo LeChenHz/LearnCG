@@ -142,6 +142,7 @@
     <ClCompile Include="normal_mapping.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="billboard.cpp" />
+    <ClCompile Include="stencil_testing.cpp" />
     <ClCompile Include="text_freetype.cpp" />
     <ClCompile Include="text_uv.cpp" />
   </ItemGroup>
@@ -168,6 +169,9 @@
     <None Include="shaders\deferred_shading\g_buffer.vs" />
     <None Include="shaders\particle_system\particle_system.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
+    <None Include="shaders\stencil\stencil_single_color.fs" />
+    <None Include="shaders\stencil\stencil_testing.fs" />
+    <None Include="shaders\stencil\stencil_testing.vs" />
     <None Include="shaders\text_freetype\text.fs.glsl" />
     <None Include="shaders\text_freetype\text.vs.glsl" />
     <None Include="shaders\text_uv\text_uv.fs.glsl" />
