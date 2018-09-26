@@ -386,7 +386,7 @@ void Game::UpdatePowerUps(GLfloat dt)
 	}
 
 	// TODO
-	this->PowerUps.erase(this->PowerUps.begin());
+	//this->PowerUps.erase(this->PowerUps.begin());
 	//for (std::vector<PowerUp>::iterator iter = this->PowerUps.begin(); iter != this->PowerUps.end(); iter++)
 	//{
 	//	if ((*iter).Destroyed && !(*iter).Activated) {
@@ -394,10 +394,10 @@ void Game::UpdatePowerUps(GLfloat dt)
 	//	}
 	//}
 
-
+	/*
 	this->PowerUps.erase(std::remove_if(this->PowerUps.begin(), this->PowerUps.end(),
 		[](const PowerUp &powerUp) { return powerUp.Destroyed && !powerUp.Activated; }
-	), this->PowerUps.end());
+	), this->PowerUps.end());*/
 }
 
 void Game::ActivatePowerUp(PowerUp & powerUp)
