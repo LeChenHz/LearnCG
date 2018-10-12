@@ -57,6 +57,9 @@
     <ClCompile Include="stencil_testing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\billboard\billboard.fs">
@@ -140,6 +143,8 @@
     <None Include="shaders\stencil\stencil_single_color.fs" />
     <None Include="shaders\stencil\stencil_testing.fs" />
     <None Include="shaders\stencil\stencil_testing.vs" />
+    <None Include="shaders\sphere\sphere.fs" />
+    <None Include="shaders\sphere\sphere.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\camera.h">
