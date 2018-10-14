@@ -142,6 +142,7 @@
     <ClCompile Include="normal_mapping.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="billboard.cpp" />
+    <ClCompile Include="fog.cpp" />
     <ClCompile Include="sphere.cpp" />
     <ClCompile Include="stencil_testing.cpp" />
     <ClCompile Include="text_freetype.cpp" />
@@ -168,6 +169,8 @@
     <None Include="shaders\deferred_shading\deferred_shading.vs" />
     <None Include="shaders\deferred_shading\g_buffer.fs" />
     <None Include="shaders\deferred_shading\g_buffer.vs" />
+    <None Include="shaders\fog\fog.fs" />
+    <None Include="shaders\fog\fog.vs" />
     <None Include="shaders\particle_system\particle_system.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
     <None Include="shaders\sphere\sphere.fs" />

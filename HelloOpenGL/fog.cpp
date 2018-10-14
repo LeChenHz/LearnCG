@@ -8,6 +8,7 @@
 //#include "common/Shader.h"
 //#include "common/camera.h"
 //#include "common/texture.h"
+//#include "common/Model.h"
 //
 //#include <iostream>
 //#include <string>
@@ -23,7 +24,7 @@
 //void processInput(GLFWwindow *window);
 //
 //// 屏幕宽，高
-//const unsigned int SCR_WIDTH = 720;
+//const unsigned int SCR_WIDTH = 1280;
 //const unsigned int SCR_HEIGHT = 720;
 //
 //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f)); //摄像机位置
@@ -33,18 +34,6 @@
 //
 //float deltaTime = 0.0f; // 当前帧与上一帧的时间差
 //float lastFrame = 0.0f; // 上一帧的时间
-//
-//
-//void makeSphereVertex();
-//
-//const GLfloat  PI = 3.14159265358979323846f;
-////将球横纵划分成50X50的网格
-//const int Y_SEGMENTS = 50;
-//const int X_SEGMENTS = 50;
-////球的顶点数组
-//float SphereVertex[100 * 100 * 5] = {};
-//float MiddleVertex[100 * 100 * 5] = {};
-//
 //
 //int main()
 //{
@@ -83,28 +72,20 @@
 //	glDepthFunc(GL_LESS);
 //
 //	// 着色器
-//	Shader shader("shaders\\sphere\\sphere.vs", "shaders\\sphere\\sphere.fs");
+//	Shader shader("shaders\\fog\\fog.vs", "shaders\\fog\\fog.fs");
 //
-//	makeSphereVertex();
-//
-//	// 球
-//	unsigned int VBO, VAO;
-//	glGenVertexArrays(1, &VAO);
-//	glGenBuffers(1, &VBO);
-//	//生成并绑定球体的VAO和VBO
-//	glBindVertexArray(VAO);
-//
-//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//	// 将顶点数据转移至GPU中
-//	glBufferData(GL_ARRAY_BUFFER, sizeof(MiddleVertex), MiddleVertex, GL_STATIC_DRAW);
-//	// 设置顶点属性指针
-//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-//	glEnableVertexAttribArray(0);
-//
-//	// 解绑VAO和VBO
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//	glBindVertexArray(0);
-//
+//	string modelPathStr = "res\\nanosuit\\nanosuit.obj";
+//	Model ourModel(modelPathStr);
+//	std::vector<glm::vec3> objectPositions;
+//	objectPositions.push_back(glm::vec3(-3.0, -3.0, -3.0));
+//	objectPositions.push_back(glm::vec3(0.0, -3.0, -3.0));
+//	objectPositions.push_back(glm::vec3(3.0, -3.0, -3.0));
+//	objectPositions.push_back(glm::vec3(-3.0, -3.0, 0.0));
+//	objectPositions.push_back(glm::vec3(0.0, -3.0, 0.0));
+//	objectPositions.push_back(glm::vec3(3.0, -3.0, 0.0));
+//	objectPositions.push_back(glm::vec3(-3.0, -3.0, 3.0));
+//	objectPositions.push_back(glm::vec3(0.0, -3.0, 3.0));
+//	objectPositions.push_back(glm::vec3(3.0, -3.0, 3.0));
 //
 //	lastFrame = glfwGetTime();
 //	while (!glfwWindowShouldClose(window))
@@ -117,19 +98,23 @@
 //		processInput(window);
 //
 //		// 清除颜色和深度缓冲
-//		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//		glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
 //		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //
+//		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+//		glm::mat4 view = camera.GetViewMatrix();
+//		glm::mat4 model;
 //		shader.use();
-//		
-//		//绘制球
-//		//开启面剔除(只需要展示一个面，否则会有重合)
-//		glEnable(GL_CULL_FACE); 
-//		glCullFace(GL_BACK);
-//		glBindVertexArray(VAO);
-//		//使用线框模式绘制
-//		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-//		glDrawArrays(GL_TRIANGLES, 0, X_SEGMENTS*Y_SEGMENTS * 6);
+//		shader.setMat4("projection", projection);
+//		shader.setMat4("view", view);
+//		for (unsigned int i = 0; i < objectPositions.size(); i++)
+//		{
+//			model = glm::mat4();
+//			model = glm::translate(model, objectPositions[i]);
+//			model = glm::scale(model, glm::vec3(0.25f));
+//			shader.setMat4("model", model);
+//			ourModel.Draw(shader);
+//		}
 //
 //		glfwSwapBuffers(window);
 //		glfwPollEvents();
@@ -137,65 +122,6 @@
 //
 //	glfwTerminate();
 //	return 0;
-//}
-//
-//void makeSphereVertex()
-//{
-//	// 球
-//	//获取球面上每一点的坐标
-//	for (unsigned int y = 0; y <= Y_SEGMENTS; ++y)
-//	{
-//		for (unsigned int x = 0; x <= X_SEGMENTS; ++x)
-//		{
-//			float xSegment = (float)x / (float)X_SEGMENTS;
-//			float ySegment = (float)y / (float)Y_SEGMENTS;
-//			float xPos = std::cos(xSegment * 2.0f * PI) * std::sin(ySegment * PI);
-//			float yPos = std::cos(ySegment * PI);
-//			float zPos = std::sin(xSegment * 2.0f * PI) * std::sin(ySegment * PI);
-//			SphereVertex[X_SEGMENTS*y * 3 + x * 3] = xPos;
-//			SphereVertex[X_SEGMENTS*y * 3 + x * 3 + 1] = yPos;
-//			SphereVertex[X_SEGMENTS*y * 3 + x * 3 + 2] = zPos;
-//		}
-//	}
-//
-//	//根据球面上每一点的坐标，去构造一个一个三角形顶点数组
-//	int Round = X_SEGMENTS * 3;//SphereVertex每圈的数据个数
-//
-//	for (unsigned int y = 0; y < (Y_SEGMENTS - 1); ++y)//从第一行的顶点开始，最后一行的顶点不单独绘制三角形
-//	{
-//		//通过经纬线将球分成一个一个方格，每个方格切分为两个三角形
-//		//然后进行顶点赋值，相当于将SphereVertex中每个顶点，扩充成了两个三角形，顶点数为之前的6倍
-//		for (unsigned int x = 0; x < X_SEGMENTS; ++x)
-//		{
-//			long int temp = X_SEGMENTS * y * 3 + x * 3;
-//			long int MiddleTemp = (X_SEGMENTS*(y) * 18 + x * 18);
-//			MiddleVertex[MiddleTemp] = SphereVertex[temp + Round];
-//			MiddleVertex[MiddleTemp + 1] = SphereVertex[temp + 1 + Round];
-//			MiddleVertex[MiddleTemp + 2] = SphereVertex[temp + 2 + Round];
-//
-//			MiddleVertex[MiddleTemp + 3] = SphereVertex[temp];
-//			MiddleVertex[MiddleTemp + 4] = SphereVertex[temp + 1];
-//			MiddleVertex[MiddleTemp + 5] = SphereVertex[temp + 2];
-//
-//			MiddleVertex[MiddleTemp + 6] = SphereVertex[temp + 3];
-//			MiddleVertex[MiddleTemp + 7] = SphereVertex[temp + 4];
-//			MiddleVertex[MiddleTemp + 8] = SphereVertex[temp + 5];
-//
-//			MiddleVertex[MiddleTemp + 9] = SphereVertex[temp + Round];
-//			MiddleVertex[MiddleTemp + 10] = SphereVertex[temp + 1 + Round];
-//			MiddleVertex[MiddleTemp + 11] = SphereVertex[temp + 2 + Round];
-//
-//			MiddleVertex[MiddleTemp + 12] = SphereVertex[temp + 3];
-//			MiddleVertex[MiddleTemp + 13] = SphereVertex[temp + 4];
-//			MiddleVertex[MiddleTemp + 14] = SphereVertex[temp + 5];
-//
-//			MiddleVertex[MiddleTemp + 15] = SphereVertex[temp + 3 + Round];
-//			MiddleVertex[MiddleTemp + 16] = SphereVertex[temp + 4 + Round];
-//			MiddleVertex[MiddleTemp + 17] = SphereVertex[temp + 5 + Round];
-//		}
-//
-//	}
-//
 //}
 //
 //void processInput(GLFWwindow *window)
@@ -212,7 +138,6 @@
 //	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 //		camera.ProcessKeyboard(RIGHT, deltaTime);
 //}
-//
 //
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 //{

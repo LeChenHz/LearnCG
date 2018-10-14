@@ -60,6 +60,9 @@
     <ClCompile Include="sphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="fog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\billboard\billboard.fs">
@@ -145,6 +148,8 @@
     <None Include="shaders\stencil\stencil_testing.vs" />
     <None Include="shaders\sphere\sphere.fs" />
     <None Include="shaders\sphere\sphere.vs" />
+    <None Include="shaders\fog\fog.vs" />
+    <None Include="shaders\fog\fog.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\camera.h">
