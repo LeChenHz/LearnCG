@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -139,6 +139,7 @@
     <ClCompile Include="common\texture.cpp" />
     <ClCompile Include="deferred_shading.cpp" />
     <ClCompile Include="base.cpp" />
+    <ClCompile Include="gerstner_water.cpp" />
     <ClCompile Include="normal_mapping.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="billboard.cpp" />
@@ -182,6 +183,8 @@
     <None Include="shaders\text_freetype\text.vs.glsl" />
     <None Include="shaders\text_uv\text_uv.fs.glsl" />
     <None Include="shaders\text_uv\text_uv.vs.glsl" />
+    <None Include="shaders\water\water_fs.glsl" />
+    <None Include="shaders\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\camera.h" />

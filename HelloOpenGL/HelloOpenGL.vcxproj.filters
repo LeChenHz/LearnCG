@@ -63,6 +63,9 @@
     <ClCompile Include="fog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="gerstner_water.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\billboard\billboard.fs">

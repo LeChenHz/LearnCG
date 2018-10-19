@@ -166,7 +166,10 @@ public:
 	{
 		glUniform4f(glGetUniformLocation(ID, name.c_str()), x, y, z, w);
 	}
-
+	void setVec4(const std::string &name, float x[])
+	{
+		glUniform4f(glGetUniformLocation(ID, name.c_str()), x[0], x[1], x[2], x[3]);
+	}
 
 private:
 	// utility function for checking shader compilation/linking errors.
