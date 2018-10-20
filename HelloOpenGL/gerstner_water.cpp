@@ -155,9 +155,13 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
+
 	// ×ÅÉ«Æ÷
-	Shader shader("shaders\\water\\water_vs.glsl", "shaders\\.water_fs_fs.glsl");
+	Shader shader("shaders\\water\\water_vs.glsl", "shaders\\water\\water_fs.glsl");
 	shader.use();
+
+	initWave();
+	initGL(shader);
 
 	lastFrame = glfwGetTime();
 	while (!glfwWindowShouldClose(window))
@@ -460,8 +464,8 @@ static void initGL(Shader &shader)
 	names.attributes.normal = glGetAttribLocation(names.program, "normal");
 	glGenBuffers(1, &names.normal_buffer);
 
-	names.diffuse_texture = loadTexture("res\water.jpg");
-	names.normal_texture = loadTexture("res\water_normal.jpg");
+	names.diffuse_texture = loadTexture("res\\water.jpg");
+	names.normal_texture = loadTexture("res\\water_normal.jpg");
 	shader.setFloat("textures[0]", 0);
 	shader.setFloat("textures[1]", 1);
 	

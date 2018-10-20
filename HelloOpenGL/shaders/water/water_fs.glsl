@@ -6,13 +6,13 @@ uniform vec4 materAmbient, materSpecular;
 uniform vec4 lightDiffuse, lightAmbient, lightSpecular;
 uniform vec4 envirAmbient;
 
-varying vec2 texture_coord;
+in vec2 texture_coord;
 
-varying vec3 normalVect;
-varying vec3 lightVect;
-varying vec3 eyeVect;
-varying vec3 halfWayVect;
-varying vec3 reflectVect;
+in vec3 normalVect;
+in vec3 lightVect;
+in vec3 eyeVect;
+in vec3 halfWayVect;
+in vec3 reflectVect;
 
 void main()
 {
