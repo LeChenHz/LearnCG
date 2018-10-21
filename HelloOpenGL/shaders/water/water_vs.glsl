@@ -26,12 +26,12 @@ void main()
 	texture_coord = vec2(tex_x, tex_y);
 
 	vec3 eyePos = vec3(0.0, 0.0, 5.0);
-	vec3 lightPos = vec3(1.0, 3.0, 0.0);
-	vec3 ptVertex = vec3(modelViewMat * vec4(position, 1.0));
+	vec3 lightPos = vec3(1.0, 3.0, 0.0); //光线位置
+	vec3 ptVertex = vec3(modelViewMat * vec4(position, 1.0)); //顶点坐标（视图空间）
 
-	eyeVect = normalize(eyePos - ptVertex);
-	lightVect = normalize(lightPos - ptVertex);
-	halfWayVect = eyeVect + lightVect;
-	normalVect = normalMat * normal;
-	reflectVect = 1.0 * eyeVect - 2.0 * dot(-1.0*eyeVect, normalVect) * normalVect;
+	eyeVect = normalize(eyePos - ptVertex); //顶点指向眼睛
+	lightVect = normalize(lightPos - ptVertex); //顶点指向光
+	halfWayVect = eyeVect + lightVect; 
+	normalVect = normalMat * normal; //法向量
+	reflectVect = 1.0 * eyeVect - 2.0 * dot(-1.0 * eyeVect, normalVect) * normalVect; //求视线的反射向量
 }
