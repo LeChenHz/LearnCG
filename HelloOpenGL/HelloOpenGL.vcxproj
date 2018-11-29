@@ -135,8 +135,14 @@
     <ClCompile Include="blending_discard.cpp" />
     <ClCompile Include="bloom.cpp" />
     <ClCompile Include="common\glad.c" />
+    <ClCompile Include="common\ResourceManager.cpp" />
+    <ClCompile Include="common\shape\Sphere.cpp" />
+    <ClCompile Include="common\Texture2D.cpp" />
+    <ClCompile Include="MarchingCubes.cpp" />
+    <ClCompile Include="shape_test.cpp" />
     <ClCompile Include="common\stb_image.cpp" />
     <ClCompile Include="common\texture.cpp" />
+    <ClCompile Include="common\shape\Cube.cpp" />
     <ClCompile Include="deferred_shading.cpp" />
     <ClCompile Include="base.cpp" />
     <ClCompile Include="gerstner_water.cpp" />
@@ -144,12 +150,15 @@
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="billboard.cpp" />
     <ClCompile Include="fog.cpp" />
-    <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="common\shape\ShapeFactory.cpp" />
+    <ClCompile Include="sphere_draw.cpp" />
     <ClCompile Include="stencil_testing.cpp" />
     <ClCompile Include="text_freetype.cpp" />
     <ClCompile Include="text_uv.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\base\base_fs.glsl" />
+    <None Include="shaders\base\base_vs.glsl" />
     <None Include="shaders\billboard\billboard.fs" />
     <None Include="shaders\billboard\billboard.vs" />
     <None Include="shaders\billboard\cube.fs" />
@@ -172,10 +181,14 @@
     <None Include="shaders\deferred_shading\g_buffer.vs" />
     <None Include="shaders\fog\fog.fs" />
     <None Include="shaders\fog\fog.vs" />
+    <None Include="shaders\marching_cubes\mc_fs.glsl" />
+    <None Include="shaders\marching_cubes\mc_vs.glsl" />
     <None Include="shaders\particle_system\particle_system.fs" />
     <None Include="shaders\particle_system\particle_system.vs" />
     <None Include="shaders\sphere\sphere.fs" />
     <None Include="shaders\sphere\sphere.vs" />
+    <None Include="shaders\sphere\sphere_fs.glsl" />
+    <None Include="shaders\sphere\sphere_vs.glsl" />
     <None Include="shaders\stencil\stencil_single_color.fs" />
     <None Include="shaders\stencil\stencil_testing.fs" />
     <None Include="shaders\stencil\stencil_testing.vs" />
@@ -191,10 +204,16 @@
     <ClInclude Include="common\Mesh.h" />
     <ClInclude Include="common\Model.h" />
     <ClInclude Include="common\opengl_debug.h" />
+    <ClInclude Include="common\ResourceManager.h" />
     <ClInclude Include="common\Shader.h" />
+    <ClInclude Include="common\shape\Shape.h" />
     <ClInclude Include="common\stb_image.h" />
     <ClInclude Include="common\Text2D.h" />
     <ClInclude Include="common\texture.h" />
+    <ClInclude Include="common\shape\Cube.h" />
+    <ClInclude Include="common\shape\ShapeFactory.h" />
+    <ClInclude Include="common\Texture2D.h" />
+    <ClInclude Include="common\shape\Sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

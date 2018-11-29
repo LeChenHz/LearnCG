@@ -57,13 +57,34 @@
     <ClCompile Include="stencil_testing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="fog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="gerstner_water.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\shape\Cube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\shape\ShapeFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\ResourceManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\Texture2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere_draw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\shape\Sphere.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MarchingCubes.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -153,6 +174,14 @@
     <None Include="shaders\sphere\sphere.vs" />
     <None Include="shaders\fog\fog.vs" />
     <None Include="shaders\fog\fog.fs" />
+    <None Include="shaders\water\water_fs.glsl" />
+    <None Include="shaders\water\water_vs.glsl" />
+    <None Include="shaders\base\base_fs.glsl" />
+    <None Include="shaders\base\base_vs.glsl" />
+    <None Include="shaders\sphere\sphere_vs.glsl" />
+    <None Include="shaders\sphere\sphere_fs.glsl" />
+    <None Include="shaders\marching_cubes\mc_fs.glsl" />
+    <None Include="shaders\marching_cubes\mc_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\camera.h">
@@ -177,6 +206,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\Text2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\shape\Shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\shape\Cube.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\shape\ShapeFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ResourceManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Texture2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\shape\Sphere.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

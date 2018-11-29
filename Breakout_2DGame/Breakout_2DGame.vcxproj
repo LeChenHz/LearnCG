@@ -31,7 +31,7 @@
     <ClInclude Include="src\common\ResourceManager.h" />
     <ClInclude Include="src\common\Shader.h" />
     <ClInclude Include="src\common\stb_image.h" />
-    <ClInclude Include="src\common\Texture.h" />
+    <ClInclude Include="src\common\Texture2D.h" />
     <ClInclude Include="src\Game.h" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\common\ResourceManager.cpp" />
     <ClCompile Include="src\common\stb_image.cpp" />
-    <ClCompile Include="src\common\Texture.cpp" />
+    <ClCompile Include="src\common\Texture2D.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>

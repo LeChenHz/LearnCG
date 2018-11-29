@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "Texture2D.h"
 
 GLuint loadTexture(const char * path)
 {
