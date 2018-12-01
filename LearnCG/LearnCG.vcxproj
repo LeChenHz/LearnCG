@@ -136,10 +136,11 @@
     <ClCompile Include="src\common\shape\Cube.cpp" />
     <ClCompile Include="src\common\shape\ShapeFactory.cpp" />
     <ClCompile Include="src\common\shape\Sphere.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube_sphere.cpp" />
     <ClCompile Include="src\scenes\SceneTemplate.cpp" />
     <ClCompile Include="src\scenes\study\blending_discard.cpp" />
     <ClCompile Include="src\scenes\study\bloom.cpp" />
-    <ClCompile Include="src\scenes\paper\MarchingCubes.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes\MarchingCubes.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\study\shape_test.cpp" />
     <ClCompile Include="src\scenes\study\deferred_shading.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="src\common\shape\Shape.h" />
     <ClInclude Include="src\common\shape\ShapeFactory.h" />
     <ClInclude Include="src\common\shape\Sphere.h" />
+    <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube_sphere.h" />
     <ClInclude Include="src\scenes\SceneTemplate.h" />
     <ClInclude Include="src\scenes\Scene.h" />
     <ClInclude Include="src\scenes\SceneHead.h" />

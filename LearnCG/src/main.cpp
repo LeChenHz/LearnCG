@@ -11,7 +11,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height); // 窗
 void mouse_callback(GLFWwindow* window, double xpos, double ypos); // 鼠标控制回调
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset); // 滚轮控制回调
 void processInput(GLFWwindow *window); // 键盘控制回调
-int initGlfw(int width, int height, const char * title); //初始化Glfw，返回1代表成功，0代表失败
+int initGlfw(int width, int height, const char * title, bool hiddenMouse); //初始化Glfw，返回1代表成功，0代表失败
 int initGlad();//初始化Glad，返回1代表成功，0代表失败
 
 float lastX,lastY;// 设置鼠标初始位置为屏幕中心
@@ -25,9 +25,9 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_fog();
+	scene = new S_MarchingCube_sphere();
 
-	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle) == 0) {
+	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
 		return -1;
 	}
@@ -106,7 +106,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	scene->camera.ProcessMouseScroll(yoffset);
 }
 
-int initGlfw(int width, int height, const char * title)
+int initGlfw(int width, int height, const char * title, bool hiddenMouse)
 {
 	// ---------------------初始化--------------------------
 	// glfw初始化，采用的GL版本为3.3核心版本
@@ -128,7 +128,10 @@ int initGlfw(int width, int height, const char * title)
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
-	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 隐藏光标，鼠标停留在窗口内
+	if (hiddenMouse)
+	{
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 隐藏光标，鼠标停留在窗口内
+	}
 	return 1;
 }
 

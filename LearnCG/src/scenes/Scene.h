@@ -31,4 +31,5 @@ public:
 	const unsigned int SCR_HEIGHT = 720;
 
 	const char *windowTitle;
+	bool hiddenMouse;
 };
