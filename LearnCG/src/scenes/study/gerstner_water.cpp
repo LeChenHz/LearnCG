@@ -456,7 +456,7 @@
 //	glClearColor(0.0, 0.0, 0.0, 1.0);
 //
 //	//Ïß¿òÄ£Ê½
-//	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 //
 //	GLfloat materAmbient[] = { 0.1, 0.1, 0.3, 1.0 };
 //	GLfloat materSpecular[] = { 0.8, 0.8, 0.9, 1.0 };

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloOpenGL", "HelloOpenGL\HelloOpenGL.vcxproj", "{4996F148-A901-46C7-9905-ABD8BEFEA4DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearnCG", "LearnCG\LearnCG.vcxproj", "{4996F148-A901-46C7-9905-ABD8BEFEA4DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Breakout_2DGame", "Breakout_2DGame\Breakout_2DGame.vcxproj", "{EDF54360-706F-48F9-8638-CB83B111D882}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FixedPipeline", "FixedPipeline\FixedPipeline.vcxproj", "{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{4996F148-A901-46C7-9905-ABD8BEFEA4DB}.Release|x64.Build.0 = Release|x64
 		{4996F148-A901-46C7-9905-ABD8BEFEA4DB}.Release|x86.ActiveCfg = Release|Win32
 		{4996F148-A901-46C7-9905-ABD8BEFEA4DB}.Release|x86.Build.0 = Release|Win32
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Debug|x64.ActiveCfg = Debug|x64
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Debug|x64.Build.0 = Debug|x64
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Debug|x86.ActiveCfg = Debug|Win32
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Debug|x86.Build.0 = Debug|Win32
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Release|x64.ActiveCfg = Release|x64
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Release|x64.Build.0 = Release|x64
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Release|x86.ActiveCfg = Release|Win32
-		{EDF54360-706F-48F9-8638-CB83B111D882}.Release|x86.Build.0 = Release|Win32
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Debug|x64.ActiveCfg = Debug|x64
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Debug|x64.Build.0 = Debug|x64
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Debug|x86.ActiveCfg = Debug|Win32
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Debug|x86.Build.0 = Debug|Win32
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Release|x64.ActiveCfg = Release|x64
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Release|x64.Build.0 = Release|x64
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Release|x86.ActiveCfg = Release|Win32
+		{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

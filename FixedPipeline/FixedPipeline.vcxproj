@@ -19,49 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\PowerUp.h" />
-    <ClInclude Include="src\PostProcessor.h" />
-    <ClInclude Include="src\ParticleGenerator.h" />
-    <ClInclude Include="src\BallObject.h" />
-    <ClInclude Include="src\GameLevel.h" />
-    <ClInclude Include="src\GameObject.h" />
-    <ClInclude Include="src\ResInfo.h" />
-    <ClInclude Include="src\SpriteRenderer.h" />
-    <ClInclude Include="src\common\Camera.h" />
-    <ClInclude Include="src\common\ResourceManager.h" />
-    <ClInclude Include="src\common\Shader.h" />
-    <ClInclude Include="src\common\stb_image.h" />
-    <ClInclude Include="src\common\Texture2D.h" />
-    <ClInclude Include="src\Game.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\PostProcessor.cpp" />
-    <ClCompile Include="src\ParticleGenerator.cpp" />
-    <ClCompile Include="src\BallObject.cpp" />
-    <ClCompile Include="src\GameLevel.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\common\glad.c" />
-    <ClCompile Include="src\common\Shader.cpp" />
-    <ClCompile Include="src\SpriteRenderer.cpp" />
-    <ClCompile Include="src\common\ResourceManager.cpp" />
-    <ClCompile Include="src\common\stb_image.cpp" />
-    <ClCompile Include="src\common\Texture2D.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders\particle_fs.glsl" />
-    <None Include="shaders\particle_vs.glsl" />
-    <None Include="shaders\postprocess_fs.glsl" />
-    <None Include="shaders\postprocess_vs.glsl" />
-    <None Include="shaders\sprite_fs.glsl" />
-    <None Include="shaders\sprite_vs.glsl" />
+    <ClCompile Include="MarchingCubes.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EDF54360-706F-48F9-8638-CB83B111D882}</ProjectGuid>
+    <ProjectGuid>{6B635F79-7DDF-4D0C-A034-F6AE017CF02C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Breakout2DGame</RootNamespace>
+    <RootNamespace>FixedPipeline</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -113,6 +77,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\OpenGL_Lib\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\OpenGL_Lib\lib;$(LibraryPath)</LibraryPath>
+    <LibraryWPath>..\OpenGL_Lib\lib;$(LibraryWPath)</LibraryWPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -135,7 +100,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freeglut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

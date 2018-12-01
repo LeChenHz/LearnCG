@@ -13,78 +13,84 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="common">
-      <UniqueIdentifier>{35226355-330b-465b-a8f4-d5103277aa55}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base.cpp">
+    <ClCompile Include="src\common\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="bloom.cpp">
+    <ClCompile Include="src\common\ResourceManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="deferred_shading.cpp">
+    <ClCompile Include="src\common\stb_image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="blending_discard.cpp">
+    <ClCompile Include="src\common\texture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystem.cpp">
+    <ClCompile Include="src\common\Texture2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="billboard.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="normal_mapping.cpp">
+    <ClCompile Include="src\scenes\Scene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\glad.c">
-      <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="common\stb_image.cpp">
-      <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="text_freetype.cpp">
+    <ClCompile Include="src\scenes\SceneTemplate.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="text_uv.cpp">
+    <ClCompile Include="src\scenes\paper\MarchingCubes.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\texture.cpp">
+    <ClCompile Include="src\scenes\study\billboard.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="stencil_testing.cpp">
+    <ClCompile Include="src\scenes\study\blending_discard.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="fog.cpp">
+    <ClCompile Include="src\scenes\study\bloom.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="gerstner_water.cpp">
+    <ClCompile Include="src\scenes\study\deferred_shading.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\shape\Cube.cpp">
+    <ClCompile Include="src\scenes\study\fog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\shape\ShapeFactory.cpp">
+    <ClCompile Include="src\scenes\study\gerstner_water.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\ResourceManager.cpp">
+    <ClCompile Include="src\scenes\study\normal_mapping.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\Texture2D.cpp">
+    <ClCompile Include="src\scenes\study\ParticleSystem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="sphere_draw.cpp">
+    <ClCompile Include="src\scenes\study\S_fog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\shape\Sphere.cpp">
+    <ClCompile Include="src\scenes\study\shape_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="shape_test.cpp">
+    <ClCompile Include="src\scenes\study\sphere_draw.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MarchingCubes.cpp">
+    <ClCompile Include="src\scenes\study\stencil_testing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\study\text_freetype.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\study\text_uv.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\shape\Cube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\shape\ShapeFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\shape\Sphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,46 +190,58 @@
     <None Include="shaders\marching_cubes\mc_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common\camera.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Mesh.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Model.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\opengl_debug.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\Shader.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\stb_image.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="common\texture.h">
+    <ClInclude Include="src\common\camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\Text2D.h">
+    <ClInclude Include="src\common\Mesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\shape\Shape.h">
+    <ClInclude Include="src\common\Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\shape\Cube.h">
+    <ClInclude Include="src\common\opengl_debug.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\shape\ShapeFactory.h">
+    <ClInclude Include="src\common\ResourceManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\ResourceManager.h">
+    <ClInclude Include="src\common\Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\Texture2D.h">
+    <ClInclude Include="src\common\stb_image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\shape\Sphere.h">
+    <ClInclude Include="src\common\Text2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\Texture2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\SceneHead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\Scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\SceneTemplate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\study\S_fog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\shape\Cube.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\shape\Shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\shape\ShapeFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\shape\Sphere.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

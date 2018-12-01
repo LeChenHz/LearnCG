@@ -23,6 +23,7 @@
     <ProjectGuid>{4996F148-A901-46C7-9905-ABD8BEFEA4DB}</ProjectGuid>
     <RootNamespace>HelloOpenGL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>LearnCG</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,9 +75,9 @@
     <LibraryPath>F:\Projects\openGL\OpenGL_stuff\lib;F:\Program Files (x86)\opencv3.0.0beta\opencv\build\x86\vc10\staticlib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Projects\openGL\HelloOpenGL\OpenGL_Lib\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Projects\openGL\HelloOpenGL\OpenGL_Lib\lib;$(LibraryPath)</LibraryPath>
-    <LibraryWPath>F:\Projects\openGL\HelloOpenGL\OpenGL_Lib\lib;$(LibraryWPath)</LibraryWPath>
+    <IncludePath>..\OpenGL_Lib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\OpenGL_Lib\lib;$(LibraryPath)</LibraryPath>
+    <LibraryWPath>..\OpenGL_Lib\lib;$(LibraryWPath)</LibraryWPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,29 +133,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="blending_discard.cpp" />
-    <ClCompile Include="bloom.cpp" />
-    <ClCompile Include="common\glad.c" />
-    <ClCompile Include="common\ResourceManager.cpp" />
-    <ClCompile Include="common\shape\Sphere.cpp" />
-    <ClCompile Include="common\Texture2D.cpp" />
-    <ClCompile Include="MarchingCubes.cpp" />
-    <ClCompile Include="shape_test.cpp" />
-    <ClCompile Include="common\stb_image.cpp" />
-    <ClCompile Include="common\texture.cpp" />
-    <ClCompile Include="common\shape\Cube.cpp" />
-    <ClCompile Include="deferred_shading.cpp" />
-    <ClCompile Include="base.cpp" />
-    <ClCompile Include="gerstner_water.cpp" />
-    <ClCompile Include="normal_mapping.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
-    <ClCompile Include="billboard.cpp" />
-    <ClCompile Include="fog.cpp" />
-    <ClCompile Include="common\shape\ShapeFactory.cpp" />
-    <ClCompile Include="sphere_draw.cpp" />
-    <ClCompile Include="stencil_testing.cpp" />
-    <ClCompile Include="text_freetype.cpp" />
-    <ClCompile Include="text_uv.cpp" />
+    <ClCompile Include="src\common\shape\Cube.cpp" />
+    <ClCompile Include="src\common\shape\ShapeFactory.cpp" />
+    <ClCompile Include="src\common\shape\Sphere.cpp" />
+    <ClCompile Include="src\scenes\SceneTemplate.cpp" />
+    <ClCompile Include="src\scenes\study\blending_discard.cpp" />
+    <ClCompile Include="src\scenes\study\bloom.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes.cpp" />
+    <ClCompile Include="src\scenes\Scene.cpp" />
+    <ClCompile Include="src\scenes\study\shape_test.cpp" />
+    <ClCompile Include="src\scenes\study\deferred_shading.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\scenes\study\gerstner_water.cpp" />
+    <ClCompile Include="src\scenes\study\normal_mapping.cpp" />
+    <ClCompile Include="src\scenes\study\ParticleSystem.cpp" />
+    <ClCompile Include="src\scenes\study\billboard.cpp" />
+    <ClCompile Include="src\scenes\study\fog.cpp" />
+    <ClCompile Include="src\scenes\study\sphere_draw.cpp" />
+    <ClCompile Include="src\common\glad.c" />
+    <ClCompile Include="src\common\ResourceManager.cpp" />
+    <ClCompile Include="src\common\stb_image.cpp" />
+    <ClCompile Include="src\common\texture.cpp" />
+    <ClCompile Include="src\common\Texture2D.cpp" />
+    <ClCompile Include="src\scenes\study\stencil_testing.cpp" />
+    <ClCompile Include="src\scenes\study\S_fog.cpp" />
+    <ClCompile Include="src\scenes\study\text_freetype.cpp" />
+    <ClCompile Include="src\scenes\study\text_uv.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\base\base_fs.glsl" />
@@ -200,20 +204,24 @@
     <None Include="shaders\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common\camera.h" />
-    <ClInclude Include="common\Mesh.h" />
-    <ClInclude Include="common\Model.h" />
-    <ClInclude Include="common\opengl_debug.h" />
-    <ClInclude Include="common\ResourceManager.h" />
-    <ClInclude Include="common\Shader.h" />
-    <ClInclude Include="common\shape\Shape.h" />
-    <ClInclude Include="common\stb_image.h" />
-    <ClInclude Include="common\Text2D.h" />
-    <ClInclude Include="common\texture.h" />
-    <ClInclude Include="common\shape\Cube.h" />
-    <ClInclude Include="common\shape\ShapeFactory.h" />
-    <ClInclude Include="common\Texture2D.h" />
-    <ClInclude Include="common\shape\Sphere.h" />
+    <ClInclude Include="src\common\shape\Cube.h" />
+    <ClInclude Include="src\common\shape\Shape.h" />
+    <ClInclude Include="src\common\shape\ShapeFactory.h" />
+    <ClInclude Include="src\common\shape\Sphere.h" />
+    <ClInclude Include="src\scenes\SceneTemplate.h" />
+    <ClInclude Include="src\scenes\Scene.h" />
+    <ClInclude Include="src\scenes\SceneHead.h" />
+    <ClInclude Include="src\common\camera.h" />
+    <ClInclude Include="src\common\Mesh.h" />
+    <ClInclude Include="src\common\Model.h" />
+    <ClInclude Include="src\common\opengl_debug.h" />
+    <ClInclude Include="src\common\ResourceManager.h" />
+    <ClInclude Include="src\common\Shader.h" />
+    <ClInclude Include="src\common\stb_image.h" />
+    <ClInclude Include="src\common\Text2D.h" />
+    <ClInclude Include="src\common\texture.h" />
+    <ClInclude Include="src\common\Texture2D.h" />
+    <ClInclude Include="src\scenes\study\S_fog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
