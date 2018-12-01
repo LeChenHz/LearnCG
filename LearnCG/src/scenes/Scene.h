@@ -20,7 +20,8 @@ using namespace std;
 class Scene {
 public:
 	virtual void initGL() = 0;
-	virtual void paintGL() = 0;
+	// deltaTime为两次paint间隔的时间ms
+	virtual void paintGL(float deltaTime) = 0;
 	virtual void freeGL() = 0;
 
 	Scene();

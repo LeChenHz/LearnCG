@@ -39,14 +39,14 @@ void S_gerstner_water::initGL()
 	glGenBuffers(1, &names.vertex_buffer);
 	glGenBuffers(1, &names.normal_buffer);
 
-	names.diffuse_texture = loadTexture("res\\water.jpg");
-	names.normal_texture = loadTexture("res\\water_normal.jpg");
+	names.diffuse_texture = loadTexture("res\\texture\\water.jpg");
+	names.normal_texture = loadTexture("res\\texture\\water_normal.jpg");
 	shader->setFloat("textures[0]", 0);
 	shader->setFloat("textures[1]", 1);
 
 }
 
-void S_gerstner_water::paintGL()
+void S_gerstner_water::paintGL(float deltaTime)
 {
 	// 清除颜色和深度缓冲
 	glClearColor(1.0f, 0.1f, 0.1f, 1.0f);

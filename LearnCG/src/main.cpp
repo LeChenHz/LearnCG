@@ -50,7 +50,7 @@ int main()
 		processInput(window);
 		
 		// »æÖÆ
-		scene->paintGL();
+		scene->paintGL(deltaTime);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

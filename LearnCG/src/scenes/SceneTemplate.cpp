@@ -6,7 +6,7 @@ void S_Template::initGL()
 {
 }
 
-void S_Template::paintGL()
+void S_Template::paintGL(float deltaTime)
 {
 }
 

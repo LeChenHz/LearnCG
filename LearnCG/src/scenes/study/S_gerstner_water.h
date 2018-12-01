@@ -21,7 +21,7 @@ class S_gerstner_water : public Scene
 {
 public:
 	virtual void initGL();
-	virtual void paintGL();
+	virtual void paintGL(float deltaTime);
 	virtual void freeGL();
 public:
 	S_gerstner_water();

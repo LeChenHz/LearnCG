@@ -12,7 +12,7 @@ void S_MarchingCube_pointcloud::initGL()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 }
 
-void S_MarchingCube_pointcloud::paintGL()
+void S_MarchingCube_pointcloud::paintGL(float deltaTime)
 {
 	// 清除颜色和深度缓冲
 	glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
