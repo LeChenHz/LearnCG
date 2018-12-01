@@ -1,8 +1,6 @@
-#include "S_MarchingCube_sphere.h"
+#include "S_MarchingCube_pointcloud.h"
 
-
-
-void S_MarchingCube_sphere::initGL()
+void S_MarchingCube_pointcloud::initGL()
 {
 	shader = new Shader("shaders\\marching_cubes\\mc_vs.glsl", "shaders\\marching_cubes\\mc_fs.glsl");
 	if (g_view_mode == 1)
@@ -14,7 +12,7 @@ void S_MarchingCube_sphere::initGL()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 }
 
-void S_MarchingCube_sphere::paintGL()
+void S_MarchingCube_pointcloud::paintGL()
 {
 	// 清除颜色和深度缓冲
 	glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
@@ -52,23 +50,23 @@ void S_MarchingCube_sphere::paintGL()
 
 }
 
-void S_MarchingCube_sphere::freeGL()
+void S_MarchingCube_pointcloud::freeGL()
 {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
 }
 
-S_MarchingCube_sphere::S_MarchingCube_sphere()
+S_MarchingCube_pointcloud::S_MarchingCube_pointcloud()
 {
 }
 
 
-S_MarchingCube_sphere::~S_MarchingCube_sphere()
+S_MarchingCube_pointcloud::~S_MarchingCube_pointcloud()
 {
 }
 
-void S_MarchingCube_sphere::createCubeFrame(float size)
+void S_MarchingCube_pointcloud::createCubeFrame(float size)
 {
 	// 立方体6个面的顶点
 	glm::vec3 *cube_vertices = new glm::vec3[24];
@@ -114,7 +112,7 @@ void S_MarchingCube_sphere::createCubeFrame(float size)
 	delete[] cube_lines_indices;
 }
 
-void S_MarchingCube_sphere::marchingCubes()
+void S_MarchingCube_pointcloud::marchingCubes()
 {
 	TestExecutionTime::start();
 	versNumber = 0;
@@ -131,7 +129,7 @@ void S_MarchingCube_sphere::marchingCubes()
 	TestExecutionTime::end();
 }
 
-void S_MarchingCube_sphere::marchingCube(float x, float y, float z, float scale)
+void S_MarchingCube_pointcloud::marchingCube(float x, float y, float z, float scale)
 {
 	glm::vec3 iossurface_vertices[12]; //最终绘制的三角形顶点数据
 	float cube_vertex_value[8];

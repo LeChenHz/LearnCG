@@ -15,6 +15,8 @@
 #include <string>
 using namespace std;
 
+#include "../utils/TestExecutionTime.h"
+
 class Scene {
 public:
 	virtual void initGL() = 0;

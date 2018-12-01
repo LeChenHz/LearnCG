@@ -136,11 +136,11 @@
     <ClCompile Include="src\common\shape\Cube.cpp" />
     <ClCompile Include="src\common\shape\ShapeFactory.cpp" />
     <ClCompile Include="src\common\shape\Sphere.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube_pointcloud.cpp" />
     <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube_sphere.cpp" />
     <ClCompile Include="src\scenes\SceneTemplate.cpp" />
     <ClCompile Include="src\scenes\study\blending_discard.cpp" />
     <ClCompile Include="src\scenes\study\bloom.cpp" />
-    <ClCompile Include="src\scenes\paper\MarchingCubes\MarchingCubes.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\study\shape_test.cpp" />
     <ClCompile Include="src\scenes\study\deferred_shading.cpp" />
@@ -158,8 +158,11 @@
     <ClCompile Include="src\common\Texture2D.cpp" />
     <ClCompile Include="src\scenes\study\stencil_testing.cpp" />
     <ClCompile Include="src\scenes\study\S_fog.cpp" />
+    <ClCompile Include="src\scenes\study\S_gerstner_water.cpp" />
+    <ClCompile Include="src\scenes\study\S_normal_mapping.cpp" />
     <ClCompile Include="src\scenes\study\text_freetype.cpp" />
     <ClCompile Include="src\scenes\study\text_uv.cpp" />
+    <ClCompile Include="src\utils\TestExecutionTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\base\base_fs.glsl" />
@@ -209,6 +212,7 @@
     <ClInclude Include="src\common\shape\Shape.h" />
     <ClInclude Include="src\common\shape\ShapeFactory.h" />
     <ClInclude Include="src\common\shape\Sphere.h" />
+    <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube_pointcloud.h" />
     <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube_sphere.h" />
     <ClInclude Include="src\scenes\SceneTemplate.h" />
     <ClInclude Include="src\scenes\Scene.h" />
@@ -224,6 +228,9 @@
     <ClInclude Include="src\common\texture.h" />
     <ClInclude Include="src\common\Texture2D.h" />
     <ClInclude Include="src\scenes\study\S_fog.h" />
+    <ClInclude Include="src\scenes\study\S_gerstner_water.h" />
+    <ClInclude Include="src\scenes\study\S_normal_mapping.h" />
+    <ClInclude Include="src\utils\TestExecutionTime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,6 +5,9 @@
 #include "math.h"  
 #include "GL/glut.h"  
 
+#include "iostream"
+
+
 #if !defined(GLUT_WHEEL_UP)  
 #  define GLUT_WHEEL_UP   3  
 #  define GLUT_WHEEL_DOWN 4  
@@ -21,7 +24,7 @@ struct GLvector
 //立方体8个顶点  
 static const GLfloat a2fVertexOffset[8][3] =
 {
-	{ 0.0, 0.0, 0.0 },{ 1.0, 0.0, 0.0 },{ 1.0, 1.0, 0.0 },{ 0.0, 1.0, 0.0 },
+{ 0.0, 0.0, 0.0 },{ 1.0, 0.0, 0.0 },{ 1.0, 1.0, 0.0 },{ 0.0, 1.0, 0.0 },
 { 0.0, 0.0, 1.0 },{ 1.0, 0.0, 1.0 },{ 1.0, 1.0, 1.0 },{ 0.0, 1.0, 1.0 }
 };
 
@@ -36,7 +39,7 @@ static const GLint a2iEdgeConnection[12][2] =
 //立方体 12个边的方向向量  
 static const GLfloat a2fEdgeDirection[12][3] =
 {
-	{ 1.0, 0.0, 0.0 },{ 0.0, 1.0, 0.0 },{ -1.0, 0.0, 0.0 },{ 0.0, -1.0, 0.0 },
+{ 1.0, 0.0, 0.0 },{ 0.0, 1.0, 0.0 },{ -1.0, 0.0, 0.0 },{ 0.0, -1.0, 0.0 },
 { 1.0, 0.0, 0.0 },{ 0.0, 1.0, 0.0 },{ -1.0, 0.0, 0.0 },{ 0.0, -1.0, 0.0 },
 { 0.0, 0.0, 1.0 },{ 0.0, 0.0, 1.0 },{ 0.0, 0.0, 1.0 },{ 0.0,  0.0, 1.0 }
 };
@@ -72,9 +75,9 @@ void myMouseCall(int button, int state, int x, int y);
 GLvoid vMarchingCubes();
 GLvoid vMarchCube1(GLfloat fX, GLfloat fY, GLfloat fZ, GLfloat fScale);
 
-#define NX 200    
-#define NY 160  
-#define NZ 160   
+#define NX 255   
+#define NY 255  
+#define NZ 255   
 
 short int ***data;
 GLfloat HoriRotate = 90;
@@ -97,13 +100,6 @@ void main(int argc, char **argv)
 	FILE *fptr;
 	argc = 2;
 
-	argv[1] = "F:\\软件\\OpenGL\\mri.raw";
-
-	for (i = 1; i<argc; i++) {
-		if (strcmp(argv[i], "-i") == 0)
-			isolevel = atof(argv[i + 1]);
-	}
-
 	// Malloc the volumetric data, hardwired size!  
 	data = (short int ***)malloc(NX * sizeof(short int **));
 	for (i = 0; i<NX; i++)
@@ -113,17 +109,18 @@ void main(int argc, char **argv)
 			data[i][j] = (short int *)malloc(NZ * sizeof(short int));
 
 	// Open and read the raw data  
-	fprintf(stderr, "Reading data ...\n");
-	if ((fopen_s(fptr, argv[argc - 1], "rb")) != NULL) {
-		fprintf(stderr, "File open failed\n");
+	std::cerr << "Reading data ...\n";
+	if ((fopen_s(&fptr, "res\\x.raw", "rb")) != NULL) {
+		std::cerr << "File open failed\n";
 		exit(-1);
 	}
 	for (k = 0; k<NZ; k++) {
+
 		for (j = 0; j<NY; j++) {
 			for (i = 0; i<NX; i++) {
 				if ((c = fgetc(fptr)) == EOF) {
-					fprintf(stderr, "Unexpected end of file\n");
-					exit(-1);
+					//std::cerr << "Unexpected end of file\n";
+					//exit(-1);
 				}
 				data[i][j][k] = c;
 
@@ -133,6 +130,7 @@ void main(int argc, char **argv)
 					themin = c;
 			}
 		}
+
 	}
 	fclose(fptr);
 	fprintf(stderr, "Volumetric data range: %d -> %d\n", themin, themax);
@@ -835,3 +833,4 @@ GLint a2iTriangleConnectionTable[256][16] =
 { 0, 3, 8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
 { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }
 };
+

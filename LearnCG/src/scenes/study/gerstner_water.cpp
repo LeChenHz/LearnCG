@@ -28,28 +28,8 @@
 //
 //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f)); //摄像机位置
 //
-//float lastX = (float)SCR_WIDTH / 2.0, lastY = (float)SCR_HEIGHT / 2.0; // 设置鼠标初始位置为屏幕中心
-//bool firstMouse = true;
-//
-//float deltaTime = 0.0f; // 当前帧与上一帧的时间差
-//float lastFrame = 0.0f; // 上一帧的时间
 //
 //
-//
-//#define WAVE_COUNT		6
-//
-//						// 水的高度等级
-//#define HEIGHT_SCALE 1.6
-//
-//#define START_X		-4.0
-//#define START_Y		-2.5
-//#define START_Z		0
-//#define LENGTH_X	0.1
-//#define LENGTH_Y	0.1
-//
-//#define STRIP_COUNT		80
-//#define STRIP_LENGTH	50
-//#define DATA_LENGTH		STRIP_LENGTH*2*(STRIP_COUNT-1)
 //
 //						//结构体来保存时间和每个波的波长、振幅、方向、频率和起始坐标
 //static struct {
@@ -155,7 +135,6 @@
 //	glEnable(GL_DEPTH_TEST);
 //	glDepthFunc(GL_LESS);
 //
-//
 //	// 着色器
 //	Shader shader("shaders\\water\\water_vs.glsl", "shaders\\water\\water_fs.glsl");
 //	shader.use();
@@ -224,48 +203,6 @@
 //	return 0;
 //}
 //
-//void processInput(GLFWwindow *window)
-//{
-//	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-//		glfwSetWindowShouldClose(window, true);
-//
-//	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-//		camera.ProcessKeyboard(FORWARD, deltaTime);
-//	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-//		camera.ProcessKeyboard(BACKWARD, deltaTime);
-//	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-//		camera.ProcessKeyboard(LEFT, deltaTime);
-//	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-//		camera.ProcessKeyboard(RIGHT, deltaTime);
-//}
-//
-//void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-//{
-//	glViewport(0, 0, width, height);
-//}
-//
-//void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-//{
-//	if (firstMouse)
-//	{
-//		lastX = xpos;
-//		lastY = ypos;
-//		firstMouse = false;
-//	}
-//
-//	float xoffset = xpos - lastX;
-//	float yoffset = lastY - ypos;
-//
-//	lastX = xpos;
-//	lastY = ypos;
-//
-//	camera.ProcessMouseMovement(xoffset, yoffset);
-//}
-//
-//void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-//{
-//	camera.ProcessMouseScroll(yoffset);
-//}
 //
 //
 //
