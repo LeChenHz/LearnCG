@@ -11,14 +11,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height); // 窗
 void mouse_callback(GLFWwindow* window, double xpos, double ypos); // 鼠标控制回调
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset); // 滚轮控制回调
 void processInput(GLFWwindow *window); // 键盘控制回调
-int initGlfw(); //初始化Glfw，返回1代表成功，0代表失败
+int initGlfw(int width, int height, const char * title); //初始化Glfw，返回1代表成功，0代表失败
 int initGlad();//初始化Glad，返回1代表成功，0代表失败
 
-// 屏幕宽，高
-const unsigned int SCR_WIDTH = 1280;
-const unsigned int SCR_HEIGHT = 720;
-
-float lastX = (float)SCR_WIDTH / 2.0, lastY = (float)SCR_HEIGHT / 2.0; // 设置鼠标初始位置为屏幕中心
+float lastX,lastY;// 设置鼠标初始位置为屏幕中心
 bool firstMouse = true;
 
 float deltaTime = 0.0f; // 当前帧与上一帧的时间差
@@ -29,16 +25,20 @@ Scene *scene;
 
 int main()
 {
-	if (initGlfw() == 0) {
+	scene = new S_fog();
+
+	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
+		return -1;
 	}
 	if (initGlad() == 0) {
 		std::cout << "初始化Glad失败" << std::endl;
+		return -1;
 	}
 
-	scene = new S_fog();
 	scene->initGL();
 
+	lastX = (float)scene->SCR_WIDTH / 2.0, lastY = (float)scene->SCR_HEIGHT / 2.0;
 	lastFrame = glfwGetTime();
 	while (!glfwWindowShouldClose(window))
 	{
@@ -106,7 +106,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	scene->camera.ProcessMouseScroll(yoffset);
 }
 
-int initGlfw()
+int initGlfw(int width, int height, const char * title)
 {
 	// ---------------------初始化--------------------------
 	// glfw初始化，采用的GL版本为3.3核心版本
@@ -116,7 +116,7 @@ int initGlfw()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// 创建GL窗口
-	window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+	window = glfwCreateWindow(width, height, title, NULL, NULL);
 	if (window == NULL)
 	{
 		glfwTerminate();

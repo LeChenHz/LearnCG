@@ -1,5 +1,7 @@
 #pragma once
+
 #include "../Scene.h"
+
 class S_fog : public Scene
 {
 public:

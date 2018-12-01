@@ -58,6 +58,7 @@ void S_fog::freeGL()
 
 S_fog::S_fog()
 {
+	windowTitle = "Fog";
 }
 
 S_fog::~S_fog()

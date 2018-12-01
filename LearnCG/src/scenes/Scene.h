@@ -29,4 +29,6 @@ public:
 	// ÆÁÄ»¿í£¬¸ß
 	const unsigned int SCR_WIDTH = 1280;
 	const unsigned int SCR_HEIGHT = 720;
+
+	const char *windowTitle;
 };
