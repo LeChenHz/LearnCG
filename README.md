@@ -1,6 +1,6 @@
-# HelloOpenGL
-学习OpenGL时写的demo (使用GIT用于同步两台电脑)
+# LearnCG
+放一些学习计算机图形学写的demo
 
-基于 OPEN GL 3.3
+使用OpenGL图形库
 
-使用glfw、glad、glm等库
+使用VS2017可以直接运行
