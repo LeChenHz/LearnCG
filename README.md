@@ -12,3 +12,6 @@
 
 
 
+# Renderer3D
+C++光栅化渲染器，打算在https://github.com/skywind3000/mini3d基础上写一些东西。
+
