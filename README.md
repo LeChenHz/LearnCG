@@ -1,10 +1,14 @@
 # LearnCG
-放一些学习计算机图形学写的demo
 
-使用OpenGL图形库
+主要使用OpenGL图形库。方便自己上面复现论文、实现图形学效果、以及其它的demo。
 
-使用VS2017可以直接运行
+复现的论文：
+- 《MARCHING CUBES：A HIGH RESOLUTION 3D SURFACE CONSTRUCTION ALGORITHM》
 
-TestExecutionTime
+效果：
+- 雾化效果
+- 粒子系统
+- 简单的水面效果
 
-glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)`。 第
+
+
