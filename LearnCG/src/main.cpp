@@ -25,7 +25,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_gerstner_water();
+	scene = new S_Pet_Demo();
 
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
@@ -108,7 +108,6 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 int initGlfw(int width, int height, const char * title, bool hiddenMouse)
 {
-	// ---------------------初始化--------------------------
 	// glfw初始化，采用的GL版本为3.3核心版本
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

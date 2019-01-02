@@ -9,9 +9,9 @@ void S_fog::initGL()
 	glDepthFunc(GL_LESS);
 
 	// 着色器
-	shader =  new Shader("shaders/fog/fog.vs", "shaders/fog/fog.fs");
+	shader =  new Shader("shaders/study/fog/fog.vs", "shaders/study/fog/fog.fs");
 
-	string modelPathStr = "res/model/nanosuit/nanosuit.obj";
+	string modelPathStr = "res/model/character/character.obj";
 	ourModel = new Model(modelPathStr);
 	objectPositions.push_back(glm::vec3(-3.0, -3.0, -3.0));
 	objectPositions.push_back(glm::vec3(0.0, -3.0, -3.0));
@@ -24,10 +24,10 @@ void S_fog::initGL()
 	objectPositions.push_back(glm::vec3(3.0, -3.0, 3.0));
 }
 
-void S_fog::paintGL()
+void S_fog::paintGL(float deltaTime)
 {
 	// 清除颜色和深度缓冲
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -36,8 +36,8 @@ void S_fog::paintGL()
 	shader->use();
 	shader->setMat4("projection", projection);
 	shader->setMat4("view", view);
-	shader->setFloat("Fog.d_min", 2.5f);
-	shader->setFloat("Fog.d_max", 15.0f);
+	shader->setFloat("Fog.d_min", 2.5f+25.0f);
+	shader->setFloat("Fog.d_max", 15.0f+25.0f);
 	shader->setVec3("Fog.color", glm::vec3(1.0, 1.0, 1.0));
 	for (unsigned int i = 0; i < objectPositions.size(); i++)
 	{

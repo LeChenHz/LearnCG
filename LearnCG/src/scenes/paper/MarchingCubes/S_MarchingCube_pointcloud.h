@@ -20,7 +20,7 @@ public:
 	glm::vec3 iossurfaceVers[1000000];
 	int versNumber = 0;
 
-	int subdivide_cube_num = 100;// 细分立方体数目
+	int subdivide_cube_num = 10;// 细分立方体数目
 	float target_value = 16.0; // 等值面值
 	int g_view_mode = 1; // 显示模式，0：Fill，1：Lines
 	bool onlyFirst = true;

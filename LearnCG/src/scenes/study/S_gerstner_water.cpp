@@ -12,7 +12,7 @@ void S_gerstner_water::initGL()
 	glDepthFunc(GL_LESS);
 
 	// ×ÅÉ«Æ÷
-	shader = new Shader("shaders\\water\\water_vs.glsl", "shaders\\water\\water_fs.glsl");
+	shader = new Shader("shaders/study/water/water_vs.glsl", "shaders/study/water/water_fs.glsl");
 	shader->use();
 
 	initWave();

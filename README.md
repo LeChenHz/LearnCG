@@ -4,3 +4,7 @@
 使用OpenGL图形库
 
 使用VS2017可以直接运行
+
+TestExecutionTime
+
+glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)`。 第

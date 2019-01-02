@@ -2,7 +2,7 @@
 
 void S_MarchingCube_pointcloud::initGL()
 {
-	shader = new Shader("shaders\\marching_cubes\\mc_vs.glsl", "shaders\\marching_cubes\\mc_fs.glsl");
+	shader = new Shader("shaders/paper/marching_cubes/mc_vs.glsl", "shaders/paper/marching_cubes/mc_fs.glsl");
 	if (g_view_mode == 1)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glGenVertexArrays(1, &VAO);
