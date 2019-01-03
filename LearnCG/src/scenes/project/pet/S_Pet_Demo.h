@@ -15,5 +15,6 @@ public:
 
 public:
 	PetMathmaticalModel *perModel;
+	Shader *base_shader;
 };
 

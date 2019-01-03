@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\common\Camera.cpp" />
     <ClCompile Include="src\scenes\project\pet\PetMathmaticalModel.cpp" />
     <ClCompile Include="src\common\shape\Cube.cpp" />
     <ClCompile Include="src\common\shape\ShapeFactory.cpp" />
@@ -210,6 +211,7 @@
     <None Include="shaders\study\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\common\Camera.h" />
     <ClInclude Include="src\scenes\GL_HEAD.h" />
     <ClInclude Include="src\scenes\project\pet\PetMathmaticalModel.h" />
     <ClInclude Include="src\common\shape\Cube.h" />
@@ -222,7 +224,6 @@
     <ClInclude Include="src\scenes\SceneTemplate.h" />
     <ClInclude Include="src\scenes\Scene.h" />
     <ClInclude Include="src\scenes\SceneHead.h" />
-    <ClInclude Include="src\common\camera.h" />
     <ClInclude Include="src\common\Mesh.h" />
     <ClInclude Include="src\common\Model.h" />
     <ClInclude Include="src\common\opengl_debug.h" />

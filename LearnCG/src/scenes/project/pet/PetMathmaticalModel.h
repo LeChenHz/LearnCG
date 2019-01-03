@@ -41,10 +41,9 @@ public:
 private:
 	GLuint VAO, VBO;
 	GLfloat *g_bdm_position_data;
-	Shader *base_shader;
 private:
 	void init();
 public:
-	void draw();
+	void draw(Shader *shader);
 };
 

@@ -2,6 +2,7 @@
 
 S_Pet_Demo::S_Pet_Demo()
 {
+	hiddenMouse = true;
 }
 
 
@@ -9,18 +10,35 @@ S_Pet_Demo::~S_Pet_Demo()
 {
 }
 
-
 void S_Pet_Demo::initGL()
 {
+	camera.position = glm::vec3(0.0f, 14.0f, 0.0f);
+	camera.lookToPos(glm::vec3(0.0f, 0.0f, 0.0f));
 	perModel = new PetMathmaticalModel();
+	base_shader = new Shader("shaders/project/pet/base_vs.glsl", "shaders/project/pet/base_fs.glsl");
 }
 
 void S_Pet_Demo::paintGL(float deltaTime)
 {
-	perModel->draw();
+	// 清除颜色和深度缓冲
+	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	glm::mat4 view = camera.GetViewMatrix();
+	glm::mat4 model;
+	base_shader->use();
+	base_shader->setMat4("projection", projection);
+	base_shader->setMat4("view", view);
+	base_shader->setMat4("model", model);
+
+	perModel->draw(base_shader);
+
 }
 
 void S_Pet_Demo::freeGL()
 {
+	delete base_shader;
+	delete perModel;
 }
 

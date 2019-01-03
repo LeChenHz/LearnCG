@@ -6,7 +6,7 @@ S_particle::S_particle()
 
 void S_particle::initGL()
 {
-	camera.Position = glm::vec3(0.0f, 0.0f, 3.0f);
+	camera.position = glm::vec3(0.0f, 0.0f, 3.0f);
 
 	// 开启深度测试
 	glEnable(GL_DEPTH_TEST);
@@ -57,9 +57,9 @@ void S_particle::paintGL(float deltaTime)
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glm::mat4 ProjectionMatrix = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	glm::mat4 ProjectionMatrix = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 ViewMatrix = camera.GetViewMatrix();
-	glm::vec3 CameraPosition = camera.Position;
+	glm::vec3 CameraPosition = camera.position;
 	glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
 
 	// 消亡多少粒子，产生多少粒子

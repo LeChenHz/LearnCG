@@ -5,7 +5,7 @@
 void S_gerstner_water::initGL()
 {
 
-	camera.Position = glm::vec3(0.0f, 0.0f, 3.0f);
+	camera.position = glm::vec3(0.0f, 0.0f, 3.0f);
 
 	// ø™∆Ù…Ó∂»≤‚ ‘
 	glEnable(GL_DEPTH_TEST);
@@ -55,7 +55,7 @@ void S_gerstner_water::paintGL(float deltaTime)
 	calcuWave();
 
 	glm::mat4 model(1);
-	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
 	glm::mat4 ModelViewMat = view * model;
 	glm::mat3 NormalMat = glm::transpose(glm::inverse(glm::mat3(ModelViewMat)));

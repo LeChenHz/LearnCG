@@ -32,7 +32,6 @@ PetMathmaticalModel::PetMathmaticalModel()
 	}
 
 	init();
-	draw();
 }
 
 PetMathmaticalModel::~PetMathmaticalModel()
@@ -40,12 +39,10 @@ PetMathmaticalModel::~PetMathmaticalModel()
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	delete g_bdm_position_data;
-	delete base_shader;
 }
 
 void PetMathmaticalModel::init()
 {
-	base_shader = new Shader("shaders/project/pet/base_vs.glsl", "shaders/project/pet/base_fs.glsl");
 	g_bdm_position_data = new GLfloat[BDM_number * 6 * 3];
 	for (int i = 0; i < BDM_number; i++)
 	{
@@ -70,17 +67,20 @@ void PetMathmaticalModel::init()
 	glBindVertexArray(VAO);
 	
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_bdm_position_data), g_bdm_position_data, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * BDM_number * 6 * 3, g_bdm_position_data, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 
-void PetMathmaticalModel::draw()
+void PetMathmaticalModel::draw(Shader *shader)
 {
-	base_shader->use();
+	shader->use();
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glDrawArrays(GL_TRIANGLES, 0, BDM_number * 6 * 3);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }

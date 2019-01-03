@@ -2,7 +2,7 @@
 
 void S_fog::initGL()
 {
-	camera.Position = glm::vec3(0.0f, 0.0f, 8.0f);
+	camera.position = glm::vec3(0.0f, 0.0f, 8.0f);
 
 	// ¿ªÆôÉî¶È²âÊÔ
 	glEnable(GL_DEPTH_TEST);
@@ -30,7 +30,7 @@ void S_fog::paintGL(float deltaTime)
 	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
 	glm::mat4 model;
 	shader->use();
