@@ -5,7 +5,8 @@
 #include <math.h>
 
 struct Crystal_model {
-	glm::vec3 v1, v2, v3, v4, center; //左上 右上 右下 左下
+	glm::vec3 center,
+		v1, v2, v3, v4; //左上 右上 右下 左下
 };
 
 struct DU_model {

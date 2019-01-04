@@ -21,7 +21,7 @@ const float SPEED = 2.5f; //默认的速度
 const float SENSITIVITY = 0.1f; //默认的灵敏度
 const float ZOOM = 45.0f; //默认的视角
 
-// 一个抽象的摄像机类，它处理输入并计算相应的欧拉角、向量和矩阵以供OpenGL使用。
+						  // 一个抽象的摄像机类，它处理输入并计算相应的欧拉角、向量和矩阵以供OpenGL使用。
 class Camera
 {
 public:
@@ -33,16 +33,16 @@ public:
 
 	float yaw; //偏航角
 	float pitch; //俯仰角
-	//滚转角不考虑
+				 //滚转角不考虑
 
 	float MovementSpeed;
 	float MouseSensitivity;
 	float zoom; // 摄像机fov
 
-	// 使用向量构造
-	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), 
-		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), 
-		float yaw = YAW, float pitch = PITCH) : 
+				// 使用向量构造
+	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
+		float yaw = YAW, float pitch = PITCH) :
 		forward(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), zoom(ZOOM)
 	{
 		this->position = position;
@@ -53,9 +53,9 @@ public:
 	}
 
 	// 使用标量值构造
-	Camera(float posX, float posY, float posZ, 
-		float upX, float upY, float upZ, 
-		float yaw, float pitch) : 
+	Camera(float posX, float posY, float posZ,
+		float upX, float upY, float upZ,
+		float yaw, float pitch) :
 		forward(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), zoom(ZOOM)
 	{
 		this->position = glm::vec3(posX, posY, posZ);
@@ -84,7 +84,7 @@ public:
 	void lookToPos(glm::vec3 lookPos);
 
 private:
-	
+
 	void updateCameraVectors();
 	void updateCameraRadius();
 };
