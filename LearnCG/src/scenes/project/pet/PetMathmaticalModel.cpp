@@ -64,14 +64,14 @@ PetMathmaticalModel::PetMathmaticalModel()
 		for (int j = 0; j < DU_number_perBDM; j++)
 		{
 			glm::vec3 du_v1 = BDMs[i].DUs[j].v1;
-			glm::vec3 du_v1tov2 = (BDMs[i].v2 - BDMs[i].v1) / glm::vec3(Crystall_number_perDU);
-			glm::vec3 du_v1tov4 = (BDMs[i].v4 - BDMs[i].v1) / glm::vec3(Crystall_number_perDU);
-			du_v1 += du_v1tov2 / glm::vec3(2.0f); //¾§¸ñ1
+			glm::vec3 du_v1tov2 = (BDMs[i].DUs[j].v2 - BDMs[i].DUs[j].v1) / glm::vec3(Crystall_number_perDU);
+			glm::vec3 du_v1tov4 = (BDMs[i].DUs[j].v4 - BDMs[i].DUs[j].v1) / glm::vec3(Crystall_number_perDU);
+			du_v1 += (du_v1tov2 + du_v1tov4) / glm::vec3(2.0f); //¾§¸ñ1
 			for (int k = 0; k < Crystall_number_perDU * Crystall_number_perDU; k++)
 			{
-
-				crystal.center = du_v1 + du_v1tov2 * glm::vec3(k % Crystall_number_perDU) + 
-					du_v1tov4 * glm::vec3(k / Crystall_number_perDU);
+				crystal.center = du_v1 
+					+ du_v1tov2 * glm::vec3(k % Crystall_number_perDU) 
+					+ du_v1tov4 * glm::vec3(k / Crystall_number_perDU);
 				BDMs[i].DUs[j].CRYSTALs.push_back(crystal);
 			}
 		}
@@ -84,6 +84,8 @@ PetMathmaticalModel::~PetMathmaticalModel()
 {
 	glDeleteVertexArrays(1, &BDM_VAO);
 	glDeleteBuffers(1, &BDM_VBO);
+	glDeleteVertexArrays(1, &DU_VAO);
+	glDeleteBuffers(1, &DU_VBO);
 	delete[] g_bdm_position_data;
 	delete[] g_du_position_data;
 }
@@ -163,10 +165,13 @@ void PetMathmaticalModel::draw(Shader *shader)
 	glDrawArrays(GL_TRIANGLES, 0, BDM_number * 6 * 3);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-	shader->setVec3("color", 255.0f/255, 255.0f/255, 255.0f/255);
-	glBindVertexArray(DU_VAO);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawArrays(GL_TRIANGLES, 0, BDM_number * DU_number_perBDM * 6 * 3);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	if (false)
+	{
+		shader->setVec3("color", 255.0f / 255, 255.0f / 255, 255.0f / 255);
+		glBindVertexArray(DU_VAO);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDrawArrays(GL_TRIANGLES, 0, BDM_number * DU_number_perBDM * 6 * 3);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
 }

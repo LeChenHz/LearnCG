@@ -8,13 +8,18 @@ S_Pet_Demo::S_Pet_Demo()
 
 S_Pet_Demo::~S_Pet_Demo()
 {
+	
 }
 
 void S_Pet_Demo::initGL()
 {
 	camera.position = glm::vec3(0.0f, 14.0f, 0.0f);
 	camera.lookToPos(glm::vec3(0.0f, 0.0f, 0.0f));
-	perModel = new PetMathmaticalModel();
+
+	petModel = new PetMathmaticalModel();
+	readPet = new ReadPetBigFile();
+	coinModel = new CoinModel(readPet, petModel);
+
 	base_shader = new Shader("shaders/project/pet/base_vs.glsl", "shaders/project/pet/base_fs.glsl");
 }
 
@@ -27,18 +32,23 @@ void S_Pet_Demo::paintGL(float deltaTime)
 	glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
 	glm::mat4 model;
+
+	//绘制pet模型
 	base_shader->use();
 	base_shader->setMat4("projection", projection);
 	base_shader->setMat4("view", view);
 	base_shader->setMat4("model", model);
+	petModel->draw(base_shader);
 
-	perModel->draw(base_shader);
-
+	//绘制coin模型
+	coinModel->draw(base_shader);
 }
 
 void S_Pet_Demo::freeGL()
 {
 	delete base_shader;
-	delete perModel;
+	delete coinModel;
+	delete readPet;
+	delete petModel;
 }
 

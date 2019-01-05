@@ -2,6 +2,8 @@
 
 #include "../../Scene.h"
 #include "PetMathmaticalModel.h"
+#include "CoinModel.h"
+#include "ReadPetBigFile.h"
 
 class S_Pet_Demo : public Scene
 {
@@ -14,7 +16,9 @@ public:
 	~S_Pet_Demo();
 
 public:
-	PetMathmaticalModel *perModel;
+	PetMathmaticalModel *petModel;
+	CoinModel *coinModel;
+	ReadPetBigFile *readPet;
 	Shader *base_shader;
 };
 
