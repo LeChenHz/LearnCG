@@ -19,4 +19,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="R_MATH.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="R_WND.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="R_DEVICE.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="R_Geometry.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="R_Render.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="R_CoordinateTransform.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

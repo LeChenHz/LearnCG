@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -152,6 +152,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Renderer3D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="R_CoordinateTransform.h" />
+    <ClInclude Include="R_DEVICE.h" />
+    <ClInclude Include="R_Geometry.h" />
+    <ClInclude Include="R_MATH.h" />
+    <ClInclude Include="R_Render.h" />
+    <ClInclude Include="R_WND.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
