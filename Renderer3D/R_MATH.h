@@ -22,14 +22,16 @@ float interp(float x1, float x2, float t)
 }
 
 // 计算向量长度
-float vector_length(const vector_t *v) {
+float vector_length(const vector_t *v) 
+{
 	float sq = v->x * v->x + v->y * v->y + v->z * v->z;
 	return (float)sqrt(sq);
 }
 
 // TODO z->w = 1.0;
 // z = x + y
-void vector_add(vector_t *z, const vector_t *x, const vector_t *y) {
+void vector_add(vector_t *z, const vector_t *x, const vector_t *y) 
+{
 	z->x = x->x + y->x;
 	z->y = x->y + y->y;
 	z->z = x->z + y->z;
@@ -38,7 +40,8 @@ void vector_add(vector_t *z, const vector_t *x, const vector_t *y) {
 
 // TODO z->w = 1.0;
 // z = x - y
-void vector_sub(vector_t *z, const vector_t *x, const vector_t *y) {
+void vector_sub(vector_t *z, const vector_t *x, const vector_t *y) 
+{
 	z->x = x->x - y->x;
 	z->y = x->y - y->y;
 	z->z = x->z - y->z;
@@ -46,12 +49,14 @@ void vector_sub(vector_t *z, const vector_t *x, const vector_t *y) {
 }
 
 // 向量点乘
-float vector_dotproduct(const vector_t *x, const vector_t *y) {
+float vector_dotproduct(const vector_t *x, const vector_t *y) 
+{
 	return x->x * y->x + x->y * y->y + x->z * y->z;
 }
 
 // 向量叉乘
-void vector_crossproduct(vector_t *z, const vector_t *x, const vector_t *y) {
+void vector_crossproduct(vector_t *z, const vector_t *x, const vector_t *y) 
+{
 	float m1, m2, m3;
 	m1 = x->y * y->z - x->z * y->y;
 	m2 = x->z * y->x - x->x * y->z;
@@ -63,7 +68,8 @@ void vector_crossproduct(vector_t *z, const vector_t *x, const vector_t *y) {
 }
 
 // 矢量插值，t取值 [0, 1]
-void vector_interp(vector_t *z, const vector_t *x1, const vector_t *x2, float t) {
+void vector_interp(vector_t *z, const vector_t *x1, const vector_t *x2, float t) 
+{
 	z->x = interp(x1->x, x2->x, t);
 	z->y = interp(x1->y, x2->y, t);
 	z->z = interp(x1->z, x2->z, t);
@@ -71,7 +77,8 @@ void vector_interp(vector_t *z, const vector_t *x1, const vector_t *x2, float t)
 }
 
 // 矢量归一化
-void vector_normalize(vector_t *v) {
+void vector_normalize(vector_t *v) 
+{
 	float length = vector_length(v);
 	if (length != 0.0f) {
 		float inv = 1.0f / length;
@@ -82,7 +89,8 @@ void vector_normalize(vector_t *v) {
 }
 
 // 矩阵相加 c = a + b
-void matrix_add(matrix_t *c, const matrix_t *a, const matrix_t *b) {
+void matrix_add(matrix_t *c, const matrix_t *a, const matrix_t *b) 
+{
 	int i, j;
 	for (i = 0; i < 4; i++) 
 	{
@@ -92,7 +100,8 @@ void matrix_add(matrix_t *c, const matrix_t *a, const matrix_t *b) {
 }
 
 // 矩阵相减 c = a - b
-void matrix_sub(matrix_t *c, const matrix_t *a, const matrix_t *b) {
+void matrix_sub(matrix_t *c, const matrix_t *a, const matrix_t *b) 
+{
 	int i, j;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++)
@@ -101,7 +110,8 @@ void matrix_sub(matrix_t *c, const matrix_t *a, const matrix_t *b) {
 }
 
 // 矩阵相乘 c = a * b
-void matrix_mul(matrix_t *c, const matrix_t *a, const matrix_t *b) {
+void matrix_mul(matrix_t *c, const matrix_t *a, const matrix_t *b) 
+{
 	matrix_t z;
 	int i, j;
 	for (i = 0; i < 4; i++) 
@@ -118,7 +128,8 @@ void matrix_mul(matrix_t *c, const matrix_t *a, const matrix_t *b) {
 }
 
 // 矩阵×常数   c = a * f
-void matrix_scale(matrix_t *c, const matrix_t *a, float f) {
+void matrix_scale(matrix_t *c, const matrix_t *a, float f) 
+{
 	int i, j;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++)
@@ -127,7 +138,8 @@ void matrix_scale(matrix_t *c, const matrix_t *a, float f) {
 }
 
 // 向量y=向量x * 矩阵m		y = x * m
-void matrix_apply(vector_t *y, const vector_t *x, const matrix_t *m) {
+void matrix_apply(vector_t *y, const vector_t *x, const matrix_t *m) 
+{
 	float X = x->x, Y = x->y, Z = x->z, W = x->w;
 	y->x = X * m->m[0][0] + Y * m->m[1][0] + Z * m->m[2][0] + W * m->m[3][0];
 	y->y = X * m->m[0][1] + Y * m->m[1][1] + Z * m->m[2][1] + W * m->m[3][1];
@@ -136,7 +148,8 @@ void matrix_apply(vector_t *y, const vector_t *x, const matrix_t *m) {
 }
 
 // 设为单位矩阵
-void matrix_set_identity(matrix_t *m) {
+void matrix_set_identity(matrix_t *m) 
+{
 	m->m[0][0] = m->m[1][1] = m->m[2][2] = m->m[3][3] = 1.0f;
 	m->m[0][1] = m->m[0][2] = m->m[0][3] = 0.0f;
 	m->m[1][0] = m->m[1][2] = m->m[1][3] = 0.0f;
@@ -145,7 +158,8 @@ void matrix_set_identity(matrix_t *m) {
 }
 
 // 设为零矩阵
-void matrix_set_zero(matrix_t *m) {
+void matrix_set_zero(matrix_t *m) 
+{
 	m->m[0][0] = m->m[0][1] = m->m[0][2] = m->m[0][3] = 0.0f;
 	m->m[1][0] = m->m[1][1] = m->m[1][2] = m->m[1][3] = 0.0f;
 	m->m[2][0] = m->m[2][1] = m->m[2][2] = m->m[2][3] = 0.0f;
@@ -153,7 +167,8 @@ void matrix_set_zero(matrix_t *m) {
 }
 
 // 平移变换
-void matrix_set_translate(matrix_t *m, float x, float y, float z) {
+void matrix_set_translate(matrix_t *m, float x, float y, float z) 
+{
 	matrix_set_identity(m);
 	m->m[3][0] = x;
 	m->m[3][1] = y;
@@ -161,7 +176,8 @@ void matrix_set_translate(matrix_t *m, float x, float y, float z) {
 }
 
 // 缩放变换
-void matrix_set_scale(matrix_t *m, float x, float y, float z) {
+void matrix_set_scale(matrix_t *m, float x, float y, float z) 
+{
 	matrix_set_identity(m);
 	m->m[0][0] = x;
 	m->m[1][1] = y;
@@ -170,7 +186,8 @@ void matrix_set_scale(matrix_t *m, float x, float y, float z) {
 
 // TODO
 // 旋转矩阵
-void matrix_set_rotate(matrix_t *m, float x, float y, float z, float theta) {
+void matrix_set_rotate(matrix_t *m, float x, float y, float z, float theta) 
+{
 	float qsin = (float)sin(theta * 0.5f);
 	float qcos = (float)cos(theta * 0.5f);
 	vector_t vec = { x, y, z, 1.0f };
@@ -193,9 +210,9 @@ void matrix_set_rotate(matrix_t *m, float x, float y, float z, float theta) {
 	m->m[3][3] = 1.0f;
 }
 
-// TODO
-// 设置摄像机
-void matrix_set_lookat(matrix_t *m, const vector_t *eye, const vector_t *at, const vector_t *up) {
+// 计算View矩阵
+void matrix_set_lookat(matrix_t *m, const vector_t *eye, const vector_t *at, const vector_t *up) 
+{
 	vector_t xaxis, yaxis, zaxis;
 
 	vector_sub(&zaxis, at, eye);
@@ -223,10 +240,11 @@ void matrix_set_lookat(matrix_t *m, const vector_t *eye, const vector_t *at, con
 	m->m[3][3] = 1.0f;
 }
 
-// TODO
-// 透视矩阵 D3DXMatrix Perspective FovLH
+// TODO 透视矩阵
+// 透视矩阵 D3DX Matrix Perspective FovLH
 // ProjectionMatrix = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-void matrix_set_perspective(matrix_t *m, float fovy, float aspect, float zn, float zf) {
+void matrix_set_perspective(matrix_t *m, float fovy, float aspect, float zn, float zf) 
+{
 	float fax = 1.0f / (float)tan(fovy * 0.5f);
 	matrix_set_zero(m);
 	m->m[0][0] = (float)(fax / aspect);

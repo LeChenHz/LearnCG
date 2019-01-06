@@ -16,12 +16,13 @@ void device_draw_primitive(device_t *device, const vertex_t *v1, const vertex_t 
 	point_t p1, p2, p3, c1, c2, c3;
 	int render_state = device->render_state;
 
-	// 按照 Transform 变化
+	// 按照 Transform 变化 
+	// ci = MVP矩阵 * vi->pos
 	transform_apply(&device->transform, &c1, &v1->pos);
 	transform_apply(&device->transform, &c2, &v2->pos);
 	transform_apply(&device->transform, &c3, &v3->pos);
 
-	//TODO
+	// TODO cvv裁剪
 	// 裁剪，注意此处可以完善为具体判断几个点在 cvv内以及同cvv相交平面的坐标比例
 	// 进行进一步精细裁剪，将一个分解为几个完全处在 cvv内的三角形
 	if (transform_check_cvv(&c1) != 0) 
@@ -62,7 +63,8 @@ void device_draw_primitive(device_t *device, const vertex_t *v1, const vertex_t 
 			device_render_trap(device, &traps[1]);
 	}
 
-	if (render_state & RENDER_STATE_WIREFRAME) {		// 线框绘制
+	if (render_state & RENDER_STATE_WIREFRAME) // 线框绘制
+	{
 		device_draw_line(device, (int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y, device->foreground);
 		device_draw_line(device, (int)p1.x, (int)p1.y, (int)p3.x, (int)p3.y, device->foreground);
 		device_draw_line(device, (int)p3.x, (int)p3.y, (int)p2.x, (int)p2.y, device->foreground);

@@ -35,20 +35,20 @@ void device_pixel(device_t *device, int x, int y, IUINT32 color);
 IUINT32 device_texture_read(const device_t *device, float u, float v);
 
 
-#define RENDER_STATE_WIREFRAME      1		// 渲染线框
+#define RENDER_STATE_WIREFRAME      1		// 渲染线框 （默认）
 #define RENDER_STATE_TEXTURE        2		// 渲染纹理
 #define RENDER_STATE_COLOR          4		// 渲染颜色
 
-// 设备初始化，fb为外部帧缓存，非 NULL 将引用外部帧缓存（每行 4字节对齐）
+// 设备初始化：framebuffer、zbuffer
+// fb为外部帧缓存，非 NULL 将引用外部帧缓存（每行 4字节对齐）
 void device_init(device_t *device, int width, int height, void *fb) {
 	// TODO
 	int need = sizeof(void*) * (height * 2 + 1024) + width * height * 8;
 	char *ptr = (char*)malloc(need + 64);
 	char *framebuf, *zbuf;
 	int j;
-	/* assert的作用是先计算表达式 expression ，如果其值为假（即为0），
-	那么它先向stderr打印一条出错信息，然后通过调用 abort 来终止程序运行 */
 	assert(ptr);
+	// TODO
 	device->framebuffer = (IUINT32**)ptr;
 	device->zbuffer = (float**)(ptr + sizeof(void*) * height);
 	ptr += sizeof(void*) * height * 2;
@@ -57,7 +57,8 @@ void device_init(device_t *device, int width, int height, void *fb) {
 	framebuf = (char*)ptr;
 	zbuf = (char*)ptr + width * height * 4;
 	ptr += width * height * 8;
-	if (fb != NULL) framebuf = (char*)fb;
+	if (fb != NULL) 
+		framebuf = (char*)fb; //将引用外部帧缓存
 	for (j = 0; j < height; j++) {
 		device->framebuffer[j] = (IUINT32*)(framebuf + width * 4 * j);
 		device->zbuffer[j] = (float*)(zbuf + width * 4 * j);
@@ -73,8 +74,8 @@ void device_init(device_t *device, int width, int height, void *fb) {
 	device->height = height;
 	device->background = 0xc0c0c0;
 	device->foreground = 0;
-	transform_init(&device->transform, width, height);
-	device->render_state = RENDER_STATE_WIREFRAME;
+	transform_init(&device->transform, width, height); //初始化MVP矩阵
+	device->render_state = RENDER_STATE_WIREFRAME; //默认：线框模式
 }
 
 // 设置当前纹理
@@ -90,14 +91,14 @@ void device_set_texture(device_t *device, void *bits, long pitch, int w, int h) 
 	device->max_v = (float)(h - 1);
 }
 
-//TODO
 // 清空 framebuffer 和 zbuffer
+// （参数）mode：
 void device_clear(device_t *device, int mode) {
 	int y, x, height = device->height;
 	for (y = 0; y < device->height; y++) {
 		IUINT32 *dst = device->framebuffer[y];
-		IUINT32 cc = (height - 1 - y) * 230 / (height - 1);
-		cc = (cc << 16) | (cc << 8) | cc;
+		IUINT32 cc = (height - 1 - y) * 230 / (height - 1); //背景颜色，高度由上往下渐变，230只是颜色等级
+		cc = (cc << 16) | (cc << 8) | cc; //rgb
 		if (mode == 0) 
 			cc = device->background;
 		for (x = device->width; x > 0; dst++, x--) 
@@ -158,15 +159,18 @@ void device_draw_line(device_t *device, int x1, int y1, int x2, int y2, IUINT32 
 	}
 }
 
-// 画点
-void device_pixel(device_t *device, int x, int y, IUINT32 color) {
-	if (((IUINT32)x) < (IUINT32)device->width && ((IUINT32)y) < (IUINT32)device->height) {
+// 画点（改变点对应的framebuffer[][]的值）
+void device_pixel(device_t *device, int x, int y, IUINT32 color) 
+{
+	if (((IUINT32)x) < (IUINT32)device->width && ((IUINT32)y) < (IUINT32)device->height) 
+	{
 		device->framebuffer[y][x] = color;
 	}
 }
 
 // 根据坐标读取纹理
-IUINT32 device_texture_read(const device_t *device, float u, float v) {
+IUINT32 device_texture_read(const device_t *device, float u, float v)
+{
 	int x, y;
 	u = u * device->max_u;
 	v = v * device->max_v;

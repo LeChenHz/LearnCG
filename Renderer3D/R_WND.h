@@ -10,7 +10,7 @@
 
 int screen_w, //屏幕宽
 	screen_h, //屏幕高
-	screen_exit = 0;
+	screen_exit = 0; //退出程序
 int screen_keys[512];	// 当前键盘按下状态
 
 static HWND screen_handle = NULL;		// 主窗口 HWND
@@ -26,7 +26,7 @@ int screen_close(void);								// 关闭屏幕
 void screen_dispatch(void);							// 处理消息
 void screen_update(void);							// 显示 FrameBuffer
 
-													// win32 event handler
+// win32 event handler
 static LRESULT screen_events(HWND, UINT, WPARAM, LPARAM);
 
 // 初始化窗口并设置标题
@@ -145,6 +145,7 @@ static LRESULT screen_events(HWND hWnd, UINT msg,
 	return 0;
 }
 
+//TODO 分发消息
 void screen_dispatch(void) {
 	MSG msg;
 	while (1) {
@@ -175,7 +176,18 @@ void screen_dispatch(void) {
 
 void screen_update(void) {
 	HDC hDC = GetDC(screen_handle);
-	BitBlt(hDC, 0, 0, screen_w, screen_h, screen_dc, 0, 0, SRCCOPY);
-	ReleaseDC(screen_handle, hDC);
+	BitBlt(
+		hDC, // hDestDC：指向目标设备环境的句柄
+		0, // x：指定目标矩形区域左上角的X轴逻辑坐标
+		0, // y：指定目标矩形区域左上角的Y轴逻辑坐标
+		screen_w, // nWidth：指定源在目标矩形区域的逻辑宽度
+		screen_h, // nHeight：指定源在目标矩形区域的逻辑高度
+		screen_dc, // hSrcDC：指向源设备环境的句柄
+		0, // xSrc：指定源矩形区域左上角的X轴逻辑坐标
+		0, // ySrc：指定源矩形区域左上角的Y轴逻辑坐标
+		SRCCOPY // 指定光栅操作代码。这些代码将定义源矩形区域的颜色数据，如何与目标矩形区域的颜色数据组合以完成最后的颜色。
+				// SRCCOPY：将源矩形区域直接拷贝到目标矩形区域
+	);
+	ReleaseDC(screen_handle, hDC); //ReleaseDC函数释放设备上下文环境（DC）供其他应用程序使用
 	screen_dispatch();
 }

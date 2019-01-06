@@ -13,8 +13,22 @@
 
 
 # Renderer3D
-C++光栅化渲染器，打算在[skywind3000/mini3d](https://github.com/skywind3000/mini3d)基础上写一些东西。
+C++光栅化渲染器，计划在[skywind3000/mini3d](https://github.com/skywind3000/mini3d)程序基础上完成@skywind3000 布置的基础作业、进阶作业，然后做一些课后习题。
+- 基础作业
+    - [ ] 增加背面剔除
+    - [ ] 增加简单光照
+    - [ ] 提供更多渲染模式
+    - [ ] 实现二次线性差值的纹理读取
 
+- 进阶作业
+    - [ ] 推导并证明程序中用到的所有几何知识
+    - [ ] 优化顶点计算性能 
+    - [ ] 优化 draw_scanline 性能
+    - [ ] 从 BMP/TGA 文件加载纹理
+    - [ ] 载入 BSP 场景并实现漫游
+
+- 课外习题
+    - [ ] 左手坐标系→右手坐标系
 
 
 # FixedPipeline
