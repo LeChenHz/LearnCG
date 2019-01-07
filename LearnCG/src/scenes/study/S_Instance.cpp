@@ -53,7 +53,7 @@ void S_Instance::initGL()
 
 	for (unsigned int i = 0; i < rock->meshes.size(); i++)
 	{
-		unsigned int VAO = rock->meshes[i].VAO;
+		unsigned int VAO = rock->meshes[i]->VAO;
 		glBindVertexArray(VAO);
 
 		glEnableVertexAttribArray(3);
@@ -95,16 +95,16 @@ void S_Instance::paintGL(float deltaTime)
 	model = glm::translate(model, glm::vec3(0.0f, -3.0f, 0.0f));
 	model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 	planetShader->setMat4("model", model);
-	planet->Draw(*planetShader);
+	planet->Draw(planetShader);
 
-	//// 绘制小行星
-	//asteroidShader->use();
-	//for (unsigned int i = 0; i < rock->meshes.size(); i++)
-	//{
-	//	glBindVertexArray(rock->meshes[i].VAO);
-	//	glDrawElementsInstanced(GL_TRIANGLES, rock->meshes[i].indices.size(), GL_UNSIGNED_INT, 0, amount);
-	//	glBindVertexArray(0);
-	//}
+	// 绘制小行星
+	asteroidShader->use();
+	for (unsigned int i = 0; i < rock->meshes.size(); i++)
+	{
+		glBindVertexArray(rock->meshes[i]->VAO);
+		glDrawElementsInstanced(GL_TRIANGLES, rock->meshes[i]->indices.size(), GL_UNSIGNED_INT, 0, amount);
+		glBindVertexArray(0);
+	}
 }
 
 void S_Instance::freeGL()

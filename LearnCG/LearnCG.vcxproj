@@ -133,6 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\common\Mesh.cpp" />
+    <ClCompile Include="src\common\Model.cpp" />
+    <ClCompile Include="src\common\Shader.cpp" />
     <ClCompile Include="src\scenes\project\pet\CoinModel.cpp" />
     <ClCompile Include="src\common\Camera.cpp" />
     <ClCompile Include="src\scenes\project\pet\PetMathmaticalModel.cpp" />

@@ -45,7 +45,7 @@ void S_fog::paintGL(float deltaTime)
 		model = glm::translate(model, objectPositions[i]);
 		model = glm::scale(model, glm::vec3(0.25f));
 		shader->setMat4("model", model);
-		ourModel->Draw(*shader);
+		ourModel->Draw(shader);
 	}
 
 }
