@@ -9,12 +9,17 @@ class CoinModel
 public:
 	CoinModel(ReadPetBigFile *readPet, PetMathmaticalModel *petModel);
 	~CoinModel();
-	void draw(Shader *shader);
+	void draw(glm::mat4& projection, glm::mat4& view);
 public:
-	GLuint COIN_VAO, COIN_VBO;
+	GLuint COIN_VAO;
+	GLuint COIN_VBO;
+	GLuint VERTEX_VBO, POS_VBO;
 	GLfloat *g_coin_position_data;
+	GLfloat *point_position_data;
 	int coinCount;
+	int pointCount;
 
-	Shader *particle_shader;
+	Shader *shader;
+	int choice = 0;
 };
 

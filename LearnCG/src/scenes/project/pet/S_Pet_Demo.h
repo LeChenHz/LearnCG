@@ -16,6 +16,7 @@ public:
 	~S_Pet_Demo();
 
 public:
+
 	PetMathmaticalModel *petModel;
 	CoinModel *coinModel;
 	ReadPetBigFile *readPet;

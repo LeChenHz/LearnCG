@@ -148,6 +148,7 @@
     <ClCompile Include="src\scenes\study\blending_discard.cpp" />
     <ClCompile Include="src\scenes\study\bloom.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
+    <ClCompile Include="src\scenes\study\S_Instance.cpp" />
     <ClCompile Include="src\scenes\study\S_particle.cpp" />
     <ClCompile Include="src\scenes\study\shape_test.cpp" />
     <ClCompile Include="src\scenes\study\deferred_shading.cpp" />
@@ -198,6 +199,10 @@
     <None Include="shaders\study\fog\fog.vs" />
     <None Include="shaders\paper\marching_cubes\mc_fs.glsl" />
     <None Include="shaders\paper\marching_cubes\mc_vs.glsl" />
+    <None Include="shaders\study\instancing\asteroids_fs.glsl" />
+    <None Include="shaders\study\instancing\asteroids_vs.glsl" />
+    <None Include="shaders\study\instancing\planet_fs.glsl" />
+    <None Include="shaders\study\instancing\planet_vs.glsl" />
     <None Include="shaders\study\particle_system\particle_system.fs" />
     <None Include="shaders\study\particle_system\particle_system.vs" />
     <None Include="shaders\study\sphere\sphere.fs" />
@@ -239,6 +244,7 @@
     <ClInclude Include="src\common\Text2D.h" />
     <ClInclude Include="src\common\texture.h" />
     <ClInclude Include="src\common\Texture2D.h" />
+    <ClInclude Include="src\scenes\study\S_Instance.h" />
     <ClInclude Include="src\scenes\study\S_particle.h" />
     <ClInclude Include="src\scenes\study\S_fog.h" />
     <ClInclude Include="src\scenes\study\S_gerstner_water.h" />

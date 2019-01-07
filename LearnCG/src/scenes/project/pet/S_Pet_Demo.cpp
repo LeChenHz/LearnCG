@@ -5,7 +5,6 @@ S_Pet_Demo::S_Pet_Demo()
 	hiddenMouse = true;
 }
 
-
 S_Pet_Demo::~S_Pet_Demo()
 {
 	
@@ -41,7 +40,7 @@ void S_Pet_Demo::paintGL(float deltaTime)
 	petModel->draw(base_shader);
 
 	//»æÖÆcoinÄ£ÐÍ
-	coinModel->draw(base_shader);
+	coinModel->draw(projection, view);
 }
 
 void S_Pet_Demo::freeGL()
