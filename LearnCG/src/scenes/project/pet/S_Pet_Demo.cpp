@@ -40,7 +40,15 @@ void S_Pet_Demo::paintGL(float deltaTime)
 	petModel->draw(base_shader);
 
 	//»æÖÆcoinÄ£ÐÍ
-	coinModel->draw(projection, view);
+	time += deltaTime;
+	if (time >= 1.0f)
+	{
+		readPet->writeSingleCoin();
+		coinModel->draw(projection, view, true);
+		time -= 1.0f;
+	} 
+	else 
+		coinModel->draw(projection, view, false);
 }
 
 void S_Pet_Demo::freeGL()

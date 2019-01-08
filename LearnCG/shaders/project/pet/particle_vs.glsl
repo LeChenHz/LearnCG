@@ -3,7 +3,7 @@
 layout(location = 0) in vec3 squareVertices;
 //layout(location = 1) in vec4 xyzs; // 坐标和大小
 //layout(location = 2) in vec4 color; // 颜色
-layout(location = 1) in vec4 xyz; // 坐标
+layout(location = 1) in vec3 xyz; // 坐标
 
 //out vec2 UV;
 //out vec4 particlecolor;
@@ -14,7 +14,7 @@ uniform mat4 VP; // Model-View-Projection matrix, but without the Model (the pos
 
 void main()
 {
-	float particleSize = 1.0;
+	float particleSize = 0.02;
 	vec3 particleCenter_wordspace = xyz;
 	
 	vec3 vertexPosition_worldspace = 

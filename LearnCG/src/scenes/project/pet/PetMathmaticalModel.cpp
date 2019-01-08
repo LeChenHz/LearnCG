@@ -159,11 +159,23 @@ void PetMathmaticalModel::init()
 void PetMathmaticalModel::draw(Shader *shader)
 {
 	shader->use();
-	shader->setVec3("color", 161.0f/255, 161.0f/255, 123.0f/255);
-	glBindVertexArray(BDM_VAO);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawArrays(GL_TRIANGLES, 0, BDM_number * 6 * 3);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	if (true)
+	{
+		shader->setVec3("color", 161.0f / 255, 161.0f / 255, 123.0f / 255);
+		glBindVertexArray(BDM_VAO);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDrawArrays(GL_TRIANGLES, 0, BDM_number * 6 * 3);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
+	if (true)
+	{
+		shader->setVec3("color", 255.0f / 255, 255.0f / 255, 255.0f / 255);
+		glBindVertexArray(BDM_VAO);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDrawArrays(GL_TRIANGLES, 0, BDM_number * 6 * 3);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
 	if (false)
 	{

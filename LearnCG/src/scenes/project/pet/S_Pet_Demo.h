@@ -21,5 +21,6 @@ public:
 	CoinModel *coinModel;
 	ReadPetBigFile *readPet;
 	Shader *base_shader;
+	float time;
 };
 

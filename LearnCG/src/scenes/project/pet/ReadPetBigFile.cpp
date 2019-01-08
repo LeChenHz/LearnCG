@@ -1,4 +1,5 @@
 #include "ReadPetBigFile.h"
+#include "../../../utils/TestExecutionTime.h"
 
 ReadPetBigFile::ReadPetBigFile()
 {
@@ -11,14 +12,10 @@ ReadPetBigFile::ReadPetBigFile()
 		return;
 	}
 
+	TestExecutionTime::start();
 	SingleCoin s;
-	//cout << sizeof(s) << sizeof(s.nTime) << sizeof(s.CrystalId) << sizeof(s.BDMId) << sizeof(s.DUId);
-	for (int i = 0; i < coinCount; i++)
-	{
-		writeSingleCoin(s);
-		//coutSingleCoin(s);
-		coins.push_back(s);
-	}
+	writeSingleCoin();
+	TestExecutionTime::end();
 }
 
 
@@ -27,12 +24,13 @@ ReadPetBigFile::~ReadPetBigFile()
 {
 }
 
-void ReadPetBigFile::writeSingleCoin(SingleCoin & s)
+void ReadPetBigFile::writeSingleCoin()
 {
-	readStream.read((char *)&s.nTime, sizeof(s.nTime));
-	readStream.read((char *)&s.CrystalId, sizeof(s.CrystalId));
-	readStream.read((char *)&s.BDMId, sizeof(s.BDMId));
-	readStream.read((char *)&s.DUId, sizeof(s.DUId));
+	//readStream.read((char *)&s.nTime, sizeof(s.nTime));
+	//readStream.read((char *)&s.CrystalId, sizeof(s.CrystalId));
+	//readStream.read((char *)&s.BDMId, sizeof(s.BDMId));
+	//readStream.read((char *)&s.DUId, sizeof(s.DUId));
+	readStream.read((char *)coins, sizeof(SingleCoin) * coinCount);
 }
 
 void ReadPetBigFile::coutSingleCoin(SingleCoin & s)
