@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
     <ClCompile Include="src\common\Mesh.cpp" />
     <ClCompile Include="src\common\Model.cpp" />
     <ClCompile Include="src\common\Shader.cpp" />
@@ -223,6 +224,7 @@
     <None Include="shaders\study\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\project\pet\OctTree.h" />
     <ClInclude Include="src\scenes\project\pet\CoinModel.h" />
     <ClInclude Include="src\common\Camera.h" />
     <ClInclude Include="src\scenes\GL_HEAD.h" />
