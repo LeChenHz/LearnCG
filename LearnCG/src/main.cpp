@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <AntTweakBar/AntTweakBar.h>
 
 #include <iostream>
 #include <string>
@@ -7,9 +8,15 @@ using namespace std;
 
 #include "scenes/SceneHead.h"
 
+#define TWB //##/
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height); // 窗口大小调整的回调函数(当窗口大小改变时，视口也要改变)
 void mouse_callback(GLFWwindow* window, double xpos, double ypos); // 鼠标控制回调
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset); // 滚轮控制回调
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void character_callback(GLFWwindow* window, unsigned int codepoint);
+
 void processInput(GLFWwindow *window); // 键盘控制回调
 int initGlfw(int width, int height, const char * title, bool hiddenMouse); //初始化Glfw，返回1代表成功，0代表失败
 int initGlad();//初始化Glad，返回1代表成功，0代表失败
@@ -25,7 +32,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_MarchingCube();
+	scene = new S_fog();
 
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
@@ -35,6 +42,12 @@ int main()
 		std::cout << "初始化Glad失败" << std::endl;
 		return -1;
 	}
+
+	TwInit(TW_OPENGL_CORE, NULL); // 核心模式
+	TwWindowSize(scene->SCR_WIDTH, scene->SCR_HEIGHT);
+
+	TwBar *bar;
+	bar = TwNewBar("MyTweakBar");
 
 	scene->initGL();
 
@@ -52,6 +65,8 @@ int main()
 		// 绘制
 		scene->paintGL(deltaTime);
 
+		TwDraw();  // 绘制tweak bar(s)
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -59,6 +74,7 @@ int main()
 	scene->freeGL();
 	delete scene;
 
+	TwTerminate();
 	glfwTerminate();
 	return 0;
 }
@@ -81,6 +97,7 @@ void processInput(GLFWwindow *window)
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
+	TWB TwWindowSize(width, height);
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
@@ -99,11 +116,27 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	lastY = ypos;
 
 	scene->camera.ProcessMouseMovement(xoffset, yoffset);
+	TWB TwEventMousePosGLFW(xpos, ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
 	scene->camera.ProcessMouseScroll(yoffset);
+	TWB TwEventMouseWheelGLFW(yoffset);
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	TWB TwEventMouseButtonGLFW(button, action);
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	TWB TwEventKeyGLFW(key, action);
+}
+void character_callback(GLFWwindow* window, unsigned int codepoint)
+{
+	TWB TwEventCharGLFW(codepoint, GLFW_PRESS);
 }
 
 int initGlfw(int width, int height, const char * title, bool hiddenMouse)
@@ -127,6 +160,10 @@ int initGlfw(int width, int height, const char * title, bool hiddenMouse)
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	glfwSetCharCallback(window, character_callback);
+	glfwSetKeyCallback(window, key_callback);
+
 	if (hiddenMouse)
 	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 隐藏光标，鼠标停留在窗口内
