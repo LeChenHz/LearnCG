@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\utils\ModelGenerator.cpp" />
     <ClCompile Include="src\utils\FileReadUtil.cpp" />
     <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
     <ClCompile Include="src\common\Mesh.cpp" />
@@ -225,6 +226,7 @@
     <None Include="shaders\study\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\utils\ModelGenerator.h" />
     <ClInclude Include="src\utils\FileReadUtil.h" />
     <ClInclude Include="src\scenes\project\pet\OctTree.h" />
     <ClInclude Include="src\scenes\project\pet\CoinModel.h" />

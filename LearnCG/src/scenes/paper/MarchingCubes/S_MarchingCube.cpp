@@ -1,6 +1,5 @@
 #include "S_MarchingCube.h"
-
-
+#include "../../../utils/ModelGenerator.h"
 
 void S_MarchingCube::initGL()
 {
@@ -35,6 +34,12 @@ void S_MarchingCube::initGL()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	marchingCubes();
+
+	if (onlyForGeneratorModel)
+	{
+		ModelGenerator::GetInstance()->generateObjUsePosNormal("E:\\Desktop\\PET\\model.obj", isosurfaceVersPos, isosurfaceVersNormal, versNumber);
+		exit(0);
+	}
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * versNumber * 2, NULL, GL_STATIC_DRAW);
 

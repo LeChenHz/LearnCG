@@ -27,13 +27,6 @@ public:
 	void calVerticesNormal(glm::vec3 &normal, int x_index, int y_index, int z_index);
 public:
 
-	glm::vec3 pointLightPositions[4] = {
-		glm::vec3(0.7f,  0.2f,  2.0f),
-		glm::vec3(2.3f, -3.3f, -4.0f),
-		glm::vec3(-4.0f,  2.0f, -12.0f),
-		glm::vec3(0.0f,  0.0f, -3.0f)
-	};
-
 	glm::vec3 isosurfaceVersPos[160 * 160 * 200 * 3 * 5];
 	glm::vec3 isosurfaceVersNormal[160 * 160 * 200 * 3 * 5];
 	int versNumber = 0;
@@ -49,6 +42,7 @@ public:
 
 	int subdivide_cube_num_x = 200, subdivide_cube_num_y = 160, subdivide_cube_num_z = 160;
 	float target_value; // 等值面值
+	bool onlyForGeneratorModel = true; // 将数据生成模型，就退出程序
 	int g_view_mode = 0; // 显示模式，0:Fill, 1:Lines, 2:fix 
 	bool first = true;
 	bool paintFrame = false;
