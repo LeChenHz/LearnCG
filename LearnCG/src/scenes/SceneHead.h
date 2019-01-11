@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "paper/MarchingCubes/S_MarchingCube_sphere.h"
+#include "paper/MarchingCubes/S_MarchingCube.h"
 #include "paper/MarchingCubes/S_MarchingCube_pointcloud.h"
 
 #include "project/pet/S_Pet_Demo.h"
