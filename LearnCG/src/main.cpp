@@ -32,7 +32,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_Pet_Demo();
+	scene = new S_text_uv();
 
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "´´½¨GLFW´°¿ÚÊ§°Ü" << std::endl;

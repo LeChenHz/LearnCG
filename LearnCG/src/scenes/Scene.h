@@ -9,7 +9,8 @@ using namespace std;
 
 #include "../utils/TestExecutionTime.h"
 
-class Scene {
+class Scene 
+{
 public:
 	virtual void initGL() = 0;
 	virtual void paintGL(float deltaTime) = 0; //// deltaTime为两次paint间隔的时间ms

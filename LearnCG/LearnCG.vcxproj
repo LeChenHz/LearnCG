@@ -133,7 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\common\Text2D.cpp" />
     <ClCompile Include="src\scenes\project\pet\LineFrameRenderer.cpp" />
+    <ClCompile Include="src\scenes\study\S_text_uv.cpp" />
     <ClCompile Include="src\utils\ModelGenerator.cpp" />
     <ClCompile Include="src\utils\FileReadUtil.cpp" />
     <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
@@ -155,24 +157,18 @@
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\study\S_Instance.cpp" />
     <ClCompile Include="src\scenes\study\S_particle.cpp" />
-    <ClCompile Include="src\scenes\study\shape_test.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\scenes\study\billboard.cpp" />
-    <ClCompile Include="src\scenes\study\sphere_draw.cpp" />
     <ClCompile Include="src\common\glad.c" />
     <ClCompile Include="src\common\ResourceManager.cpp" />
     <ClCompile Include="src\common\stb_image.cpp" />
     <ClCompile Include="src\common\texture.cpp" />
     <ClCompile Include="src\common\Texture2D.cpp" />
-    <ClCompile Include="src\scenes\study\stencil_testing.cpp" />
     <ClCompile Include="src\scenes\study\S_fog.cpp" />
     <ClCompile Include="src\scenes\project\pet\S_model.cpp" />
     <ClCompile Include="src\scenes\study\S_gerstner_water.cpp" />
     <ClCompile Include="src\scenes\study\S_normal_mapping.cpp" />
-    <ClCompile Include="src\scenes\study\text_freetype.cpp" />
     <ClCompile Include="src\scenes\study\text_uv.cpp" />
     <ClCompile Include="src\utils\TestExecutionTime.cpp" />
-    <ClCompile Include="src\scenes\study\S_billboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\base\base_color_fs.glsl" />
@@ -187,22 +183,6 @@
     <None Include="shaders\study\billboard\billboard.vs" />
     <None Include="shaders\study\billboard\cube.fs" />
     <None Include="shaders\study\billboard\cube.vs" />
-    <None Include="shaders\study\blending_discard\blending.fs" />
-    <None Include="shaders\study\blending_discard\blending.vs" />
-    <None Include="shaders\study\bloom\bloom.fs" />
-    <None Include="shaders\study\bloom\bloom.vs" />
-    <None Include="shaders\study\bloom\bloom_final.fs" />
-    <None Include="shaders\study\bloom\bloom_final.vs" />
-    <None Include="shaders\study\bloom\blur.fs" />
-    <None Include="shaders\study\bloom\blur.vs" />
-    <None Include="shaders\study\bloom\light_box.fs" />
-    <None Include="shaders\study\bloom\light_box.vs" />
-    <None Include="shaders\study\deferred_shading\deferred_light_box.fs" />
-    <None Include="shaders\study\deferred_shading\deferred_light_box.vs" />
-    <None Include="shaders\study\deferred_shading\deferred_shading.fs" />
-    <None Include="shaders\study\deferred_shading\deferred_shading.vs" />
-    <None Include="shaders\study\deferred_shading\g_buffer.fs" />
-    <None Include="shaders\study\deferred_shading\g_buffer.vs" />
     <None Include="shaders\study\fog\fog.fs" />
     <None Include="shaders\study\fog\fog.vs" />
     <None Include="shaders\paper\marching_cubes\mc_fs.glsl" />
@@ -217,18 +197,14 @@
     <None Include="shaders\study\sphere\sphere.vs" />
     <None Include="shaders\study\sphere\sphere_fs.glsl" />
     <None Include="shaders\study\sphere\sphere_vs.glsl" />
-    <None Include="shaders\study\stencil\stencil_single_color.fs" />
-    <None Include="shaders\study\stencil\stencil_testing.fs" />
-    <None Include="shaders\study\stencil\stencil_testing.vs" />
-    <None Include="shaders\study\text_freetype\text.fs.glsl" />
-    <None Include="shaders\study\text_freetype\text.vs.glsl" />
-    <None Include="shaders\study\text_uv\text_uv.fs.glsl" />
-    <None Include="shaders\study\text_uv\text_uv.vs.glsl" />
+    <None Include="shaders\study\text_uv\text_uv_fs.glsl" />
+    <None Include="shaders\study\text_uv\text_uv_vs.glsl" />
     <None Include="shaders\study\water\water_fs.glsl" />
     <None Include="shaders\study\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\scenes\project\pet\LineFrameRenderer.h" />
+    <ClInclude Include="src\scenes\study\S_text_uv.h" />
     <ClInclude Include="src\utils\ModelGenerator.h" />
     <ClInclude Include="src\utils\FileReadUtil.h" />
     <ClInclude Include="src\scenes\project\pet\OctTree.h" />
@@ -263,7 +239,6 @@
     <ClInclude Include="src\scenes\study\S_gerstner_water.h" />
     <ClInclude Include="src\scenes\study\S_normal_mapping.h" />
     <ClInclude Include="src\utils\TestExecutionTime.h" />
-    <ClInclude Include="src\scenes\study\S_billboard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
