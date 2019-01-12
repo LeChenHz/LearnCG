@@ -3,7 +3,7 @@
 
 ReadPetBigFile::ReadPetBigFile()
 {
-	petDataFilename = "C:/coin.dat";
+	petDataFilename = "E:/Desktop/PET/coin.dat";
 	readStream = ifstream(petDataFilename, ifstream::binary);
 
 	if (!readStream)

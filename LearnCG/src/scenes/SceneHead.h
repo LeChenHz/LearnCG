@@ -5,6 +5,7 @@
 #include "paper/MarchingCubes/S_MarchingCube_pointcloud.h"
 
 #include "project/pet/S_Pet_Demo.h"
+#include "project/pet/S_model.h" // 模型加载
 
 #include "study/S_fog.h" // 雾化效果
 #include "study/S_gerstner_water.h" //简单水面效果

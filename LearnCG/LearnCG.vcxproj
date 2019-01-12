@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\project\pet\LineFrameRenderer.cpp" />
     <ClCompile Include="src\utils\ModelGenerator.cpp" />
     <ClCompile Include="src\utils\FileReadUtil.cpp" />
     <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
@@ -151,13 +152,10 @@
     <ClCompile Include="src\scenes\project\pet\ReadPetBigFile.cpp" />
     <ClCompile Include="src\scenes\project\pet\S_Pet_Demo.cpp" />
     <ClCompile Include="src\scenes\SceneTemplate.cpp" />
-    <ClCompile Include="src\scenes\study\blending_discard.cpp" />
-    <ClCompile Include="src\scenes\study\bloom.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\study\S_Instance.cpp" />
     <ClCompile Include="src\scenes\study\S_particle.cpp" />
     <ClCompile Include="src\scenes\study\shape_test.cpp" />
-    <ClCompile Include="src\scenes\study\deferred_shading.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\scenes\study\billboard.cpp" />
     <ClCompile Include="src\scenes\study\sphere_draw.cpp" />
@@ -168,13 +166,17 @@
     <ClCompile Include="src\common\Texture2D.cpp" />
     <ClCompile Include="src\scenes\study\stencil_testing.cpp" />
     <ClCompile Include="src\scenes\study\S_fog.cpp" />
+    <ClCompile Include="src\scenes\project\pet\S_model.cpp" />
     <ClCompile Include="src\scenes\study\S_gerstner_water.cpp" />
     <ClCompile Include="src\scenes\study\S_normal_mapping.cpp" />
     <ClCompile Include="src\scenes\study\text_freetype.cpp" />
     <ClCompile Include="src\scenes\study\text_uv.cpp" />
     <ClCompile Include="src\utils\TestExecutionTime.cpp" />
+    <ClCompile Include="src\scenes\study\S_billboard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\base\base_color_fs.glsl" />
+    <None Include="shaders\base\base_color_vs.glsl" />
     <None Include="shaders\base\base_fs.glsl" />
     <None Include="shaders\base\base_vs.glsl" />
     <None Include="shaders\project\pet\base_fs.glsl" />
@@ -226,6 +228,7 @@
     <None Include="shaders\study\water\water_vs.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\project\pet\LineFrameRenderer.h" />
     <ClInclude Include="src\utils\ModelGenerator.h" />
     <ClInclude Include="src\utils\FileReadUtil.h" />
     <ClInclude Include="src\scenes\project\pet\OctTree.h" />
@@ -256,9 +259,11 @@
     <ClInclude Include="src\scenes\study\S_Instance.h" />
     <ClInclude Include="src\scenes\study\S_particle.h" />
     <ClInclude Include="src\scenes\study\S_fog.h" />
+    <ClInclude Include="src\scenes\project\pet\S_model.h" />
     <ClInclude Include="src\scenes\study\S_gerstner_water.h" />
     <ClInclude Include="src\scenes\study\S_normal_mapping.h" />
     <ClInclude Include="src\utils\TestExecutionTime.h" />
+    <ClInclude Include="src\scenes\study\S_billboard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

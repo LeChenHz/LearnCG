@@ -21,7 +21,6 @@ const float SPEED = 2.5f; //默认的速度
 const float SENSITIVITY = 0.1f; //默认的灵敏度
 const float ZOOM = 45.0f; //默认的视角
 
-						  // 一个抽象的摄像机类，它处理输入并计算相应的欧拉角、向量和矩阵以供OpenGL使用。
 class Camera
 {
 public:
@@ -33,13 +32,12 @@ public:
 
 	float yaw; //偏航角
 	float pitch; //俯仰角
-				 //滚转角不考虑
 
 	float MovementSpeed;
 	float MouseSensitivity;
 	float zoom; // 摄像机fov
 
-				// 使用向量构造
+	// 使用向量初始化
 	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
 		float yaw = YAW, float pitch = PITCH) :
@@ -50,9 +48,10 @@ public:
 		this->yaw = yaw;
 		this->pitch = pitch;
 		updateCameraVectors();
+
 	}
 
-	// 使用标量值构造
+	// 使用标量值初始化
 	Camera(float posX, float posY, float posZ,
 		float upX, float upY, float upZ,
 		float yaw, float pitch) :
@@ -66,11 +65,7 @@ public:
 	}
 
 	// 获取摄像机的View矩阵
-	glm::mat4 GetViewMatrix()
-	{
-		//位置、目标和上向量
-		return glm::lookAt(position, position + forward, up);
-	}
+	glm::mat4 GetViewMatrix();
 
 	// 键盘控制移动
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime);

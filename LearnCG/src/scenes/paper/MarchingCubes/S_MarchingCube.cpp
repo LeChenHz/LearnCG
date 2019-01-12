@@ -37,7 +37,7 @@ void S_MarchingCube::initGL()
 
 	if (onlyForGeneratorModel)
 	{
-		ModelGenerator::GetInstance()->generateObjUsePosNormal("E:\\Desktop\\PET\\model.obj", isosurfaceVersPos, isosurfaceVersNormal, versNumber);
+		ModelGenerator::GetInstance()->generateObjUsePosNormal("res/model/model400000.obj", isosurfaceVersPos, isosurfaceVersNormal, versNumber);
 		exit(0);
 	}
 
@@ -51,13 +51,11 @@ void S_MarchingCube::initGL()
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void *)(sizeof(glm::vec3) * versNumber));
 	glEnableVertexAttribArray(1);
 
-	if (paintFrame)
-		initCubeFrame(2);
-
 	// 开启深度测试
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
+	lineFrameRenderer = new LineFrameRenderer(200, 160, 160, 1.0f);
 }
 
 void S_MarchingCube::paintGL(float deltaTime)
@@ -68,13 +66,8 @@ void S_MarchingCube::paintGL(float deltaTime)
 
 	glm::mat4 projection;
 	glm::mat4 model;
+	glm::mat4 view = camera.GetViewMatrix();
 	projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.001f, 100.0f);
-	shader->setMat4("model_matrix", model);
-	shader->setMat4("view_matrix", camera.GetViewMatrix());
-	shader->setMat4("projection_matrix", projection);
-
-	if (paintFrame)
-		createCubeFrame(2);
 
 	if (first)
 	{
@@ -83,6 +76,9 @@ void S_MarchingCube::paintGL(float deltaTime)
 	first = false;
 
 	shader->use();
+	shader->setMat4("model_matrix", model);
+	shader->setMat4("view_matrix", view);
+	shader->setMat4("projection_matrix", projection);
 
 	glBindVertexArray(VAO);
 
@@ -104,7 +100,7 @@ void S_MarchingCube::paintGL(float deltaTime)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glDrawArrays(GL_TRIANGLES, 0, versNumber);
 	}
-
+	lineFrameRenderer->draw(projection, view);
 }
 
 void S_MarchingCube::freeGL()
@@ -121,55 +117,6 @@ S_MarchingCube::S_MarchingCube()
 
 S_MarchingCube::~S_MarchingCube()
 {
-}
-
-void S_MarchingCube::createCubeFrame(float size)
-{
-	shader->use();
-	glBindVertexArray(FRAME_VAO);
-	glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, (void *)0);
-}
-
-void S_MarchingCube::initCubeFrame(float size)
-{
-	// 立方体6个面的顶点
-	glm::vec3 *cube_vertices = new glm::vec3[24];
-	// 所需绘制的三角形顶点索引
-	unsigned int *cube_lines_indices = new unsigned int[24];
-	size *= 0.5;
-
-	int k = 0;
-	for (int i = 0; i < 12; ++i) {
-		for (int j = 0; j < 2; ++j) {
-			cube_vertices[k] = size * cube_vertex_position[cube_edges_indices[i][j]];
-			k++;
-		}
-	}
-
-	k = 0;
-	unsigned int j = 0;
-	for (unsigned int i = 0; i < 12; ++i) {
-		j = i * 2;
-		cube_lines_indices[k++] = j;
-		cube_lines_indices[k++] = j + 1;
-	}
-
-	glGenVertexArrays(1, &FRAME_VAO);
-	glBindVertexArray(FRAME_VAO);
-
-	glGenBuffers(1, &FRAME_VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, FRAME_VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * 24, cube_vertices, GL_STATIC_DRAW);
-
-	glGenBuffers(1, &FRAME_EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, FRAME_EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 24, cube_lines_indices, GL_STATIC_DRAW);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
-
-	//delete[] cube_vertices;
-	//delete[] cube_lines_indices;
 }
 
 void S_MarchingCube::marchingCubes()
@@ -289,10 +236,11 @@ void S_MarchingCube::calVerticesNormal(glm::vec3 & normal, int x_index, int y_in
 		(y_index >= 1 && y_index < subdivide_cube_num_y) &&
 		(z_index >= 1 && z_index < subdivide_cube_num_z))
 	{
+		int offset = -1;
 		// 中心差分
-		normal.x = getDataUseXYZ(data, x_index + 1, y_index, z_index) - getDataUseXYZ(data, x_index - 1, y_index, z_index);
-		normal.y = getDataUseXYZ(data, x_index, y_index + 1, z_index) - getDataUseXYZ(data, x_index, y_index - 1, z_index);
-		normal.z = getDataUseXYZ(data, x_index, y_index, z_index + 1) - getDataUseXYZ(data, x_index, y_index, z_index - 1);
+		normal.x = getDataUseXYZ(data, x_index + offset, y_index, z_index) - getDataUseXYZ(data, x_index - offset, y_index, z_index);
+		normal.y = getDataUseXYZ(data, x_index, y_index + offset, z_index) - getDataUseXYZ(data, x_index, y_index - offset, z_index);
+		normal.z = getDataUseXYZ(data, x_index, y_index, z_index + offset) - getDataUseXYZ(data, x_index, y_index, z_index - offset);
 		normal = glm::normalize(normal);
 	}
 }

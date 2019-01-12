@@ -32,7 +32,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_fog();
+	scene = new S_Pet_Demo();
 
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
@@ -47,8 +47,10 @@ int main()
 	TwWindowSize(scene->SCR_WIDTH, scene->SCR_HEIGHT);
 
 	TwBar *bar;
-	bar = TwNewBar("MyTweakBar");
+	
+	bar = TwNewBar("Interaction window");
 
+	scene->setTwBar(bar); // 要放在scene->initGL之前
 	scene->initGL();
 
 	lastX = (float)scene->SCR_WIDTH / 2.0, lastY = (float)scene->SCR_HEIGHT / 2.0;
@@ -59,13 +61,13 @@ int main()
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		// 输入控制
-		processInput(window);
+	
+		processInput(window); // 输入控制
 		
-		// 绘制
-		scene->paintGL(deltaTime);
+		scene->paintGL(deltaTime); // 绘制
 
-		TwDraw();  // 绘制tweak bar(s)
+		if(scene->showTwBar)
+			TWB TwDraw();  // 绘制TweakBar
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -74,7 +76,7 @@ int main()
 	scene->freeGL();
 	delete scene;
 
-	TwTerminate();
+	TWB TwTerminate(); //释放TweakBar
 	glfwTerminate();
 	return 0;
 }
@@ -132,6 +134,19 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) //回到原点
+	{
+		scene->initCamera();
+	}
+	if (key == GLFW_KEY_C && action == GLFW_PRESS) //隐藏光标
+	{
+		scene->hiddenMouse = !scene->hiddenMouse;
+		if (scene->hiddenMouse)
+			// GLFW_CURSOR_HIDDEN隐藏光标，但还是会移出GLFW窗口
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		else
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
 	TWB TwEventKeyGLFW(key, action);
 }
 void character_callback(GLFWwindow* window, unsigned int codepoint)

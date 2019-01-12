@@ -2,6 +2,7 @@
 
 #include "../../Scene.h"
 #include <fstream>
+#include "../../project/pet/LineFrameRenderer.h"
 
 //typedef unsigned char DataType;
 typedef float DataType;
@@ -16,17 +17,14 @@ public:
 	S_MarchingCube();
 	~S_MarchingCube();
 	Shader *shader;
-	// 绘制立方体线框
-	void createCubeFrame(float size);
-	void initCubeFrame(float size);
-	// 
+ 
 	void marchingCubes();
 	// 对每一个cube做等值面提取
 	void marchingCube(int x_index, int y_index, int z_index, float step_size, float scale);
 	// 计算交点的法向量
 	void calVerticesNormal(glm::vec3 &normal, int x_index, int y_index, int z_index);
 public:
-
+	LineFrameRenderer *lineFrameRenderer;
 	glm::vec3 isosurfaceVersPos[160 * 160 * 200 * 3 * 5];
 	glm::vec3 isosurfaceVersNormal[160 * 160 * 200 * 3 * 5];
 	int versNumber = 0;
@@ -42,18 +40,12 @@ public:
 
 	int subdivide_cube_num_x = 200, subdivide_cube_num_y = 160, subdivide_cube_num_z = 160;
 	float target_value; // 等值面值
-	bool onlyForGeneratorModel = true; // 将数据生成模型，就退出程序
+	bool onlyForGeneratorModel = false; // 将数据生成模型，就退出程序
 	int g_view_mode = 0; // 显示模式，0:Fill, 1:Lines, 2:fix 
 	bool first = true;
-	bool paintFrame = false;
+
 	GLuint VAO;
 	GLuint VBO;
-
-	GLuint FRAME_VAO;
-	GLuint FRAME_EBO;
-	GLuint FRAME_VBO;
-	GLint g_uniform_loc;
-	GLuint g_uniform_obj;
 
 	// 顶点位置
 	const glm::vec3 cube_vertex_position[8] = 

@@ -2,6 +2,7 @@
 
 S_Pet_Demo::S_Pet_Demo()
 {
+	windowTitle = "Pet Data Visualization";
 	hiddenMouse = true;
 }
 

@@ -1,5 +1,11 @@
 #include "Camera.h"
 
+glm::mat4 Camera::GetViewMatrix()
+{
+	//位置、目标和上向量
+	return glm::lookAt(position, position + forward, up);
+}
+
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
 	float velocity = MovementSpeed * deltaTime;

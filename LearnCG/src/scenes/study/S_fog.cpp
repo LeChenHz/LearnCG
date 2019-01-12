@@ -11,7 +11,7 @@ void S_fog::initGL()
 	// ×ÅÉ«Æ÷
 	shader =  new Shader("shaders/study/fog/fog.vs", "shaders/study/fog/fog.fs");
 
-	string modelPathStr = "res/model/character/character.obj";
+	string modelPathStr = "res/model/pet/pet.obj";
 	ourModel = new Model(modelPathStr);
 	objectPositions.push_back(glm::vec3(-3.0, -3.0, -3.0));
 	objectPositions.push_back(glm::vec3(0.0, -3.0, -3.0));
