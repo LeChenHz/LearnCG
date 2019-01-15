@@ -12,3 +12,4 @@
 #include "study/S_particle.h" // 粒子系统
 #include "study/S_Instance.h" // 实例化 Instancing
 #include "study/S_text_uv.h" // 计算uv坐标的方式，绘制文本
+#include "study/S_tweak_bar.h" // 计算uv坐标的方式，绘制文本

@@ -32,8 +32,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_text_uv();
-
+	scene = new S_model();
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
 		return -1;
@@ -51,7 +50,10 @@ int main()
 	bar = TwNewBar("Interaction window");
 
 	scene->setTwBar(bar); // 要放在scene->initGL之前
+
+	//TestExecutionTime::start();
 	scene->initGL();
+	//TestExecutionTime::end();
 
 	lastX = (float)scene->SCR_WIDTH / 2.0, lastY = (float)scene->SCR_HEIGHT / 2.0;
 	lastFrame = glfwGetTime();
@@ -147,6 +149,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		else
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
+	scene->key_callback(window, key, scancode, action, mods); // 处理场景的按键处理
 	TWB TwEventKeyGLFW(key, action);
 }
 void character_callback(GLFWwindow* window, unsigned int codepoint)

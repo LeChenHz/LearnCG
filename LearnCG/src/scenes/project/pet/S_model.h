@@ -10,6 +10,7 @@ public:
 	virtual void paintGL(float deltaTime);
 	virtual void freeGL();
 	virtual void initCamera();
+	virtual void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 public:
 	S_model();
 	~S_model();

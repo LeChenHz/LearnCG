@@ -6,7 +6,7 @@ void S_normal_mapping::initGL()
 {
 }
 
-void S_normal_mapping::paintGL()
+void S_normal_mapping::paintGL(float deltaTime)
 {
 }
 

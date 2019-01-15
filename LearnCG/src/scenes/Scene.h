@@ -16,7 +16,7 @@ public:
 	virtual void paintGL(float deltaTime) = 0; //// deltaTime为两次paint间隔的时间ms
 	virtual void freeGL() = 0;
 	virtual void initCamera();
-
+	virtual void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	Scene();
 
 public:
@@ -31,7 +31,7 @@ public:
 
 public:
 	// 用于AntTweakBar
-	bool showTwBar = false;
+	bool showTwBar = true;
 	TwBar *twBar = nullptr;
 	void setTwBar(TwBar *bar);
 };

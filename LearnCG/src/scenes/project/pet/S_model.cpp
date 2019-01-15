@@ -99,6 +99,26 @@ void S_model::initCamera()
 	camera.lookToPos(glm::vec3(0.5f));
 }
 
+void S_model::key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS) //
+	{
+		showModel20000 = !showModel20000;
+	}
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS) //
+	{
+		showModel600000 = !showModel600000;
+	}
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS) //
+	{
+		showPetModel = !showPetModel;
+	}
+	if (key == GLFW_KEY_4 && action == GLFW_PRESS) //
+	{
+		showLineFrameRenderer = !showLineFrameRenderer;
+	}
+}
+
 S_model::S_model()
 {
 	windowTitle = "Pet Data Visualization";
@@ -110,4 +130,6 @@ S_model::S_model()
 
 S_model::~S_model()
 {
+
 }
+

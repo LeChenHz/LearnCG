@@ -136,6 +136,7 @@
     <ClCompile Include="src\common\Text2D.cpp" />
     <ClCompile Include="src\scenes\project\pet\LineFrameRenderer.cpp" />
     <ClCompile Include="src\scenes\study\S_text_uv.cpp" />
+    <ClCompile Include="src\scenes\study\S_tweak_bar.cpp" />
     <ClCompile Include="src\utils\ModelGenerator.cpp" />
     <ClCompile Include="src\utils\FileReadUtil.cpp" />
     <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
@@ -153,7 +154,6 @@
     <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube.cpp" />
     <ClCompile Include="src\scenes\project\pet\ReadPetBigFile.cpp" />
     <ClCompile Include="src\scenes\project\pet\S_Pet_Demo.cpp" />
-    <ClCompile Include="src\scenes\SceneTemplate.cpp" />
     <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\scenes\study\S_Instance.cpp" />
     <ClCompile Include="src\scenes\study\S_particle.cpp" />
@@ -167,7 +167,6 @@
     <ClCompile Include="src\scenes\project\pet\S_model.cpp" />
     <ClCompile Include="src\scenes\study\S_gerstner_water.cpp" />
     <ClCompile Include="src\scenes\study\S_normal_mapping.cpp" />
-    <ClCompile Include="src\scenes\study\text_uv.cpp" />
     <ClCompile Include="src\utils\TestExecutionTime.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +204,7 @@
   <ItemGroup>
     <ClInclude Include="src\scenes\project\pet\LineFrameRenderer.h" />
     <ClInclude Include="src\scenes\study\S_text_uv.h" />
+    <ClInclude Include="src\scenes\study\S_tweak_bar.h" />
     <ClInclude Include="src\utils\ModelGenerator.h" />
     <ClInclude Include="src\utils\FileReadUtil.h" />
     <ClInclude Include="src\scenes\project\pet\OctTree.h" />
@@ -220,7 +220,6 @@
     <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube.h" />
     <ClInclude Include="src\scenes\project\pet\ReadPetBigFile.h" />
     <ClInclude Include="src\scenes\project\pet\S_Pet_Demo.h" />
-    <ClInclude Include="src\scenes\SceneTemplate.h" />
     <ClInclude Include="src\scenes\Scene.h" />
     <ClInclude Include="src\scenes\SceneHead.h" />
     <ClInclude Include="src\common\Mesh.h" />
