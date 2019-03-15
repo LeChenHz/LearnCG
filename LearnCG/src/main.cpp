@@ -49,7 +49,7 @@ int main()
 	
 	bar = TwNewBar("Interaction window");
 
-	scene->setTwBar(bar); // 要放在scene->initGL之前
+	scene->setTwBar(bar); // 要放在scene->initGL()之前
 
 	//TestExecutionTime::start();
 	scene->initGL();
@@ -152,6 +152,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	scene->key_callback(window, key, scancode, action, mods); // 处理场景的按键处理
 	TWB TwEventKeyGLFW(key, action);
 }
+
 void character_callback(GLFWwindow* window, unsigned int codepoint)
 {
 	TWB TwEventCharGLFW(codepoint, GLFW_PRESS);

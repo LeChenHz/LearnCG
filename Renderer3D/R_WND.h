@@ -145,10 +145,12 @@ static LRESULT screen_events(HWND hWnd, UINT msg,
 	return 0;
 }
 
-//TODO 分发消息
-void screen_dispatch(void) {
+//分发消息
+void screen_dispatch(void) 
+{
 	MSG msg;
-	while (1) {
+	while (1) 
+	{
 
 		// 该函数为一个消息检查线程消息队列，并将该消息（如果存在）放于指定的结构
 		if (!PeekMessage(&msg, //接收消息信息的MSG结构指针

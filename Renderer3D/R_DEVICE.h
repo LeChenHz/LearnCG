@@ -42,14 +42,14 @@ IUINT32 device_texture_read(const device_t *device, float u, float v);
 // 设备初始化：framebuffer、zbuffer
 // fb为外部帧缓存，非 NULL 将引用外部帧缓存（每行 4字节对齐）
 void device_init(device_t *device, int width, int height, void *fb) {
-	// TODO
+
 	int need = sizeof(void*) * (height * 2 + 1024) + width * height * 8;
 	char *ptr = (char*)malloc(need + 64);
 	char *framebuf, *zbuf;
 	int j;
 	assert(ptr);
-	// TODO
-	device->framebuffer = (IUINT32**)ptr;
+	
+	device->framebuffer = (IUINT32**)ptr; //存储height行的指针
 	device->zbuffer = (float**)(ptr + sizeof(void*) * height);
 	ptr += sizeof(void*) * height * 2;
 	device->texture = (IUINT32**)ptr;
@@ -57,9 +57,12 @@ void device_init(device_t *device, int width, int height, void *fb) {
 	framebuf = (char*)ptr;
 	zbuf = (char*)ptr + width * height * 4;
 	ptr += width * height * 8;
+
 	if (fb != NULL) 
 		framebuf = (char*)fb; //将引用外部帧缓存
-	for (j = 0; j < height; j++) {
+
+	for (j = 0; j < height; j++) 
+	{
 		device->framebuffer[j] = (IUINT32*)(framebuf + width * 4 * j);
 		device->zbuffer[j] = (float*)(zbuf + width * 4 * j);
 	}
@@ -93,9 +96,11 @@ void device_set_texture(device_t *device, void *bits, long pitch, int w, int h) 
 
 // 清空 framebuffer 和 zbuffer
 // （参数）mode：
-void device_clear(device_t *device, int mode) {
+void device_clear(device_t *device, int mode)
+{
 	int y, x, height = device->height;
-	for (y = 0; y < device->height; y++) {
+	for (y = 0; y < device->height; y++) 
+	{
 		IUINT32 *dst = device->framebuffer[y];
 		IUINT32 cc = (height - 1 - y) * 230 / (height - 1); //背景颜色，高度由上往下渐变，230只是颜色等级
 		cc = (cc << 16) | (cc << 8) | cc; //rgb
@@ -104,7 +109,8 @@ void device_clear(device_t *device, int mode) {
 		for (x = device->width; x > 0; dst++, x--) 
 			dst[0] = cc;
 	}
-	for (y = 0; y < device->height; y++) {
+	for (y = 0; y < device->height; y++) 
+	{
 		float *dst = device->zbuffer[y];
 		for (x = device->width; x > 0; dst++, x--) 
 			dst[0] = 0.0f;

@@ -3,6 +3,7 @@
 
 #include "paper/MarchingCubes/S_MarchingCube.h"
 #include "paper/MarchingCubes/S_MarchingCube_pointcloud.h"
+#include "paper/QuadricErrorMetrics/ObjSimplifier.hpp"
 
 #include "project/pet/S_Pet_Demo.h"
 #include "project/pet/S_model.h" // Ä£ÐÍ¼ÓÔØ

@@ -184,7 +184,6 @@ void matrix_set_scale(matrix_t *m, float x, float y, float z)
 	m->m[2][2] = z;
 }
 
-// TODO
 // –˝◊™æÿ’Û
 void matrix_set_rotate(matrix_t *m, float x, float y, float z, float theta) 
 {
@@ -240,7 +239,6 @@ void matrix_set_lookat(matrix_t *m, const vector_t *eye, const vector_t *at, con
 	m->m[3][3] = 1.0f;
 }
 
-// TODO Õ∏ ”æÿ’Û
 // Õ∏ ”æÿ’Û D3DX Matrix Perspective FovLH
 // ProjectionMatrix = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 void matrix_set_perspective(matrix_t *m, float fovy, float aspect, float zn, float zf) 
