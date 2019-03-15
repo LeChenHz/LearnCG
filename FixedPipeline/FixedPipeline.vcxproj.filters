@@ -14,5 +14,19 @@
     <ClCompile Include="MarchingCubes.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="QEM\display.cpp" />
+    <ClCompile Include="QEM\init.cpp" />
+    <ClCompile Include="QEM\main.cpp" />
+    <ClCompile Include="QEM\read.cpp" />
+    <ClCompile Include="QEM\simplification.cpp" />
+    <ClCompile Include="QEM\utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="QEM\mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QEM\simplification.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
