@@ -26,13 +26,17 @@ bool firstMouse = true;
 
 float deltaTime = 0.0f; // 当前帧与上一帧的时间差
 float lastFrame = 0.0f; // 上一帧的时间
+float totalTime = 0.0f; // 总运行时间
+float mouse_x_pos = 0.0f;
+float mouse_y_pos = 0.0f;
 
 GLFWwindow* window; //GL窗口
 Scene *scene;
 
 int main()
 {
-	scene = new S_model();
+	scene = new S_WaterWave();
+	//scene = new S_MyClickEffect();
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
 		return -1;
@@ -56,20 +60,26 @@ int main()
 	//TestExecutionTime::end();
 
 	lastX = (float)scene->SCR_WIDTH / 2.0, lastY = (float)scene->SCR_HEIGHT / 2.0;
-	lastFrame = glfwGetTime();
+	glfwSetTime(0);
+	float startTime = glfwGetTime();
+	
+
 	while (!glfwWindowShouldClose(window))
 	{
 		// 在每一帧中计算出新的deltaTime
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
+		totalTime += deltaTime;
+		//std::cout << totalTime << std::endl;
 	
 		processInput(window); // 输入控制
 		
 		scene->paintGL(deltaTime); // 绘制
+		//scene->paintGL(totalTime); // 绘制
 
 		if(scene->showTwBar)
-			TWB TwDraw();  // 绘制TweakBar
+			//TWB TwDraw();  // 绘制TweakBar
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -101,7 +111,8 @@ void processInput(GLFWwindow *window)
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
-	TWB TwWindowSize(width, height);
+	//TWB TwWindowSize(width, height);
+	scene->setScreenSize(width, height);
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
@@ -119,6 +130,10 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	lastX = xpos;
 	lastY = ypos;
 
+	mouse_x_pos = xpos;
+	mouse_y_pos = ypos;
+
+
 	scene->camera.ProcessMouseMovement(xoffset, yoffset);
 	TWB TwEventMousePosGLFW(xpos, ypos);
 }
@@ -131,6 +146,18 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
+	if(action == GLFW_PRESS)
+		switch (button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+			scene->setCursePos(mouse_x_pos, mouse_y_pos);
+			scene->Clicked();
+			totalTime = 0.9;
+			scene->setRender(true);
+			break;
+		default:
+			break;
+		}
 	TWB TwEventMouseButtonGLFW(button, action);
 }
 
@@ -182,6 +209,7 @@ int initGlfw(int width, int height, const char * title, bool hiddenMouse)
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetCharCallback(window, character_callback);
 	glfwSetKeyCallback(window, key_callback);
+
 
 	if (hiddenMouse)
 	{

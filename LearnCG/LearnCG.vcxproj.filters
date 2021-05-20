@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\common\Text2D.cpp" />
+    <ClCompile Include="src\scenes\project\pet\LineFrameRenderer.cpp" />
+    <ClCompile Include="src\scenes\study\S_text_uv.cpp" />
+    <ClCompile Include="src\scenes\study\S_tweak_bar.cpp" />
+    <ClCompile Include="src\utils\ModelGenerator.cpp" />
+    <ClCompile Include="src\utils\FileReadUtil.cpp" />
+    <ClCompile Include="src\scenes\project\pet\OctTree.cpp" />
+    <ClCompile Include="src\common\Mesh.cpp" />
+    <ClCompile Include="src\common\Model.cpp" />
+    <ClCompile Include="src\common\Shader.cpp" />
+    <ClCompile Include="src\scenes\project\pet\CoinModel.cpp" />
+    <ClCompile Include="src\common\Camera.cpp" />
+    <ClCompile Include="src\scenes\project\pet\PetMathmaticalModel.cpp" />
+    <ClCompile Include="src\common\shape\Cube.cpp" />
+    <ClCompile Include="src\common\shape\ShapeFactory.cpp" />
+    <ClCompile Include="src\common\shape\Sphere.cpp" />
+    <ClCompile Include="src\main_test.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube_pointcloud.cpp" />
+    <ClCompile Include="src\scenes\paper\MarchingCubes\S_MarchingCube.cpp" />
+    <ClCompile Include="src\scenes\project\pet\ReadPetBigFile.cpp" />
+    <ClCompile Include="src\scenes\project\pet\S_Pet_Demo.cpp" />
+    <ClCompile Include="src\scenes\Scene.cpp" />
+    <ClCompile Include="src\scenes\study\S_Instance.cpp" />
+    <ClCompile Include="src\scenes\study\S_particle.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\common\glad.c" />
+    <ClCompile Include="src\common\ResourceManager.cpp" />
+    <ClCompile Include="src\common\stb_image.cpp" />
+    <ClCompile Include="src\common\texture.cpp" />
+    <ClCompile Include="src\common\Texture2D.cpp" />
+    <ClCompile Include="src\scenes\study\S_fog.cpp" />
+    <ClCompile Include="src\scenes\project\pet\S_model.cpp" />
+    <ClCompile Include="src\scenes\study\S_gerstner_water.cpp" />
+    <ClCompile Include="src\scenes\study\S_normal_mapping.cpp" />
+    <ClCompile Include="src\utils\TestExecutionTime.cpp" />
+    <ClCompile Include="src\scenes\study\S_WaterWave.cpp">
+      <Filter>Scene\WaterWave</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\study\S_FireWork.cpp">
+      <Filter>Scene\WaterWave</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\study\S_myClickeEffect.cpp">
+      <Filter>Scene\WaterWave</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\scenes\project\pet\LineFrameRenderer.h" />
+    <ClInclude Include="src\scenes\study\S_text_uv.h" />
+    <ClInclude Include="src\scenes\study\S_tweak_bar.h" />
+    <ClInclude Include="src\utils\ModelGenerator.h" />
+    <ClInclude Include="src\utils\FileReadUtil.h" />
+    <ClInclude Include="src\scenes\project\pet\OctTree.h" />
+    <ClInclude Include="src\scenes\project\pet\CoinModel.h" />
+    <ClInclude Include="src\common\Camera.h" />
+    <ClInclude Include="src\scenes\GL_HEAD.h" />
+    <ClInclude Include="src\scenes\project\pet\PetMathmaticalModel.h" />
+    <ClInclude Include="src\common\shape\Cube.h" />
+    <ClInclude Include="src\common\shape\Shape.h" />
+    <ClInclude Include="src\common\shape\ShapeFactory.h" />
+    <ClInclude Include="src\common\shape\Sphere.h" />
+    <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube_pointcloud.h" />
+    <ClInclude Include="src\scenes\paper\MarchingCubes\S_MarchingCube.h" />
+    <ClInclude Include="src\scenes\project\pet\ReadPetBigFile.h" />
+    <ClInclude Include="src\scenes\project\pet\S_Pet_Demo.h" />
+    <ClInclude Include="src\scenes\Scene.h" />
+    <ClInclude Include="src\scenes\SceneHead.h" />
+    <ClInclude Include="src\common\Mesh.h" />
+    <ClInclude Include="src\common\Model.h" />
+    <ClInclude Include="src\common\opengl_debug.h" />
+    <ClInclude Include="src\common\ResourceManager.h" />
+    <ClInclude Include="src\common\Shader.h" />
+    <ClInclude Include="src\common\stb_image.h" />
+    <ClInclude Include="src\common\Text2D.h" />
+    <ClInclude Include="src\common\texture.h" />
+    <ClInclude Include="src\common\Texture2D.h" />
+    <ClInclude Include="src\scenes\study\S_Instance.h" />
+    <ClInclude Include="src\scenes\study\S_particle.h" />
+    <ClInclude Include="src\scenes\study\S_fog.h" />
+    <ClInclude Include="src\scenes\project\pet\S_model.h" />
+    <ClInclude Include="src\scenes\study\S_gerstner_water.h" />
+    <ClInclude Include="src\scenes\study\S_normal_mapping.h" />
+    <ClInclude Include="src\utils\TestExecutionTime.h" />
+    <ClInclude Include="src\scenes\study\S_WaterWave.h">
+      <Filter>Scene\WaterWave</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\study\S_FireWork.h">
+      <Filter>Scene\WaterWave</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\study\S_myClickeEffect.h">
+      <Filter>Scene\WaterWave</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\base\base_color_fs.glsl" />
+    <None Include="shaders\base\base_color_vs.glsl" />
+    <None Include="shaders\base\base_fs.glsl" />
+    <None Include="shaders\base\base_vs.glsl" />
+    <None Include="shaders\project\pet\base_fs.glsl" />
+    <None Include="shaders\project\pet\base_vs.glsl" />
+    <None Include="shaders\project\pet\particle_fs.glsl" />
+    <None Include="shaders\project\pet\particle_vs.glsl" />
+    <None Include="shaders\study\billboard\billboard.fs" />
+    <None Include="shaders\study\billboard\billboard.vs" />
+    <None Include="shaders\study\billboard\cube.fs" />
+    <None Include="shaders\study\billboard\cube.vs" />
+    <None Include="shaders\study\fog\fog.fs" />
+    <None Include="shaders\study\fog\fog.vs" />
+    <None Include="shaders\paper\marching_cubes\mc_fs.glsl" />
+    <None Include="shaders\paper\marching_cubes\mc_vs.glsl" />
+    <None Include="shaders\study\instancing\asteroids_fs.glsl" />
+    <None Include="shaders\study\instancing\asteroids_vs.glsl" />
+    <None Include="shaders\study\instancing\planet_fs.glsl" />
+    <None Include="shaders\study\instancing\planet_vs.glsl" />
+    <None Include="shaders\study\particle_system\particle_system.fs" />
+    <None Include="shaders\study\particle_system\particle_system.vs" />
+    <None Include="shaders\study\sphere\sphere.fs" />
+    <None Include="shaders\study\sphere\sphere.vs" />
+    <None Include="shaders\study\sphere\sphere_fs.glsl" />
+    <None Include="shaders\study\sphere\sphere_vs.glsl" />
+    <None Include="shaders\study\text_uv\text_uv_fs.glsl" />
+    <None Include="shaders\study\text_uv\text_uv_vs.glsl" />
+    <None Include="shaders\study\water\water_fs.glsl" />
+    <None Include="shaders\study\water\water_vs.glsl" />
+    <None Include="shaders\study\waterwave\waterwave.fs">
+      <Filter>shader\WaterWave</Filter>
+    </None>
+    <None Include="shaders\study\waterwave\waterwave.vs">
+      <Filter>shader\WaterWave</Filter>
+    </None>
+    <None Include="shaders\study\firework\firework.fs">
+      <Filter>shader\FireWork</Filter>
+    </None>
+    <None Include="shaders\study\firework\firework.vs">
+      <Filter>shader\FireWork</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\myclickeffect.fs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\myclickeffect.vs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\texture.fs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\texture.vs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\myclickeffect_2.fs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+    <None Include="shaders\study\myclickeffect\myclickeffect_2.vs">
+      <Filter>shader\MyClickEffect</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{b81486cc-e2f2-4646-b4f9-ed403982bd7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader">
+      <UniqueIdentifier>{bb061f6c-a62d-471f-96e9-33ab0c385a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{f860677f-cc04-46f9-b0af-0276d8590727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\WaterWave">
+      <UniqueIdentifier>{d0a023f5-79a6-40d1-84a1-7d667b50e4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\WaterWave">
+      <UniqueIdentifier>{7f54d8e1-aaca-47c0-b56a-126df518c1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\FireWork">
+      <UniqueIdentifier>{1247093c-18b5-43e8-b1a0-940e3846fc31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\MyClickEffect">
+      <UniqueIdentifier>{82cecb19-4988-4919-98a5-bbecaae7ba84}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

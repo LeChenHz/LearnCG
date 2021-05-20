@@ -17,6 +17,10 @@ public:
 	virtual void freeGL() = 0;
 	virtual void initCamera();
 	virtual void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	virtual void setCursePos(float x, float y) {};
+	virtual void setScreenSize(int width, int height) {};
+	virtual void Clicked() {};
+	virtual void setRender(bool b) {};
 	Scene();
 
 public:
@@ -34,4 +38,9 @@ public:
 	bool showTwBar = true;
 	TwBar *twBar = nullptr;
 	void setTwBar(TwBar *bar);
+	float mouse_x = -1.0f;
+	float mouse_y = -1.0f;
+
+	int m_width = SCR_WIDTH;
+	int m_height = SCR_HEIGHT;
 };
