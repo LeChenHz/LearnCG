@@ -54,19 +54,49 @@ void S_FireWork::paintGL(float deltaTime)
     shader->use();
     //shader->setInt("Texture", 0);
     shader->setVec2("iResolution", glm::vec2(SCR_WIDTH, SCR_HEIGHT));
-    shader->setFloat("iTime", deltaTime);
-    shader->setBool("render", render);
-    if (mouse_x != -1.0 && mouse_y != -1.0)
+    //shader->setFloat("iTime", deltaTime);
+    //shader->setBool("render", render);
+    //if (mouse_x != -1.0 && mouse_y != -1.0)
+    //{
+    //    shader->setBool("render", render);
+    //    shader->setVec2("iMouse", glm::vec2(mouse_x, mouse_y));
+    //}
+
+    /* ---------------------------------------------------------------------------------------------  */
+    Mutex.lock();
+    int i = 0;
+    for (auto it = drawingElements.begin(); it != drawingElements.end(); it++)
     {
-        shader->setBool("render", render);
-        shader->setVec2("iMouse", glm::vec2(mouse_x, mouse_y));
+        shader->setFloat("p[" + std::to_string(i) + "].iTime", static_cast<GLfloat>(it->iTime));
+        shader->setInt("p[" + std::to_string(i) + "].x", it->x);
+        shader->setInt("p[" + std::to_string(i) + "].y", it->y);
+        i++;
+        float a = it->iTime;
+        it->iTime += deltaTime;
+        float b = it->iTime;
+    
+        shader->setFloat("test", it->iTime);
     }
+    if (drawingElements.size())
+    {
+        while (drawingElements[0].iTime > 0.9)
+        {
+            drawingElements.pop_front();
+            if (!drawingElements.size())break;
+        }
+    }
+    int a = drawingElements.size();
+    shader->setInt("renderingNum", drawingElements.size());
+    Mutex.unlock();
+
+    /* ---------------------------------------------------------------------------------------------  */
+
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, backendTexture);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    time += 0.03;
-    if (time > 2) render = false;
+    //time += 0.03;
+    //if (time > 2) render = false;
 
 
 }
@@ -75,6 +105,26 @@ void S_FireWork::setCursePos(float x, float y)
 {
     mouse_x = x;
     mouse_y = y;
+
+    ClickEffectParams p = {
+        0.0,
+        mouse_x,
+        mouse_y
+    };
+
+    Mutex.lock();
+    if (drawingElements.size() < MAX_DEQUE_SIZE)
+    {
+        drawingElements.push_back(p);
+    }
+    else
+    {
+        drawingElements.pop_front();
+        drawingElements.push_back(p);
+    }
+
+    std::cout << "deque size: " << drawingElements.size() << std::endl;
+    Mutex.unlock();
 }
 
 void S_FireWork::freeGL()

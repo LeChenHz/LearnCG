@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glad/glad.h>
-
 #include "Texture2D.h"
 
 #include <string>

@@ -1,6 +1,5 @@
 #ifndef  OPENGL_DEBUG_H
 #define OPENGL_DEBUG_H
-
 #include <glad/glad.h>
 #include <string>
 #include <iostream>

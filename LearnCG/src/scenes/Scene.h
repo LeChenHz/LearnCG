@@ -9,6 +9,14 @@ using namespace std;
 
 #include "../utils/TestExecutionTime.h"
 
+#define MAX_DEQUE_SIZE 12
+struct ClickEffectParams
+{
+	float iTime = 3.0;
+	int x = 0;
+	int y = 0;
+};
+
 class Scene 
 {
 public:

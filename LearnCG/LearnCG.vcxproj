@@ -209,6 +209,7 @@
     <None Include="shaders\study\sphere\sphere_vs.glsl" />
     <None Include="shaders\study\text_uv\text_uv_fs.glsl" />
     <None Include="shaders\study\text_uv\text_uv_vs.glsl" />
+    <None Include="shaders\study\waterwave\ImageSamplerExample.comp" />
     <None Include="shaders\study\waterwave\waterwave.fs" />
     <None Include="shaders\study\waterwave\waterwave.vs" />
     <None Include="shaders\study\water\water_fs.glsl" />

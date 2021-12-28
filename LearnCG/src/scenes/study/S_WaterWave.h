@@ -10,14 +10,6 @@
 #include <algorithm>
 #include <vector>
 
-#define MAX_DEQUE_SIZE 12
-struct ClickEffectParams
-{
-	float iTime = 3.0;
-	int x = 0;
-	int y = 0;
-};
-
 class S_WaterWave : public Scene
 {
 public:
@@ -29,14 +21,21 @@ public:
 	virtual void setRender(bool b) { render = b; };
 	virtual void setScreenSize(int width, int height);
 
+	GLuint CreateTextureBuffer();
+	GLuint CreateTextureBufferEX();
+
 	S_WaterWave();
 	~S_WaterWave();
 
 	Shader* shader;
+	Shader* computeShader;
 	GLuint backendTexture;  //texture
+	GLuint anotherTex;
+	GLuint computeImageBuffer;
 	GLuint VBO, EBO;
 	float time = 0.0f;
 	bool render = false;
+	float of = 0.0f;
 	std::deque<ClickEffectParams> drawingElements;
 	//std::deque<ClickEffectParams> drawingElements = std::deque<ClickEffectParams>(MAX_DEQUE_SIZE);
 	std::mutex Mutex;

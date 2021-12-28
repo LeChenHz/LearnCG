@@ -6,7 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <mutex>
+#include <deque>
 
 class S_FireWork : public Scene
 {
@@ -26,6 +27,9 @@ public:
 	GLuint VBO, EBO;
 	float time = 0.0f;
 	bool render = false;
+
+	std::deque<ClickEffectParams> drawingElements;
+	std::mutex Mutex;
 
 
 };

@@ -1,0 +1,18 @@
+#version 310 es
+#extension GL_EXT_texture_buffer : enable
+precision highp float;
+precision lowp samplerBuffer;
+precision lowp isamplerBuffer;
+precision lowp usamplerBuffer;
+
+precision lowp imageBuffer;
+precision lowp uimageBuffer;
+precision lowp iimageBuffer;
+
+layout( local_size_x = 1, local_size_y = 1, local_size_z = 1 ) in;
+uniform writeonly layout(rgba8,binding=0) imageBuffer texture;
+void main()
+{
+	vec4 red = vec4(1.0, 0.0, 0.0, 1.0);
+	imageStore(texture, 0, red);
+}

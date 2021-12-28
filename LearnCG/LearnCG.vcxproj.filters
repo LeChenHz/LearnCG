@@ -154,6 +154,9 @@
     <None Include="shaders\study\myclickeffect\myclickeffect_2.vs">
       <Filter>shader\MyClickEffect</Filter>
     </None>
+    <None Include="shaders\study\waterwave\ImageSamplerExample.comp">
+      <Filter>shader\WaterWave</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

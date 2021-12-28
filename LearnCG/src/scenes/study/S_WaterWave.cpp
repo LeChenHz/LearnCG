@@ -20,6 +20,7 @@ void S_WaterWave::initGL()
 {
     //shader = new Shader("shaders/study/waterwave/waterwave.vs", "shaders/study/waterwave/waterwave.fs");
     shader = new Shader("shaders/study/waterwave/waterwave.vs", "shaders/study/waterwave/waterwave.fs");
+    computeShader = new Shader("shaders/study/waterwave/ImageSamplerExample.comp");
 
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -39,7 +40,59 @@ void S_WaterWave::initGL()
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
-    backendTexture = loadTexture("res\\texture\\mumu.jpg");
+    //backendTexture = loadTexture("res\\texture\\mumu.jpg");
+    backendTexture = CreateTextureBuffer();
+    anotherTex = CreateTextureBufferEX();
+}
+
+GLuint S_WaterWave::CreateTextureBufferEX()
+{
+    // 2x2 Image, 3 bytes per pixel (R, G, B)
+    GLubyte pixels[] =
+    {
+       255,   255,   122, 255, // Red
+         0, 255,   122, 255, // Green
+         0,   0, 255, 255, // Blue
+       255, 255,   0, 255  // Yellow
+    };
+
+    GLuint tex;
+    GLuint tbo;
+    glGenTextures(1, &tex);
+    glGenBuffers(1, &tbo);
+    glActiveTexture(GL_TEXTURE1);
+    glBindBuffer(GL_TEXTURE_BUFFER, tbo);
+    glBindTexture(GL_TEXTURE_BUFFER, tex);
+    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA8, tbo);
+    glBufferData(GL_TEXTURE_BUFFER, sizeof(pixels), pixels, GL_STATIC_DRAW);
+    glBindImageTexture(1, tex, 0, GL_FALSE, 0, GL_READ_WRITE, GL_RGBA8);
+
+    return tex;
+}
+
+GLuint S_WaterWave::CreateTextureBuffer()
+{
+    // 2x2 Image, 3 bytes per pixel (R, G, B)
+    GLubyte pixels[] =
+    {
+       45,   255,   122, 255, // Red
+         0, 255,   122, 255, // Green
+         0,   0, 255, 255, // Blue
+       255, 255,   0, 255  // Yellow
+    };
+
+    GLuint tex;
+    GLuint tbo;
+    glGenTextures(1, &tex);
+    glGenBuffers(1, &tbo);
+    glActiveTexture(GL_TEXTURE0);
+    glBindBuffer(GL_TEXTURE_BUFFER, tbo);
+    glBindTexture(GL_TEXTURE_BUFFER, tex);
+    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA8, tbo);
+    glBufferData(GL_TEXTURE_BUFFER, sizeof(pixels), pixels, GL_STATIC_DRAW);
+    glBindImageTexture(0, tex, 0, GL_FALSE, 0, GL_READ_WRITE, GL_RGBA8);
+
+    return tex;
 }
 
 void S_WaterWave::paintGL(float deltaTime)
@@ -47,6 +100,14 @@ void S_WaterWave::paintGL(float deltaTime)
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    //compute shader
+    computeShader->use();
+    //glBindImageTexture(0, backendTexture, 0, GL_FALSE, 0, GL_READ_WRITE, GL_RGBA8);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_BUFFER, backendTexture);
+    computeShader->setInt("texture", 0);
+    glDispatchCompute(1, 1, 1);
+    glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 
     shader->use();
     shader->setVec2("iResolution", glm::vec2(m_width, m_height));
@@ -77,12 +138,23 @@ void S_WaterWave::paintGL(float deltaTime)
     int a = drawingElements.size();
     shader->setInt("renderingNum", drawingElements.size());
     Mutex.unlock();
-
+    //of += 0.01;
+    //if (of > 4)of = of - 3;
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, backendTexture);
+    glBindTexture(GL_TEXTURE_BUFFER, backendTexture);
+    shader->setInt("texture", 0);
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_BUFFER, anotherTex);
+    shader->setInt("texture1", 1);
+
+    //shader->setInt("offset", (int)(of));
+    //glActiveTexture(GL_TEXTURE0);
+    //glBindTexture(GL_TEXTURE_2D, backendTexture);
+    //glBindTexture(GL_TEXTURE_BUFFER, backendTexture);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
+    
 }
 
 void S_WaterWave::setCursePos(float x, float y)

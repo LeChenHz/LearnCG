@@ -36,7 +36,7 @@ Scene *scene;
 int main()
 {
 	scene = new S_WaterWave();
-	//scene = new S_MyClickEffect();
+	//scene = new S_FireWork();
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "创建GLFW窗口失败" << std::endl;
 		return -1;
@@ -63,6 +63,13 @@ int main()
 	glfwSetTime(0);
 	float startTime = glfwGetTime();
 	
+	//int NumberOfExtensions;
+	//glGetIntegerv(GL_NUM_EXTENSIONS, &NumberOfExtensions);
+	//for (int i = 0; i < NumberOfExtensions; i++)
+	//{
+	//	const GLubyte* ext = glGetStringi(GL_EXTENSIONS, i);
+	//	printf("%s \n", ext);
+	//}
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -189,8 +196,8 @@ int initGlfw(int width, int height, const char * title, bool hiddenMouse)
 {
 	// glfw初始化，采用的GL版本为3.3核心版本
 	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// 创建GL窗口
