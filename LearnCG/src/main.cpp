@@ -35,7 +35,7 @@ Scene *scene;
 
 int main()
 {
-	scene = new S_WaterWave();
+	scene = new S_MyClickEffect();
 	//scene = new S_FireWork();
 	if (initGlfw(scene->SCR_WIDTH, scene->SCR_HEIGHT, scene->windowTitle, scene->hiddenMouse) == 0) {
 		std::cout << "´´½¨GLFW´°¿ÚÊ§°Ü" << std::endl;

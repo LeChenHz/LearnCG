@@ -47,7 +47,7 @@ void S_MyClickEffect::initGL()
     glEnableVertexAttribArray(1);
 
 
-    backendTexture = loadTexture("res\\texture\\mumu.jpg");
+    backendTexture = loadTexture("res\\texture\\test\\ETC2_1024_1024.png");
     effect_1 = loadTexture("res\\texture\\clickEffect_7.png");
     effect_2 = loadTexture("res\\texture\\clickEffect_555.png");
 
@@ -80,9 +80,20 @@ void S_MyClickEffect::initGL()
 
 
 }
-
+#include <time.h>
+#include <windows.h>
+#include <stdio.h>
 void S_MyClickEffect::paintGL(float deltaTime)
 {
+
+    LARGE_INTEGER nFreq;
+    LARGE_INTEGER t1;
+    LARGE_INTEGER t2;
+    
+    double dt;
+    QueryPerformanceFrequency(&nFreq);
+    QueryPerformanceCounter(&t1);
+
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -131,7 +142,9 @@ void S_MyClickEffect::paintGL(float deltaTime)
         time = 0.0;
     }
 
-
+    QueryPerformanceCounter(&t2);
+    dt = (t2.QuadPart - t1.QuadPart) / (double)(nFreq.QuadPart);
+    printf("The run time is: %10.3lf\n", dt * 1000000, "us\n");
 
 }
 
